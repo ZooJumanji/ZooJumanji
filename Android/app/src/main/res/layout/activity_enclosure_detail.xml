@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size"
-                android:id="@+id/detail_animal_name"/>
+                android:id="@+id/detail_enclosure_name"/>
 
         </LinearLayout>
 
@@ -41,51 +41,13 @@
                 android:layout_width="@dimen/detail_label"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size"
-                android:text="@string/detail_label_age" />
+                android:text="@string/detail_label_count" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size"
-                android:id="@+id/detail_animal_age"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="@dimen/detail_label"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:text="@string/detail_label_sex" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:id="@+id/detail_animal_sex"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="@dimen/detail_label"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:text="@string/detail_label_species" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:id="@+id/detail_animal_species"/>
+                android:id="@+id/detail_enclosure_count"/>
 
         </LinearLayout>
 
@@ -104,7 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size"
-                android:id="@+id/detail_animal_type"/>
+                android:id="@+id/detail_enclosure_type"/>
 
         </LinearLayout>
 
