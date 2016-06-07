@@ -57,7 +57,7 @@ public class AnimalActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Generate new Activity
-                Intent intent = new Intent(AnimalActivity.this, AnimalActivity.class);
+                Intent intent = new Intent(AnimalActivity.this, AnimalCreationActivity.class);
                 startActivity(intent);
             }
         });
