@@ -2,7 +2,7 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -23,11 +23,13 @@
             <TextView
                 android:layout_width="@dimen/detail_label"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
                 android:text="@string/detail_label_name" />
 
             <TextView
                 android:id="@+id/detail_stock_name"
                 android:layout_width="match_parent"
+                android:textSize="@dimen/text_size"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
@@ -41,11 +43,13 @@
             <TextView
                 android:layout_width="@dimen/detail_label"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
                 android:text="@string/detail_label_type" />
 
             <TextView
                 android:id="@+id/detail_stock_type"
                 android:layout_width="match_parent"
+                android:textSize="@dimen/text_size"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
@@ -59,11 +63,13 @@
             <TextView
                 android:layout_width="@dimen/detail_label"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
                 android:text="@string/detail_label_in_stock" />
 
             <TextView
                 android:id="@+id/detail_stock_actual_count"
                 android:layout_width="match_parent"
+                android:textSize="@dimen/text_size"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
@@ -77,11 +83,13 @@
             <TextView
                 android:layout_width="@dimen/detail_label"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
                 android:text="@string/detail_label_capacity" />
 
             <TextView
                 android:id="@+id/detail_stock_max_count"
                 android:layout_width="match_parent"
+                android:textSize="@dimen/text_size"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
