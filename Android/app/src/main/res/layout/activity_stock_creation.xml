@@ -61,7 +61,7 @@
             <TextView
                 android:layout_width="@dimen/detail_label"
                 android:layout_height="wrap_content"
-                android:text="@string/en_stock"
+                android:text="@string/detail_label_in_stock"
                 android:textSize="@dimen/text_size" />
 
             <EditText
@@ -81,7 +81,7 @@
             <TextView
                 android:layout_width="@dimen/detail_label"
                 android:layout_height="wrap_content"
-                android:text="@string/capacit"
+                android:text="@string/detail_label_capacity"
                 android:textSize="@dimen/text_size" />
 
             <EditText
