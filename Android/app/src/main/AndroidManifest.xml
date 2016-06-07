@@ -23,7 +23,8 @@
         <activity android:name=".FoodActivity" />
         <activity android:name=".TicketActivity" />
         <activity android:name=".AnimalDetailActivity" />
-        <activity android:name=".EnclosureDetailActivity"></activity>
+        <activity android:name=".EnclosureDetailActivity" />
+        <activity android:name=".AnimalCreationActivity"></activity>
     </application>
 
 </manifest>
