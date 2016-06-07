@@ -33,7 +33,7 @@
     <string name="detail_label_sex">Sexe : </string>
     <string name="detail_label_species">Espèce : </string>
     <string name="detail_label_type">Type : </string>
-    <string name="detail_label_max">Max : </string>
+    <string name="detail_label_count">Quantité : </string>
 
     <string name="enclosure_type_cage">cage</string>
     <string name="enclosure_type_paddock">enclos</string>

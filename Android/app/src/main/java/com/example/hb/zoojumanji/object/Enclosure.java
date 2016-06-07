@@ -72,6 +72,10 @@ public class Enclosure {
         }
     }
 
+    public int getAnimalsCount() {
+        return animals.size();
+    }
+
     public Enclosure(int id, String name, int max, int type) {
         setId(id)
             .setName(name)

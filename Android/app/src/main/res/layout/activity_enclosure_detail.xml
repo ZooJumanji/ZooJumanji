@@ -38,12 +38,12 @@
             <TextView
                 android:layout_width="@dimen/detail_label"
                 android:layout_height="wrap_content"
-                android:text="@string/detail_label_max" />
+                android:text="@string/detail_label_count" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/detail_enclosure_max"/>
+                android:id="@+id/detail_enclosure_count"/>
 
         </LinearLayout>
 
