@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.hb.zoojumanji.adapter.AnimalAdapter;
 import com.example.hb.zoojumanji.adapter.EnclosureAdapter;
 import com.example.hb.zoojumanji.dataManager.DataManager;
+import com.example.hb.zoojumanji.dataManager.EnclosureManager;
 import com.example.hb.zoojumanji.object.Animal;
 import com.example.hb.zoojumanji.object.Enclosure;
 
@@ -25,7 +26,7 @@ public class EnclosureActivity extends AppCompatActivity {
         setContentView(R.layout.activity_enclosure);
 
         // Get list of animals
-        List<Enclosure> list = DataManager.getEnclosures();
+        List<Enclosure> list = EnclosureManager.getEnclosures();
 
         // Generate specific adapter
         ArrayAdapter<Enclosure> adapter = new EnclosureAdapter(this,

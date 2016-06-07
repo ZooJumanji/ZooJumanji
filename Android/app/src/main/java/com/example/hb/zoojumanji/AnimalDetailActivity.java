@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hb.zoojumanji.dataManager.AnimalManager;
 import com.example.hb.zoojumanji.dataManager.DataManager;
 import com.example.hb.zoojumanji.object.Animal;
 
@@ -33,7 +34,7 @@ public class AnimalDetailActivity extends AppCompatActivity {
 
         // Get Animal from id
         Intent intent = getIntent();
-        Animal animal = DataManager.getAnimal(intent.getIntExtra("id", 0));
+        Animal animal = AnimalManager.getAnimal(intent.getIntExtra("id", 0));
 
         // Display parameters
         nameText.setText(animal.getName());

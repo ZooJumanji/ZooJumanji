@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.hb.zoojumanji.adapter.StockAdapter;
 import com.example.hb.zoojumanji.dataManager.DataManager;
+import com.example.hb.zoojumanji.dataManager.StockManager;
 import com.example.hb.zoojumanji.object.Stock;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class FoodActivity extends AppCompatActivity {
         setContentView(R.layout.activity_food);
 
         // Get list of stock
-        List<Stock> list = DataManager.getStocks();
+        List<Stock> list = StockManager.getStocks();
 
         // Generate specific adaptper
         ArrayAdapter<Stock> adapter = new StockAdapter(this,
