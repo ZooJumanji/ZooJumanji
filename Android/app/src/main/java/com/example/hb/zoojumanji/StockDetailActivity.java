@@ -39,6 +39,16 @@ public class StockDetailActivity extends AppCompatActivity {
         maxCountText.setText(String.valueOf(stock.getMaxCount()));
         typeText.setText(getString(stock.getType()));
 
+        // Get clicked floatingButton
+        FloatingActionButton button = (FloatingActionButton) findViewById(R.id.delete_fab);
+        button.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View view) {
+                // Toast deletion
+                Toast.makeText(StockDetailActivity.this, "Stock deleted", Toast.LENGTH_LONG)
+                    .show();
+            }
+        });
     }
 }
