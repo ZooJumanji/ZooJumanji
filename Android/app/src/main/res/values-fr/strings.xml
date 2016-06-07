@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ZooJumanji</string>
+    <string name="action_settings">Paramètres</string>
+
+    <string name="home_title">Zoo Jumanji</string>
+    <string name="animal_title">Animaux</string>
+    <string name="enclosure_title">Enclos</string>
+    <string name="food_title">Nourriture</string>
+    <string name="ticket_title">Tickets / Visiteurs</string>
+
+    <string name="animal_type_carnivorous">carnivore</string>
+    <string name="animal_type_herbivorous">herbivore</string>
+    <string name="animal_type_insectivorous">insectivore</string>
+    <string name="animal_type_omnivorous">omnivore</string>
+    <string name="animal_type_fructivorous">fructivore</string>
+    <string name="animal_type_granivorous">granivore</string>
+
+    <string name="animal_species_lion">lion</string>
+    <string name="animal_species_suricat">suricate</string>
+    <string name="animal_species_warthog">phacochère</string>
+    <string name="animal_species_monkey">singe</string>
+    <string name="animal_species_tiger">tigre</string>
+    <string name="animal_species_bird">oiseau</string>
+
+    <string name="animal_sex_male">male</string>
+    <string name="animal_sex_female">femelle</string>
+    <string name="animal_sex_hermaphrodite">hermaphrodite</string>
+    <string name="animal_sex_assexual">assexué</string>
+
+    <string name="detail_label_name">Nom : </string>
+    <string name="detail_label_age">Age : </string>
+    <string name="detail_label_sex">Sexe : </string>
+    <string name="detail_label_species">Espèce : </string>
+    <string name="detail_label_type">Type : </string>
+
+</resources>
