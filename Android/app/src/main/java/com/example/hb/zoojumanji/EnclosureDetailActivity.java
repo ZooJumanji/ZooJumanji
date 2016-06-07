@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.hb.zoojumanji.dataManager.DataManager;
+import com.example.hb.zoojumanji.dataManager.EnclosureManager;
 import com.example.hb.zoojumanji.object.Enclosure;
 
 public class EnclosureDetailActivity extends AppCompatActivity {
@@ -30,7 +30,7 @@ public class EnclosureDetailActivity extends AppCompatActivity {
 
         // Get Animal from id
         Intent intent = getIntent();
-        Enclosure enclosure = DataManager.getEnclosure(intent.getIntExtra("id", 0));
+        Enclosure enclosure = EnclosureManager.getEnclosure(intent.getIntExtra("id", 0));
 
         // Display parameters
         nameText.setText(enclosure.getName());
