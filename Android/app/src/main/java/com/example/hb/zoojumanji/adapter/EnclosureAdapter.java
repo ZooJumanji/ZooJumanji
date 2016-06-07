@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.hb.zoojumanji.EnclosureActivity;
 import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.object.Animal;
 import com.example.hb.zoojumanji.object.Enclosure;
@@ -29,18 +30,20 @@ public class EnclosureAdapter extends ArrayAdapter<Enclosure> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         // Generate specific view
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.list_animal_item, null);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.list_enclosure_item, null);
 
         // Get animal from position
         Enclosure enclosure = getItem(position);
 
         // Get multiple elements
-        TextView id_text = (TextView) view.findViewById(R.id.animal_id);
-        TextView name_text = (TextView) view.findViewById(R.id.animal_name);
+        TextView id_text = (TextView) view.findViewById(R.id.enclosure_id);
+        TextView name_text = (TextView) view.findViewById(R.id.enclosure_name);
+        TextView type_text = (TextView) view.findViewById(R.id.enclosure_type);
 
         // Insert values
         id_text.setText(String.valueOf(enclosure.getId()));
         name_text.setText(enclosure.getName());
+        type_text.setText(enclosure.getType());
 
         return view;
     }
