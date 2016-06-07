@@ -6,11 +6,11 @@ package com.example.hb.zoojumanji.object;
 public class Enclosure {
 
     /*
-    public static final int ENCLOSURE_TYPE_CAGE;
-    public static final int ENCLOSURE_TYPE_PADDOCK;
-    public static final int ENCLOSURE_TYPE_POOL;
-    public static final int ENCLOSURE_TYPE_AQUARIUM;
-    public static final int ENCLOSURE_TYPE_VIVARIUM;
+    public static final int ENCLOSURE_TYPE_CAGE = "cage";
+    public static final int ENCLOSURE_TYPE_PADDOCK = "paddock";
+    public static final int ENCLOSURE_TYPE_POOL = "pool";
+    public static final int ENCLOSURE_TYPE_AQUARIUM = "aquarium";
+    public static final int ENCLOSURE_TYPE_VIVARIUM = "vivarium";
     //*/
 
     protected int id;
