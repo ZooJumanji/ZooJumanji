@@ -26,6 +26,7 @@
         <activity android:name=".AnimalDetailActivity" />
         <activity android:name=".EnclosureDetailActivity" />
         <activity android:name=".AnimalCreationActivity"/>
+        <activity android:name=".StockCreationActivity"/>
 
     </application>
 
