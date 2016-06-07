@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/title_size"
-            android:text="@string/animal_title" />
+            android:text="@string/enclosure_title" />
 
         <ListView
             android:id="@+id/enclosures_list"
@@ -34,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
+        android:layout_gravity="bottom|end"
         android:scaleType="center"
         android:src="@android:drawable/ic_menu_add" />
 
