@@ -1,6 +1,5 @@
 package com.example.hb.zoojumanji;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -13,10 +12,8 @@ import android.widget.TextView;
 
 import com.example.hb.zoojumanji.adapter.AnimalAdapter;
 import com.example.hb.zoojumanji.dataManager.AnimalManager;
-import com.example.hb.zoojumanji.dataManager.DataManager;
 import com.example.hb.zoojumanji.object.Animal;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AnimalActivity extends AppCompatActivity {

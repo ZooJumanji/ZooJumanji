@@ -1,16 +1,11 @@
 package com.example.hb.zoojumanji;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.hb.zoojumanji.adapter.StockAdapter;
-import com.example.hb.zoojumanji.dataManager.DataManager;
 import com.example.hb.zoojumanji.dataManager.StockManager;
 import com.example.hb.zoojumanji.object.Stock;
 

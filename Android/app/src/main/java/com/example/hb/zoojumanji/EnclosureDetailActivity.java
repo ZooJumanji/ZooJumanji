@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.hb.zoojumanji.dataManager.DataManager;
 import com.example.hb.zoojumanji.dataManager.EnclosureManager;
 import com.example.hb.zoojumanji.object.Enclosure;
 

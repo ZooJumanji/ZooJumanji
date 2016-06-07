@@ -9,11 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.hb.zoojumanji.adapter.AnimalAdapter;
 import com.example.hb.zoojumanji.adapter.EnclosureAdapter;
-import com.example.hb.zoojumanji.dataManager.DataManager;
 import com.example.hb.zoojumanji.dataManager.EnclosureManager;
-import com.example.hb.zoojumanji.object.Animal;
 import com.example.hb.zoojumanji.object.Enclosure;
 
 import java.util.List;

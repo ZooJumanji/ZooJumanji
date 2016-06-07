@@ -9,7 +9,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hb.zoojumanji.dataManager.AnimalManager;
-import com.example.hb.zoojumanji.dataManager.DataManager;
 import com.example.hb.zoojumanji.object.Animal;
 
 public class AnimalDetailActivity extends AppCompatActivity {
