@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.hb.zoojumanji.dataManager.DataManager;
+import com.example.hb.zoojumanji.dataManager.StockManager;
 import com.example.hb.zoojumanji.object.Stock;
 
 public class StockDetailActivity extends AppCompatActivity {
@@ -31,7 +31,7 @@ public class StockDetailActivity extends AppCompatActivity {
 
         // Get stock from id
         Intent intent = getIntent();
-        Stock stock = DataManager.getStock(intent.getIntExtra("id", 0));
+        Stock stock = StockManager.getStock(intent.getIntExtra("id", 0));
 
         // Display parameters
         nameText.setText(stock.getName());
