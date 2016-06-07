@@ -1,7 +1,7 @@
 package com.example.hb.zoojumanji;
 
-import android.app.ListActivity;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,10 +11,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.hb.zoojumanji.adapter.AnimalAdapter;
-import com.example.hb.zoojumanji.dataManager.DataManager;
+import com.example.hb.zoojumanji.dataManager.AnimalManager;
 import com.example.hb.zoojumanji.object.Animal;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AnimalActivity extends AppCompatActivity {
@@ -25,7 +24,7 @@ public class AnimalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_animal);
 
         // Get list of animals
-        List<Animal> list = DataManager.getAnimals();
+        List<Animal> list = AnimalManager.getAnimals();
 
         // Generate specific adapter
         ArrayAdapter<Animal> adapter = new AnimalAdapter(this,
@@ -48,5 +47,19 @@ public class AnimalActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Get clicked floatingButton to add a new animal
+        FloatingActionButton button = (FloatingActionButton) findViewById(R.id.add_fab);
+        button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                // Generate new Activity
+                Intent intent = new Intent(AnimalActivity.this, AnimalCreationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 }

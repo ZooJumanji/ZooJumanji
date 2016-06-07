@@ -24,11 +24,11 @@
                 android:textSize="@dimen/text_size"
                 android:text="@string/detail_label_name" />
 
-            <TextView
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size"
-                android:id="@+id/detail_animal_name"/>
+                android:id="@+id/edit_animal_name"/>
 
         </LinearLayout>
 
@@ -43,11 +43,12 @@
                 android:textSize="@dimen/text_size"
                 android:text="@string/detail_label_age" />
 
-            <TextView
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size"
-                android:id="@+id/detail_animal_age"/>
+                android:inputType="number"
+                android:id="@+id/edit_animal_age"/>
 
         </LinearLayout>
 
@@ -62,11 +63,11 @@
                 android:textSize="@dimen/text_size"
                 android:text="@string/detail_label_sex" />
 
-            <TextView
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size"
-                android:id="@+id/detail_animal_sex"/>
+                android:id="@+id/edit_animal_sex"/>
 
         </LinearLayout>
 
@@ -81,11 +82,11 @@
                 android:textSize="@dimen/text_size"
                 android:text="@string/detail_label_species" />
 
-            <TextView
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size"
-                android:id="@+id/detail_animal_species"/>
+                android:id="@+id/edit_animal_species"/>
 
         </LinearLayout>
 
@@ -100,23 +101,23 @@
                 android:textSize="@dimen/text_size"
                 android:text="@string/detail_label_type" />
 
-            <TextView
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size"
-                android:id="@+id/detail_animal_type"/>
+                android:id="@+id/edit_animal_type"/>
 
         </LinearLayout>
 
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/delete_fab"
+        android:id="@+id/save_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
         android:layout_gravity="bottom|end"
         android:scaleType="center"
-        android:src="@android:drawable/ic_menu_delete" />
+        android:src="@android:drawable/ic_menu_save" />
 
 </android.support.design.widget.CoordinatorLayout>

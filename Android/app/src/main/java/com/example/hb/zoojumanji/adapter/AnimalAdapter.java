@@ -13,9 +13,7 @@ import com.example.hb.zoojumanji.object.Animal;
 
 import java.util.List;
 
-/**
- * Created by hb on 06/06/2016.
- */
+
 // Adapter for animals displaying list
 public class AnimalAdapter extends ArrayAdapter<Animal> {
 
@@ -36,10 +34,12 @@ public class AnimalAdapter extends ArrayAdapter<Animal> {
         // Get multiple elements
         TextView id_text = (TextView) view.findViewById(R.id.animal_id);
         TextView name_text = (TextView) view.findViewById(R.id.animal_name);
+        TextView species_text = (TextView) view.findViewById(R.id.animal_species);
 
         // Insert values
         id_text.setText(String.valueOf(animal.getId()));
         name_text.setText(animal.getName());
+        species_text.setText(animal.getSpecies());
 
         return view;
     }

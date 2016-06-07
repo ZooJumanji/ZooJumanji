@@ -21,11 +21,13 @@
             <TextView
                 android:layout_width="@dimen/detail_label"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
                 android:text="@string/detail_label_name" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
                 android:id="@+id/detail_enclosure_name"/>
 
         </LinearLayout>
@@ -38,12 +40,14 @@
             <TextView
                 android:layout_width="@dimen/detail_label"
                 android:layout_height="wrap_content"
-                android:text="@string/detail_label_max" />
+                android:textSize="@dimen/text_size"
+                android:text="@string/detail_label_count" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/detail_enclosure_max"/>
+                android:textSize="@dimen/text_size"
+                android:id="@+id/detail_enclosure_count"/>
 
         </LinearLayout>
 
@@ -55,13 +59,13 @@
             <TextView
                 android:layout_width="@dimen/detail_label"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
                 android:text="@string/detail_label_type" />
-
-
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
                 android:id="@+id/detail_enclosure_type"/>
 
         </LinearLayout>
