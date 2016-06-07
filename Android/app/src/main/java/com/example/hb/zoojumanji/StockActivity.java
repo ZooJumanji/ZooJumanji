@@ -15,12 +15,12 @@ import com.example.hb.zoojumanji.object.Stock;
 
 import java.util.List;
 
-public class FoodActivity extends AppCompatActivity {
+public class StockActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_food);
+        setContentView(R.layout.activity_stock);
 
         // Get list of stock
         List<Stock> list = DataManager.getStocks();
@@ -33,5 +33,19 @@ public class FoodActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.stocks_list);
         listView.setAdapter(adapter);
 
+
+        // Add event listener on elements of list
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                // Send to detail page with id in argument
+                Intent intent = new Intent(StockActivity.this, StockDetailActivity.class);
+                TextView id_text = (TextView) view.findViewById(R.id.stock_id);
+                intent.putExtra("id", Integer.valueOf(String.valueOf(id_text.getText())));
+
+                startActivity(intent);
+            }
+        });
     }
 }

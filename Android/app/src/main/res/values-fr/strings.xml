@@ -40,5 +40,7 @@
     <string name="enclosure_type_pool">piscine</string>
     <string name="enclosure_type_aquarium">aquarium</string>
     <string name="enclosure_type_vivarium">vivarium</string>
+    <string name="en_stock">En stock</string>
+    <string name="capacit">Capacité</string>
 
 </resources>

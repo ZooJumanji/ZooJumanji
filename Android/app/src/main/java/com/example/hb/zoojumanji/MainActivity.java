@@ -4,14 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         // Add action on floatingButtons
         addMainButtonAction(R.id.animal_fab, AnimalActivity.class);
         addMainButtonAction(R.id.enclosure_fab, EnclosureActivity.class);
-        addMainButtonAction(R.id.food_fab, FoodActivity.class);
+        addMainButtonAction(R.id.food_fab, StockActivity.class);
         addMainButtonAction(R.id.ticket_fab, TicketActivity.class);
     }
 

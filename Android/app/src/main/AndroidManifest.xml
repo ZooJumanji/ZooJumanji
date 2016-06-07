@@ -20,11 +20,13 @@
         </activity>
         <activity android:name=".AnimalActivity" />
         <activity android:name=".EnclosureActivity" />
-        <activity android:name=".FoodActivity" />
+        <activity android:name=".StockActivity" />
+        <activity android:name=".StockDetailActivity"/>
         <activity android:name=".TicketActivity" />
         <activity android:name=".AnimalDetailActivity" />
         <activity android:name=".EnclosureDetailActivity" />
-        <activity android:name=".AnimalCreationActivity"></activity>
+        <activity android:name=".AnimalCreationActivity"/>
+
     </application>
 
 </manifest>
