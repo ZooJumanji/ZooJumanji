@@ -2,6 +2,7 @@ package com.example.hb.zoojumanji;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -48,5 +49,19 @@ public class AnimalActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Get clicked floatingButton to add a new animal
+        FloatingActionButton button = (FloatingActionButton) findViewById(R.id.add_fab);
+        button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                // Generate new Activity
+                Intent intent = new Intent(AnimalActivity.this, AnimalActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 }
