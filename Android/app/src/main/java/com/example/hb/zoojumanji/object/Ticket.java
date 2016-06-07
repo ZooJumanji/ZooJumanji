@@ -23,8 +23,9 @@ public class Ticket {
     public static final int TICKET_TYPE_GROUP = R.string.ticket_privilege_nursery_entrance;
 
     protected int id;
-    protected double price;
     protected int type;
+    protected double price;
+    protected int quantity;
     protected Date saleDate;
     protected List<Integer> privileges = new ArrayList<>();
 
@@ -43,6 +44,15 @@ public class Ticket {
 
     public Ticket setPrice(double price) {
         this.price = price;
+        return this;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public Ticket setQuantity(int quantity) {
+        this.quantity = quantity;
         return this;
     }
 
@@ -82,4 +92,10 @@ public class Ticket {
         return this;
     }
 
+    public Ticket(int id, int type, double price, int quantity, Date date) {
+        setId(id).setType(type)
+                .setPrice(price)
+                .setQuantity(quantity)
+                .setDate(date);
+    }
 }
