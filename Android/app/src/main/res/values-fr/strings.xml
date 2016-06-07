@@ -41,4 +41,15 @@
     <string name="enclosure_type_aquarium">aquarium</string>
     <string name="enclosure_type_vivarium">vivarium</string>
 
+    <string name="ticket_privilege_feed_timon">Timon nourrir</string>
+    <string name="ticket_privilege_care_entrance">assister aux soins</string>
+    <string name="ticket_privilege_enclosure_entrance">entrée dans l\'enclos</string>
+    <string name="ticket_privilege_nursery_entrance">accès à la nurserie</string>
+
+    <string name="ticket_type_normal">ticket plein tarif</string>
+    <string name="ticket_type_vip">ticket VIP</string>
+    <string name="ticket_type_student">ticket étudiant</string>
+    <string name="ticket_type_child">ticket enfant</string>
+    <string name="ticket_type_group">ticket de groupe</string>
+
 </resources>

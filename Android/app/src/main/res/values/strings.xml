@@ -42,4 +42,15 @@
     <string name="enclosure_type_aquarium">aquarium</string>
     <string name="enclosure_type_vivarium">vivarium</string>
 
+    <string name="ticket_privilege_feed_timon">feed Timon</string>
+    <string name="ticket_privilege_care_entrance">care entrance</string>
+    <string name="ticket_privilege_enclosure_entrance">enclosure entrance</string>
+    <string name="ticket_privilege_nursery_entrance">nursery entrance</string>
+
+    <string name="ticket_type_normal">normal ticket</string>
+    <string name="ticket_type_vip">ticket VIP</string>
+    <string name="ticket_type_student">student ticket</string>
+    <string name="ticket_type_child">child ticket</string>
+    <string name="ticket_type_group">group ticket</string>
+
 </resources>
