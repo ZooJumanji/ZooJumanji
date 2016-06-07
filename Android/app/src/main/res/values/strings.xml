@@ -32,5 +32,12 @@
     <string name="detail_label_sex">Sex : </string>
     <string name="detail_label_species">Species : </string>
     <string name="detail_label_type">Type : </string>
+    <string name="detail_label_max">Max : </string>
+
+    <string name="enclosure_type_cage">cage</string>
+    <string name="enclosure_type_paddock">paddock</string>
+    <string name="enclosure_type_pool">pool</string>
+    <string name="enclosure_type_aquarium">aquarium</string>
+    <string name="enclosure_type_vivarium">vivarium</string>
 
 </resources>
