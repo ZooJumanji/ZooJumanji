@@ -9,7 +9,7 @@ import com.example.hb.zoojumanji.R;
 public class Stock {
 
     // Static stock type
-    public static final int TYPE_FOOD = R.string.type_food;
+    public static final int TYPE_FOOD = R.string.stock_type_food;
 
     protected int id;
     protected String name;

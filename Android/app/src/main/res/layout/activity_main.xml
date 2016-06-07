@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fab_margin"
             android:scaleType="center"
-            android:src="@drawable/ic_food" />
+            android:src="@drawable/ic_stock" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/ticket_fab"
