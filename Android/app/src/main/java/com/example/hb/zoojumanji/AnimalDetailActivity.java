@@ -1,9 +1,12 @@
 package com.example.hb.zoojumanji;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hb.zoojumanji.dataManager.DataManager;
 import com.example.hb.zoojumanji.object.Animal;
@@ -38,5 +41,17 @@ public class AnimalDetailActivity extends AppCompatActivity {
         sexText.setText(getString(animal.getSex()));
         speciesText.setText(getString(animal.getSpecies()));
         typeText.setText(getString(animal.getType()));
+
+        // Get clicked floatingButton
+        FloatingActionButton button = (FloatingActionButton) findViewById(R.id.delete_fab);
+        button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                // Toast deletion
+                Toast.makeText(AnimalDetailActivity.this, "Animal deleted", Toast.LENGTH_LONG)
+                    .show();
+            }
+        });
     }
 }
