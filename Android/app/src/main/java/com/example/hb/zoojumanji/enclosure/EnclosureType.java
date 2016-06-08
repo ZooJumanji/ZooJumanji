@@ -2,6 +2,9 @@ package com.example.hb.zoojumanji.enclosure;
 
 import com.example.hb.zoojumanji.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by hb on 08/06/2016.
  */
@@ -12,7 +15,19 @@ public enum EnclosureType {
     AQUARIUM,
     VIVARIUM;
 
-    public int getStringResources() {
+    public static List<EnclosureType> getAll() {
+        List<EnclosureType> list = new ArrayList<>();
+
+        list.add(CAGE);
+        list.add(PADDOCK);
+        list.add(POOL);
+        list.add(AQUARIUM);
+        list.add(VIVARIUM);
+
+        return list;
+    }
+
+    public int getStringResource() {
 
         int resource = 0;
         switch (this) {

@@ -39,6 +39,7 @@
     <string name="detail_label_price">Prix :</string>
     <string name="detail_label_quantity">Quantité :</string>
     <string name="detail_label_date">Date :</string>
+    <string name="detail_label_max">Max :</string>
 
     <string name="enclosure_type_cage">cage</string>
     <string name="enclosure_type_paddock">enclos</string>
