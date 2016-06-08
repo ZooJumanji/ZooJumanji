@@ -10,8 +10,8 @@ import java.util.List;
  */
 public class StockManager {
     // static Stock list
-    public static final Stock HAY = new Stock(0, "Hay", Stock.TYPE_FOOD, 8, 10);
-    public static final Stock PEANUT = new Stock(0, "Peanut", Stock.TYPE_FOOD, 75, 100);
+    public static final Stock HAY = new Stock("Hay", Stock.TYPE_FOOD, 8, 10);
+    public static final Stock PEANUT = new Stock("Peanut", Stock.TYPE_FOOD, 75, 100);
 
     protected static List<Stock> stockList = new ArrayList<>();
 

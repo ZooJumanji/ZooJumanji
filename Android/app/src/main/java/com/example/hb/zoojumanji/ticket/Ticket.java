@@ -12,11 +12,6 @@ import java.util.List;
  */
 public class Ticket {
 
-    public static final int TICKET_PRIVILEGE_FEED_TIMON = R.string.ticket_privilege_feed_timon;
-    public static final int TICKET_PRIVILEGE_CARE_ENTRANCE = R.string.ticket_privilege_care_entrance;
-    public static final int TICKET_PRIVILEGE_ENCLOSURE_ENTRANCE = R.string.ticket_privilege_enclosure_entrance;
-    public static final int TICKET_PRIVILEGE_NURSERY_ENTRANCE = R.string.ticket_privilege_nursery_entrance;
-
     protected int id;
     protected TicketType type;
     protected double price;
@@ -24,49 +19,31 @@ public class Ticket {
     protected Date date;
     protected List<Integer> privileges = new ArrayList<>();
 
-    public int getId() {
-        return id;
+    private static int currentId = 0;
+
+    private static int getCurrentId() {
+        currentId++;
+        return currentId;
     }
 
-    public Ticket setId(int id) {
-        this.id = id;
-        return this;
+    public int getId() {
+        return id;
     }
 
     public double getPrice() {
         return price;
     }
 
-    public Ticket setPrice(double price) {
-        this.price = price;
-        return this;
-    }
-
     public int getQuantity() {
         return quantity;
-    }
-
-    public Ticket setQuantity(int quantity) {
-        this.quantity = quantity;
-        return this;
     }
 
     public TicketType getType() {
         return type;
     }
 
-    public Ticket setType(TicketType type) {
-        this.type = type;
-        return this;
-    }
-
     public Date getDate() {
         return date;
-    }
-
-    public Ticket setDate(Date date) {
-        this.date = date;
-        return this;
     }
 
     public List<Integer> getPrivileges() {
@@ -87,11 +64,12 @@ public class Ticket {
         return this;
     }
 
-    public Ticket(int id, TicketType type, double price, int quantity, Date date) {
-        setId(id).setType(type)
-                .setPrice(price)
-                .setQuantity(quantity)
-                .setDate(date);
+    public Ticket(TicketType type, double price, int quantity, Date date) {
+        this.id = getCurrentId();
+        this.type = type;
+        this.price = price;
+        this.quantity = quantity;
+        this.date = date;
     }
 
     public String getDateString() {

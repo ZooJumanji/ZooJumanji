@@ -17,40 +17,27 @@ public class Enclosure {
     protected EnclosureType type;
     protected List<Animal> animals = new ArrayList<>();
 
-    public int getId() {
-        return id;
+    private static int currentId = 0;
+
+    private static int getCurrentId() {
+        currentId++;
+        return currentId;
     }
 
-    public Enclosure setId(int id) {
-        this.id = id;
-        return this;
+    public int getId() {
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public Enclosure setName(String name) {
-        this.name = name;
-        return this;
-    }
-
     public int getMax() {
         return max;
     }
 
-    public Enclosure setMax(int max) {
-        this.max = max;
-        return this;
-    }
-
     public EnclosureType getType() {
         return type;
-    }
-
-    public Enclosure setType(EnclosureType type) {
-        this.type = type;
-        return this;
     }
 
     public List<Animal> getAnimals() {
@@ -71,10 +58,10 @@ public class Enclosure {
         return animals.size();
     }
 
-    public Enclosure(int id, String name, int max, EnclosureType type) {
-        setId(id)
-            .setName(name)
-            .setMax(max)
-            .setType(type);
+    public Enclosure(String name, int max, EnclosureType type) {
+        this.id = getCurrentId();
+        this.name = name;
+        this.max = max;
+        this.type = type;
     }
 }

@@ -8,12 +8,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.ticket.TicketType;
 import com.example.hb.zoojumanji.ticket.adapter.TicketDateAdapter;
-import com.example.hb.zoojumanji.ticket.adapter.ceil.TicketDateCeil;
 import com.example.hb.zoojumanji.ticket.manager.TicketManager;
 import com.example.hb.zoojumanji.ticket.Ticket;
 
@@ -38,7 +36,7 @@ public class TicketTypeActivity extends AppCompatActivity {
 
         // Display list
         TextView subTitle = (TextView) findViewById(R.id.sub_title_text);
-        subTitle.setText(ticketType.getStringResources());
+        subTitle.setText(ticketType.getStringResource());
 
         // Display list
         ListView listView = (ListView) findViewById(R.id.tickets_list);

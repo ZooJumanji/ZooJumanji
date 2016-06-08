@@ -18,14 +18,14 @@ public class TicketManager {
     public static final Date YESTERDAY = new Date(System.currentTimeMillis() - DAY_IN_MILLISECONDS);
     public static final Date BEFORE_YESTERDAY = new Date(System.currentTimeMillis() - 2 * DAY_IN_MILLISECONDS);
 
-    public static final Ticket TICKET_NORMAL_TODAY = new Ticket(0, TicketType.NORMAL, 8.50, 12, TODAY);
-    public static final Ticket TICKET_NORMAL_YESTERDAY = new Ticket(1, TicketType.NORMAL, 8.50, 120, YESTERDAY);
-    public static final Ticket TICKET_VIP_TODAY = new Ticket(2, TicketType.VIP, 18.00, 22, TODAY);
-    public static final Ticket TICKET_STUDENT_TODAY = new Ticket(3, TicketType.STUDENT, 6.50, 34, TODAY);
-    public static final Ticket TICKET_GROUP_YESTERDAY = new Ticket(4, TicketType.GROUP, 7.00, 2, YESTERDAY);
-    public static final Ticket TICKET_CHILD_TODAY = new Ticket(5, TicketType.CHILD, 4.50, 16, TODAY);
-    public static final Ticket TICKET_CHILD_YESTERDAY = new Ticket(6, TicketType.CHILD, 4.50, 3, YESTERDAY);
-    public static final Ticket TICKET_CHILD_BEFORE_YESTERDAY = new Ticket(7, TicketType.CHILD, 4.50, 5, BEFORE_YESTERDAY);
+    public static final Ticket TICKET_NORMAL_TODAY = new Ticket(TicketType.NORMAL, 8.50, 12, TODAY);
+    public static final Ticket TICKET_NORMAL_YESTERDAY = new Ticket(TicketType.NORMAL, 8.50, 120, YESTERDAY);
+    public static final Ticket TICKET_VIP_TODAY = new Ticket(TicketType.VIP, 18.00, 22, TODAY);
+    public static final Ticket TICKET_STUDENT_TODAY = new Ticket(TicketType.STUDENT, 6.50, 34, TODAY);
+    public static final Ticket TICKET_GROUP_YESTERDAY = new Ticket(TicketType.GROUP, 7.00, 2, YESTERDAY);
+    public static final Ticket TICKET_CHILD_TODAY = new Ticket(TicketType.CHILD, 4.50, 16, TODAY);
+    public static final Ticket TICKET_CHILD_YESTERDAY = new Ticket(TicketType.CHILD, 4.50, 3, YESTERDAY);
+    public static final Ticket TICKET_CHILD_BEFORE_YESTERDAY = new Ticket(TicketType.CHILD, 4.50, 5, BEFORE_YESTERDAY);
 
     protected static List<Ticket> ticketsList = new ArrayList<>();
 
