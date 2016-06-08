@@ -47,7 +47,7 @@ public class StockDetailActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //The action
+                //The undo action that could be called by the following snackbar
                 mOnClickListener = new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
