@@ -11,6 +11,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.hb.zoojumanji.animal.activity.AnimalActivity;
+import com.example.hb.zoojumanji.enclosure.activity.EnclosureActivity;
+import com.example.hb.zoojumanji.stock.activity.StockActivity;
+import com.example.hb.zoojumanji.ticket.activity.TicketActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     protected TextView titleText;
