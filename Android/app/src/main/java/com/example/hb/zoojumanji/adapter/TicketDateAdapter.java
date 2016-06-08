@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.adapter.ceil.TicketDateCeil;
-import com.example.hb.zoojumanji.adapter.ceil.TicketTypeCeil;
 import com.example.hb.zoojumanji.object.Ticket;
 
 import java.text.SimpleDateFormat;
