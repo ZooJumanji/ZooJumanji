@@ -9,10 +9,13 @@ import android.widget.TextView;
 
 import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.adapter.ceil.TicketDateCeil;
+import com.example.hb.zoojumanji.adapter.ceil.TicketTypeCeil;
 import com.example.hb.zoojumanji.object.Ticket;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -41,6 +44,8 @@ public class TicketDateAdapter extends ArrayAdapter<TicketDateCeil> {
             list.add(ticketTypeCeil);
         }
 
+        Collections.sort(list, new TicketDateCeilCompare());
+
         this.addAll(list);
     }
 
@@ -65,5 +70,13 @@ public class TicketDateAdapter extends ArrayAdapter<TicketDateCeil> {
         count_text.setText(String.valueOf(ticketTypeCeil.getTicketsCount()));
 
         return view;
+    }
+}
+
+class TicketDateCeilCompare implements Comparator<TicketDateCeil> {
+
+    @Override
+    public int compare(TicketDateCeil o1, TicketDateCeil o2) {
+        return o1.getDate().compareTo(o2.getDate());
     }
 }
