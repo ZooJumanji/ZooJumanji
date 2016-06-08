@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 
-// Adapter for animals displaying list
+// Adapter for tickets displaying list classed by type
 public class TicketTypeAdapter extends ArrayAdapter<TicketTypeCeil> {
 
     // Default constructor
@@ -58,7 +58,7 @@ public class TicketTypeAdapter extends ArrayAdapter<TicketTypeCeil> {
 
         // Insert values
         type_text.setText(ticketTypeCeil.getType());
-        count_text.setText(ticketTypeCeil.getTickets().size());
+        count_text.setText(String.valueOf(ticketTypeCeil.getTicketsCount()));
 
         return view;
     }

@@ -43,7 +43,7 @@
     <string name="enclosure_type_aquarium">aquarium</string>
     <string name="enclosure_type_vivarium">vivarium</string>
 
-    <string name="ticket_privilege_feed_timon">Timon nourrir</string>
+    <string name="ticket_privilege_feed_timon">nourrir Timon</string>
     <string name="ticket_privilege_care_entrance">assister aux soins</string>
     <string name="ticket_privilege_enclosure_entrance">entrée dans l\'enclos</string>
     <string name="ticket_privilege_nursery_entrance">accès à la nurserie</string>

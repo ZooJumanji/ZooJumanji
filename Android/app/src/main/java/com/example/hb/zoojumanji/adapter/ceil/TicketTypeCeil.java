@@ -44,4 +44,13 @@ public class TicketTypeCeil {
         setType(ticketType);
     }
 
+    public int getTicketsCount() {
+        int count = 0;
+
+        for (Ticket ticket : tickets) {
+            count += ticket.getQuantity();
+        }
+
+        return count;
+    }
 }
