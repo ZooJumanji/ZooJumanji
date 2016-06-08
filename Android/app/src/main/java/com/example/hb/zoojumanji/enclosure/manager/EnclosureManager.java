@@ -47,4 +47,9 @@ public class EnclosureManager {
 
         throw new IllegalArgumentException("Unknown enclosure");
     }
+
+    public static void createEnclosure(String name, int capacity, EnclosureType type) {
+        enclosuresList.add(new Enclosure(name, capacity, type));
+    }
+
 }

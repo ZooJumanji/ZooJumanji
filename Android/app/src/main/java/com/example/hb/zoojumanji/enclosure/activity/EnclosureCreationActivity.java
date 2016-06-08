@@ -11,8 +11,12 @@ import android.widget.Toast;
 
 import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.enclosure.EnclosureType;
+import com.example.hb.zoojumanji.enclosure.adapter.EnclosureTypeSpinnerAdapter;
+import com.example.hb.zoojumanji.enclosure.manager.EnclosureManager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class EnclosureCreationActivity extends AppCompatActivity {
@@ -31,14 +35,9 @@ public class EnclosureCreationActivity extends AppCompatActivity {
         maxText = (EditText) findViewById(R.id.edit_enclosure_max);
         typeSpinner = (Spinner) findViewById(R.id.edit_enclosure_type);
 
-        EnclosureType[] listType = EnclosureType.values();
-        List<String> stringList = new ArrayList<>();
-        for (EnclosureType type : listType) {
-            stringList.add(getString(type.getStringResource()));
-        }
-
-        typeSpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout
-                .simple_spinner_item, stringList));
+        typeSpinner.setAdapter(new EnclosureTypeSpinnerAdapter(this,
+                R.layout.list_enclosure_type_item,
+                Arrays.asList(EnclosureType.values())));
 
         // Get clicked floatingButton
         FloatingActionButton button = (FloatingActionButton) findViewById(R.id.save_fab);
@@ -48,8 +47,11 @@ public class EnclosureCreationActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
-                    // Toast save
-                    Toast.makeText(EnclosureCreationActivity.this, "Animal saved", Toast.LENGTH_LONG).show();
+                    EnclosureManager.createEnclosure(nameText.getText().toString(),
+                            Integer.valueOf(maxText.getText().toString()),
+                            (EnclosureType) typeSpinner.getSelectedItem());
+
+                    EnclosureCreationActivity.this.finish();
                 }
             });
         }
