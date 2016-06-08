@@ -14,60 +14,42 @@ public class Stock {
     protected int id;
     protected String name;
     protected int type;
-    protected int currentCount;
-    protected int maxCount;
+    protected int quantity;
+    protected int capacity;
 
+    private static int currentId = 0;
 
-    public int getCurrentCount() {
-        return currentCount;
+    private static int getCurrentId() {
+        currentId++;
+        return currentId;
     }
 
-    public Stock setCurrentCount(int currentCount) {
-        this.currentCount = currentCount;
-        return this;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public int getMaxCount() {
-        return maxCount;
+    public int getCapacity() {
+        return capacity;
     }
 
-    public Stock setMaxCount(int maxCount) {
-        this.maxCount = maxCount;
-        return this;
-    }
     public int getId() {
         return id;
-    }
-
-    public Stock setId(int id) {
-        this.id = id;
-        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public Stock setName(String name) {
-        this.name = name;
-        return this;
-    }
-
     public int getType() {
         return type;
     }
 
-    public Stock setType(int type) {
+    public Stock(String name, int type, int quantity, int capacity) {
+        this.id = getCurrentId();
+        this.name = name;
         this.type = type;
-        return this;
-    }
-
-
-    public Stock(int id, String name, int type, int count, int maxCount) {
-        setId(id).setName(name)
-                .setType(type)
-                .setCurrentCount(count)
-                .setMaxCount(maxCount);
+        this.quantity = quantity;
+        this.capacity = capacity;
     }
 
 }

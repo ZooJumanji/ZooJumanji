@@ -59,7 +59,7 @@ public class TicketTypeAdapter extends ArrayAdapter<TicketTypeCeil> {
 
         // Insert values
         id_text.setText(String.valueOf(ticketTypeCeil.getType()));
-        type_text.setText(ticketTypeCeil.getType().getStringResources());
+        type_text.setText(ticketTypeCeil.getType().getStringResource());
         count_text.setText(String.valueOf(ticketTypeCeil.getTicketsCount()));
 
         return view;

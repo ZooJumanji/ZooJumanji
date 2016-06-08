@@ -12,7 +12,7 @@ public enum TicketType {
     CHILD,
     GROUP;
 
-    public int getStringResources() {
+    public int getStringResource() {
 
         int resource = 0;
         switch (this) {

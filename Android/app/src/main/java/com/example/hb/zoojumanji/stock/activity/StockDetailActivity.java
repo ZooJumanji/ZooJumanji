@@ -39,8 +39,8 @@ public class StockDetailActivity extends AppCompatActivity {
 
         // Display parameters
         nameText.setText(stock.getName());
-        currentCountText.setText(String.valueOf(stock.getCurrentCount()));
-        maxCountText.setText(String.valueOf(stock.getMaxCount()));
+        currentCountText.setText(String.valueOf(stock.getQuantity()));
+        maxCountText.setText(String.valueOf(stock.getCapacity()));
         typeText.setText(getString(stock.getType()));
 
         // Get clicked delete floatingButton

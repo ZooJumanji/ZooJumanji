@@ -1,5 +1,7 @@
 package com.example.hb.zoojumanji.enclosure;
 
+import android.content.res.Resources;
+
 import com.example.hb.zoojumanji.R;
 
 import java.util.ArrayList;
@@ -25,6 +27,31 @@ public enum EnclosureType {
         list.add(VIVARIUM);
 
         return list;
+    }
+
+    public static EnclosureType fromResource(int resource) {
+        EnclosureType type;
+        switch (resource) {
+            case R.string.enclosure_type_cage :
+                type = CAGE;
+                break;
+            case R.string.enclosure_type_paddock :
+                type = PADDOCK;
+                break;
+            case R.string.enclosure_type_pool :
+                type = POOL;
+                break;
+            case R.string.enclosure_type_aquarium :
+                type = AQUARIUM;
+                break;
+            case R.string.enclosure_type_vivarium :
+                type = VIVARIUM;
+                break;
+            default :
+                throw new Resources.NotFoundException();
+        }
+
+        return type;
     }
 
     public int getStringResource() {
