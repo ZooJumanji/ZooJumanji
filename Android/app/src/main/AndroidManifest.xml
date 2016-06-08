@@ -18,13 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AnimalActivity" />
-        <activity android:name=".EnclosureActivity" />
-        <activity android:name=".FoodActivity" />
-        <activity android:name=".TicketActivity" />
-        <activity android:name=".AnimalDetailActivity" />
-        <activity android:name=".EnclosureDetailActivity" />
-        <activity android:name=".AnimalCreationActivity"></activity>
+        <activity android:name=".animal.activity.AnimalActivity" />
+        <activity android:name=".enclosure.activity.EnclosureActivity" />
+        <activity android:name=".stock.activity.StockActivity" />
+        <activity android:name=".stock.activity.StockDetailActivity" />
+        <activity android:name=".ticket.activity.TicketActivity" />
+        <activity android:name=".animal.activity.AnimalDetailActivity" />
+        <activity android:name=".enclosure.activity.EnclosureDetailActivity" />
+        <activity android:name=".animal.activity.AnimalCreationActivity" />
+        <activity android:name=".stock.activity.StockCreationActivity" />
+        <activity android:name=".ticket.activity.TicketTypeActivity"></activity>
     </application>
 
 </manifest>
