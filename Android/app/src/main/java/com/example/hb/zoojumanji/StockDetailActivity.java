@@ -47,19 +47,20 @@ public class StockDetailActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Displays a snackbar with a red UNDO action
-                Snackbar.make(findViewById(android.R.id.content), "Stock deleted", Snackbar.LENGTH_LONG)
-                        .setAction("Undo", mOnClickListener)
-                        .setActionTextColor(0xFFFF0000)
-                        .show();
                 //The action
                 mOnClickListener = new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(StockDetailActivity.this, "Stock UNdeleted", Toast.LENGTH_LONG)
-                        .show();
+                                .show();
                     }
                 };
+                //Displays a snackbar with a red UNDO action
+                Snackbar.make(findViewById(android.R.id.content), "Stock deleted", Snackbar.LENGTH_LONG)
+                        .setAction("Undo", mOnClickListener)
+                        .setActionTextColor(0xFFFF0000)
+                        .show();
+
             }
         });
     }
