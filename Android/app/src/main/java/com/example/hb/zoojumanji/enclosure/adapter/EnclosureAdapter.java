@@ -40,7 +40,7 @@ public class EnclosureAdapter extends ArrayAdapter<Enclosure> {
         // Insert values
         id_text.setText(String.valueOf(enclosure.getId()));
         name_text.setText(enclosure.getName());
-        type_text.setText(enclosure.getType());
+        type_text.setText(enclosure.getType().getStringResources());
 
         return view;
     }

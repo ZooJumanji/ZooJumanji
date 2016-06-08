@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.hb.zoojumanji.R;
+import com.example.hb.zoojumanji.ticket.TicketType;
 import com.example.hb.zoojumanji.ticket.adapter.ceil.TicketTypeCeil;
 import com.example.hb.zoojumanji.ticket.Ticket;
 
@@ -25,7 +26,7 @@ public class TicketTypeAdapter extends ArrayAdapter<TicketTypeCeil> {
 
         super(context, resource, textViewResourceId);
 
-        Map<Integer, TicketTypeCeil> map = new HashMap<>();
+        Map<TicketType, TicketTypeCeil> map = new HashMap<>();
         for (Ticket ticket : tickets) {
             if (!map.containsKey(ticket.getType())) {
                 map.put(ticket.getType(), new TicketTypeCeil(ticket.getType()));
@@ -58,7 +59,7 @@ public class TicketTypeAdapter extends ArrayAdapter<TicketTypeCeil> {
 
         // Insert values
         id_text.setText(String.valueOf(ticketTypeCeil.getType()));
-        type_text.setText(ticketTypeCeil.getType());
+        type_text.setText(ticketTypeCeil.getType().getStringResources());
         count_text.setText(String.valueOf(ticketTypeCeil.getTicketsCount()));
 
         return view;

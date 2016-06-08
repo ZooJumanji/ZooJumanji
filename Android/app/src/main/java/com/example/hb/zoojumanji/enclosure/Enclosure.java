@@ -11,16 +11,10 @@ import java.util.List;
  */
 public class Enclosure {
 
-    public static final int ENCLOSURE_TYPE_CAGE = R.string.enclosure_type_cage;
-    public static final int ENCLOSURE_TYPE_PADDOCK = R.string.enclosure_type_paddock;
-    public static final int ENCLOSURE_TYPE_POOL = R.string.enclosure_type_pool;
-    public static final int ENCLOSURE_TYPE_AQUARIUM = R.string.enclosure_type_aquarium;
-    public static final int ENCLOSURE_TYPE_VIVARIUM = R.string.enclosure_type_vivarium;
-
     protected int id;
     protected String name;
     protected int max;
-    protected int type;
+    protected EnclosureType type;
     protected List<Animal> animals = new ArrayList<>();
 
     public int getId() {
@@ -50,11 +44,11 @@ public class Enclosure {
         return this;
     }
 
-    public int getType() {
+    public EnclosureType getType() {
         return type;
     }
 
-    public Enclosure setType(int type) {
+    public Enclosure setType(EnclosureType type) {
         this.type = type;
         return this;
     }
@@ -77,7 +71,7 @@ public class Enclosure {
         return animals.size();
     }
 
-    public Enclosure(int id, String name, int max, int type) {
+    public Enclosure(int id, String name, int max, EnclosureType type) {
         setId(id)
             .setName(name)
             .setMax(max)

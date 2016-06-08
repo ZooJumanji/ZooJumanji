@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hb.zoojumanji.R;
+import com.example.hb.zoojumanji.ticket.TicketType;
 import com.example.hb.zoojumanji.ticket.adapter.TicketDateAdapter;
 import com.example.hb.zoojumanji.ticket.adapter.ceil.TicketDateCeil;
 import com.example.hb.zoojumanji.ticket.manager.TicketManager;
@@ -26,10 +27,10 @@ public class TicketTypeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ticket_type);
 
         Intent intent = getIntent();
-        int ticket_type_id = intent.getIntExtra("id", 0);
+        TicketType ticketType = (TicketType) intent.getExtras().get("type");
 
         // Get list of tickets
-        List<Ticket> list = TicketManager.getTickets(ticket_type_id);
+        List<Ticket> list = TicketManager.getTickets(ticketType);
 
         // Generate specific adapter
         ArrayAdapter<Ticket> adapter = new TicketDateAdapter(this,
@@ -37,7 +38,7 @@ public class TicketTypeActivity extends AppCompatActivity {
 
         // Display list
         TextView subTitle = (TextView) findViewById(R.id.sub_title_text);
-        subTitle.setText(ticket_type_id);
+        subTitle.setText(ticketType.getStringResources());
 
         // Display list
         ListView listView = (ListView) findViewById(R.id.tickets_list);

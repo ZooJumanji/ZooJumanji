@@ -17,14 +17,8 @@ public class Ticket {
     public static final int TICKET_PRIVILEGE_ENCLOSURE_ENTRANCE = R.string.ticket_privilege_enclosure_entrance;
     public static final int TICKET_PRIVILEGE_NURSERY_ENTRANCE = R.string.ticket_privilege_nursery_entrance;
 
-    public static final int TICKET_TYPE_NORMAL = R.string.ticket_type_normal;
-    public static final int TICKET_TYPE_VIP = R.string.ticket_type_vip;
-    public static final int TICKET_TYPE_STUDENT = R.string.ticket_type_student;
-    public static final int TICKET_TYPE_CHILD = R.string.ticket_type_child;
-    public static final int TICKET_TYPE_GROUP = R.string.ticket_type_group;
-
     protected int id;
-    protected int type;
+    protected TicketType type;
     protected double price;
     protected int quantity;
     protected Date date;
@@ -57,11 +51,11 @@ public class Ticket {
         return this;
     }
 
-    public int getType() {
+    public TicketType getType() {
         return type;
     }
 
-    public Ticket setType(int type) {
+    public Ticket setType(TicketType type) {
         this.type = type;
         return this;
     }
@@ -93,7 +87,7 @@ public class Ticket {
         return this;
     }
 
-    public Ticket(int id, int type, double price, int quantity, Date date) {
+    public Ticket(int id, TicketType type, double price, int quantity, Date date) {
         setId(id).setType(type)
                 .setPrice(price)
                 .setQuantity(quantity)

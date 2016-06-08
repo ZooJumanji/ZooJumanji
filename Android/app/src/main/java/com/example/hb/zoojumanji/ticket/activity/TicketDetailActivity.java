@@ -46,7 +46,7 @@ public class TicketDetailActivity extends AppCompatActivity {
         String formattedPrice = decimalFormat.format(ticket.getPrice());
 
         // Display parameters
-        typeText.setText(ticket.getType());
+        typeText.setText(ticket.getType().getStringResources());
         priceText.setText(formattedPrice);
         quantityText.setText(String.valueOf(ticket.getQuantity()));
         dateText.setText(ticket.getDateString());
