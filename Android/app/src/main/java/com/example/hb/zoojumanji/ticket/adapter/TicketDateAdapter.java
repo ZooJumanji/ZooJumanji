@@ -22,36 +22,22 @@ import java.util.Map;
 
 
 // Adapter for tickets displaying list classed by type
-public class TicketDateAdapter extends ArrayAdapter<TicketDateCeil> {
+public class TicketDateAdapter extends ArrayAdapter<Ticket> {
 
     // Default constructor
     public TicketDateAdapter(Context context, int resource, int textViewResourceId, List<Ticket> tickets) {
 
         super(context, resource, textViewResourceId);
 
-        Map<Date, TicketDateCeil> map = new HashMap<>();
-        for (Ticket ticket : tickets) {
-            if (!map.containsKey(ticket.getDate())) {
-                map.put(ticket.getDate(), new TicketDateCeil(ticket.getType(), ticket.getDate()));
-            }
-            TicketDateCeil ceil = map.get(ticket.getDate());
-            ceil.addTicket(ticket);
-        }
-
-        List<TicketDateCeil> list = new ArrayList<>();
-        for (TicketDateCeil ticketTypeCeil : map.values()) {
-            list.add(ticketTypeCeil);
-        }
-
         // Sort listing by date
-        Collections.sort(list, new Comparator<TicketDateCeil>() {
+        Collections.sort(tickets, new Comparator<Ticket>() {
             @Override
-            public int compare(TicketDateCeil ceil_1, TicketDateCeil ceil_2) {
+            public int compare(Ticket ceil_1, Ticket ceil_2) {
                 return ceil_1.getDate().compareTo(ceil_2.getDate());
             }
         });
 
-        this.addAll(list);
+        this.addAll(tickets);
     }
 
     @Override
@@ -61,18 +47,17 @@ public class TicketDateAdapter extends ArrayAdapter<TicketDateCeil> {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.list_ticket_date_item, null);
 
         // Get animal from position
-        TicketDateCeil ticketTypeCeil = getItem(position);
+        Ticket ticket = getItem(position);
 
         // Get multiple elements
+        TextView id_text = (TextView) view.findViewById(R.id.ticket_id);
         TextView date_text = (TextView) view.findViewById(R.id.ticket_ceil_date);
-        TextView type_text = (TextView) view.findViewById(R.id.ticket_ceil_type);
-        TextView count_text = (TextView) view.findViewById(R.id.ticket_ceil_count);
+        TextView quantity_text = (TextView) view.findViewById(R.id.ticket_ceil_quantity);
 
         // Insert values
-        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-        date_text.setText(df.format(ticketTypeCeil.getDate()));
-        type_text.setText(ticketTypeCeil.getType());
-        count_text.setText(String.valueOf(ticketTypeCeil.getTicketsCount()));
+        id_text.setText(String.valueOf(ticket.getId()));
+        date_text.setText(ticket.getDateString());
+        quantity_text.setText(String.valueOf(ticket.getQuantity()));
 
         return view;
     }

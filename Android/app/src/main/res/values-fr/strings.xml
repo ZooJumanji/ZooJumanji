@@ -36,6 +36,9 @@
     <string name="detail_label_count">Quantité : </string>
     <string name="detail_label_in_stock">En stock : </string>
     <string name="detail_label_capacity">Capacité : </string>
+    <string name="detail_label_price">Prix :</string>
+    <string name="detail_label_quantity">Quantité :</string>
+    <string name="detail_label_date">Date :</string>
 
     <string name="enclosure_type_cage">cage</string>
     <string name="enclosure_type_paddock">enclos</string>

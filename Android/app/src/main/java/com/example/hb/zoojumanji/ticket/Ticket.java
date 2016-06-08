@@ -2,6 +2,7 @@ package com.example.hb.zoojumanji.ticket;
 
 import com.example.hb.zoojumanji.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -97,5 +98,10 @@ public class Ticket {
                 .setPrice(price)
                 .setQuantity(quantity)
                 .setDate(date);
+    }
+
+    public String getDateString() {
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        return df.format(date);
     }
 }
