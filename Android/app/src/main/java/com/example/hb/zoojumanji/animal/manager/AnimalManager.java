@@ -65,7 +65,7 @@ public class AnimalManager {
     }
 
     // Add animal to list
-    public void addAnimal(Animal animal){
+    public static void addAnimal(Animal animal){
 
         getAnimals().add(animal);
     }

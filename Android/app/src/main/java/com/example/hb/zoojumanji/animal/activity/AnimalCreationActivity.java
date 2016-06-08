@@ -1,5 +1,6 @@
 package com.example.hb.zoojumanji.animal.activity;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.animal.Animal;
+import com.example.hb.zoojumanji.animal.manager.AnimalManager;
 
 public class AnimalCreationActivity extends AppCompatActivity {
 
@@ -49,11 +51,15 @@ public class AnimalCreationActivity extends AppCompatActivity {
                             Animal.GetStringR(Animal.typeAnimal.animal_type_fructivorous.toString())
                     );
 
-
+                    AnimalManager.addAnimal(animal);
 
                     // Toast save
                     Toast.makeText(AnimalCreationActivity.this, "Animal saved", Toast.LENGTH_LONG)
                             .show();
+
+                    Intent intent = new Intent(AnimalCreationActivity.this, AnimalActivity.class);
+                    startActivity(intent);
+
                 }
             });
         }

@@ -129,7 +129,6 @@ public class Animal extends ZooEntity {
                 .setSex(sex)
                 .setSpecies(species)
                 .setType(type);
-
     }
 
 }
