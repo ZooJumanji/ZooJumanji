@@ -2,6 +2,7 @@ package com.example.hb.zoojumanji.ticket.adapter.ceil;
 
 import com.example.hb.zoojumanji.ticket.Ticket;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -65,5 +66,10 @@ public class TicketDateCeil {
         }
 
         return count;
+    }
+
+    public String getDateString() {
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        return df.format(date);
     }
 }
