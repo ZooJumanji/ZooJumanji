@@ -43,7 +43,13 @@ public class TicketDateAdapter extends ArrayAdapter<TicketDateCeil> {
             list.add(ticketTypeCeil);
         }
 
-        Collections.sort(list, new TicketDateCeilCompare());
+        // Sort listing by date
+        Collections.sort(list, new Comparator<TicketDateCeil>() {
+            @Override
+            public int compare(TicketDateCeil ceil_1, TicketDateCeil ceil_2) {
+                return ceil_1.getDate().compareTo(ceil_2.getDate());
+            }
+        });
 
         this.addAll(list);
     }
@@ -69,13 +75,5 @@ public class TicketDateAdapter extends ArrayAdapter<TicketDateCeil> {
         count_text.setText(String.valueOf(ticketTypeCeil.getTicketsCount()));
 
         return view;
-    }
-}
-
-class TicketDateCeilCompare implements Comparator<TicketDateCeil> {
-
-    @Override
-    public int compare(TicketDateCeil o1, TicketDateCeil o2) {
-        return o1.getDate().compareTo(o2.getDate());
     }
 }
