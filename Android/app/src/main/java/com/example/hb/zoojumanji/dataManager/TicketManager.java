@@ -47,6 +47,20 @@ public class TicketManager {
     }
 
     // Get Ticket from id
+    public static List<Ticket> getTickets(int type_id) {
+        List<Ticket> list = getTickets();
+        List<Ticket> returnList = new ArrayList<>();
+
+        for (Ticket ticket : list) {
+            if (ticket.getType() == type_id) {
+                returnList.add(ticket);
+            }
+        }
+
+        return returnList;
+    }
+
+    // Get Ticket from id
     public static Ticket getTicket(int id) {
         List<Ticket> list = getTickets();
         for (Ticket ticket : list) {
