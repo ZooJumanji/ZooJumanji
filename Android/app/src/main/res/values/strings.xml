@@ -8,7 +8,7 @@
     <string name="animal_title">Animals</string>
     <string name="enclosure_title">Enclosures</string>
     <string name="stock_title">Stock</string>
-    <string name="ticket_title">Tickets / Visitors</string>
+    <string name="ticket_title">Tickets</string>
 
     <string name="animal_type_carnivorous">carnivorous</string>
     <string name="animal_type_herbivorous">herbivorous</string>

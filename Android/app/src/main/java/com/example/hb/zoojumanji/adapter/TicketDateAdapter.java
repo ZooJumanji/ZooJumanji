@@ -8,36 +8,36 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.hb.zoojumanji.R;
-import com.example.hb.zoojumanji.adapter.ceil.TicketTypeCeil;
-import com.example.hb.zoojumanji.object.Animal;
+import com.example.hb.zoojumanji.adapter.ceil.TicketDateCeil;
 import com.example.hb.zoojumanji.object.Ticket;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 
 // Adapter for tickets displaying list classed by type
-public class TicketTypeAdapter extends ArrayAdapter<TicketTypeCeil> {
+public class TicketDateAdapter extends ArrayAdapter<TicketDateCeil> {
 
     // Default constructor
-    public TicketTypeAdapter(Context context, int resource, int textViewResourceId, List<Ticket> tickets) {
+    public TicketDateAdapter(Context context, int resource, int textViewResourceId, List<Ticket> tickets) {
 
         super(context, resource, textViewResourceId);
 
-        Map<Integer, TicketTypeCeil> map = new HashMap<>();
+        Map<Date, TicketDateCeil> map = new HashMap<>();
         for (Ticket ticket : tickets) {
-            if (!map.containsKey(ticket.getType())) {
-                map.put(ticket.getType(), new TicketTypeCeil(ticket.getType()));
+            if (!map.containsKey(ticket.getDate())) {
+                map.put(ticket.getDate(), new TicketDateCeil(ticket.getType(), ticket.getDate()));
             }
-            TicketTypeCeil ceil = map.get(ticket.getType());
+            TicketDateCeil ceil = map.get(ticket.getDate());
             ceil.addTicket(ticket);
         }
 
-        List<TicketTypeCeil> list = new ArrayList<>();
-        for (TicketTypeCeil ticketTypeCeil : map.values()) {
+        List<TicketDateCeil> list = new ArrayList<>();
+        for (TicketDateCeil ticketTypeCeil : map.values()) {
             list.add(ticketTypeCeil);
         }
 
@@ -48,18 +48,19 @@ public class TicketTypeAdapter extends ArrayAdapter<TicketTypeCeil> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         // Generate specific view
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.list_ticket_type_item, null);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.list_ticket_date_item, null);
 
         // Get animal from position
-        TicketTypeCeil ticketTypeCeil = getItem(position);
+        TicketDateCeil ticketTypeCeil = getItem(position);
 
         // Get multiple elements
-        TextView id_text = (TextView) view.findViewById(R.id.ticket_type_id);
+        TextView date_text = (TextView) view.findViewById(R.id.ticket_ceil_date);
         TextView type_text = (TextView) view.findViewById(R.id.ticket_ceil_type);
         TextView count_text = (TextView) view.findViewById(R.id.ticket_ceil_count);
 
         // Insert values
-        id_text.setText(String.valueOf(ticketTypeCeil.getType()));
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        date_text.setText(df.format(ticketTypeCeil.getDate()));
         type_text.setText(ticketTypeCeil.getType());
         count_text.setText(String.valueOf(ticketTypeCeil.getTicketsCount()));
 

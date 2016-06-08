@@ -26,7 +26,7 @@ public class Ticket {
     protected int type;
     protected double price;
     protected int quantity;
-    protected Date saleDate;
+    protected Date date;
     protected List<Integer> privileges = new ArrayList<>();
 
     public int getId() {
@@ -65,12 +65,12 @@ public class Ticket {
         return this;
     }
 
-    public Date getSaleDate() {
-        return saleDate;
+    public Date getDate() {
+        return date;
     }
 
     public Ticket setDate(Date date) {
-        this.saleDate = date;
+        this.date = date;
         return this;
     }
 

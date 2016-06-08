@@ -21,13 +21,13 @@
         <activity android:name=".AnimalActivity" />
         <activity android:name=".EnclosureActivity" />
         <activity android:name=".StockActivity" />
-        <activity android:name=".StockDetailActivity"/>
+        <activity android:name=".StockDetailActivity" />
         <activity android:name=".TicketActivity" />
         <activity android:name=".AnimalDetailActivity" />
         <activity android:name=".EnclosureDetailActivity" />
-        <activity android:name=".AnimalCreationActivity"/>
-        <activity android:name=".StockCreationActivity"/>
-
+        <activity android:name=".AnimalCreationActivity" />
+        <activity android:name=".StockCreationActivity" />
+        <activity android:name=".TicketTypeActivity"></activity>
     </application>
 
 </manifest>
