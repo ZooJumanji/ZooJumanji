@@ -16,11 +16,11 @@ public class Ticket {
     public static final int TICKET_PRIVILEGE_ENCLOSURE_ENTRANCE = R.string.ticket_privilege_enclosure_entrance;
     public static final int TICKET_PRIVILEGE_NURSERY_ENTRANCE = R.string.ticket_privilege_nursery_entrance;
 
-    public static final int TICKET_TYPE_NORMAL = R.string.ticket_privilege_feed_timon;
-    public static final int TICKET_TYPE_VIP = R.string.ticket_privilege_care_entrance;
-    public static final int TICKET_TYPE_STUDENT = R.string.ticket_privilege_enclosure_entrance;
-    public static final int TICKET_TYPE_CHILD = R.string.ticket_privilege_nursery_entrance;
-    public static final int TICKET_TYPE_GROUP = R.string.ticket_privilege_nursery_entrance;
+    public static final int TICKET_TYPE_NORMAL = R.string.ticket_type_normal;
+    public static final int TICKET_TYPE_VIP = R.string.ticket_type_vip;
+    public static final int TICKET_TYPE_STUDENT = R.string.ticket_type_student;
+    public static final int TICKET_TYPE_CHILD = R.string.ticket_type_child;
+    public static final int TICKET_TYPE_GROUP = R.string.ticket_type_group;
 
     protected int id;
     protected int type;
