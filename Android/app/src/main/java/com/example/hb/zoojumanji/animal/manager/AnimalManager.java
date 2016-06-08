@@ -9,12 +9,32 @@ import java.util.List;
  * Created by hb on 07/06/2016.
  */
 public class AnimalManager {
+
     // Static animals list
-    public static final Animal SIMBA = new Animal(0, "Simba", 8, Animal.SEX_MALE, Animal.SPECIES_LION, Animal.TYPE_CARNIVOROUS);
-    public static final Animal TIMON = new Animal(1, "Timon", 12, Animal.SEX_MALE, Animal.SPECIES_SURICAT, Animal.TYPE_INSECTIVOROUS);
-    public static final Animal PUMBA = new Animal(2, "Pumba", 15, Animal.SEX_MALE, Animal.SPECIES_WARTHOG, Animal.TYPE_OMNIVOROUS);
-    public static final Animal NALA = new Animal(3, "Nala", 8, Animal.SEX_FEMALE, Animal.SPECIES_LION, Animal.TYPE_CARNIVOROUS);
-    public static final Animal RAFIKKI = new Animal(4, "Rafikki", 82, Animal.SEX_MALE, Animal.SPECIES_MONKEY, Animal.TYPE_OMNIVOROUS);
+    public static final Animal SIMBA = new Animal(0, "Simba", 8,
+            Animal.GetStringR(Animal.sexAnimal.animal_sex_male.toString()),
+            Animal.GetStringR(Animal.speciesAnimal.animal_species_lion.toString()),
+            Animal.GetStringR(Animal.typeAnimal.animal_type_carnivorous.toString()));
+
+    public static final Animal TIMON = new Animal(1, "Timon", 12,
+            Animal.GetStringR(Animal.sexAnimal.animal_sex_male.toString()),
+            Animal.GetStringR(Animal.speciesAnimal.animal_species_suricat.toString()),
+            Animal.GetStringR(Animal.typeAnimal.animal_type_insectivorous.toString()));
+
+    public static final Animal PUMBA = new Animal(2, "Pumba", 15,
+            Animal.GetStringR(Animal.sexAnimal.animal_sex_male.toString()),
+            Animal.GetStringR(Animal.speciesAnimal.animal_species_warthog.toString()),
+            Animal.GetStringR(Animal.typeAnimal.animal_type_omnivorous.toString()));
+
+    public static final Animal NALA = new Animal(3, "Nala", 8,
+            Animal.GetStringR(Animal.sexAnimal.animal_sex_female.toString()),
+            Animal.GetStringR(Animal.speciesAnimal.animal_species_lion.toString()),
+            Animal.GetStringR(Animal.typeAnimal.animal_type_carnivorous.toString()));
+
+    public static final Animal RAFIKKI = new Animal(4, "Rafikki", 82,
+            Animal.GetStringR(Animal.sexAnimal.animal_sex_male.toString()),
+            Animal.GetStringR(Animal.speciesAnimal.animal_species_monkey.toString()),
+            Animal.GetStringR(Animal.typeAnimal.animal_type_omnivorous.toString()));
 
     protected static List<Animal> animalsList = new ArrayList<>();
 
@@ -42,5 +62,11 @@ public class AnimalManager {
         }
 
         throw new IllegalArgumentException("Unknown animal");
+    }
+
+    // Add animal to list
+    public void addAnimal(Animal animal){
+
+        getAnimals().add(animal);
     }
 }

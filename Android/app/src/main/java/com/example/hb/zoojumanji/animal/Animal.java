@@ -6,29 +6,51 @@ import com.example.hb.zoojumanji.R;
 /**
  * Created by hb on 06/06/2016.
  */
-public class Animal {
+public class Animal extends ZooEntity {
 
     // Static animals type
-    public static final int TYPE_CARNIVOROUS = R.string.animal_type_carnivorous;
-    public static final int TYPE_HERBIVOROUS = R.string.animal_type_herbivorous;
-    public static final int TYPE_INSECTIVOROUS = R.string.animal_type_insectivorous;
-    public static final int TYPE_OMNIVOROUS = R.string.animal_type_omnivorous;
-    public static final int TYPE_FRUCTIVOROUS = R.string.animal_type_fructivorous;
-    public static final int TYPE_GRANIVOROUS = R.string.animal_type_granivorous;
+//    public static final int TYPE_CARNIVOROUS = R.string.animal_type_carnivorous;
+//    public static final int TYPE_HERBIVOROUS = R.string.animal_type_herbivorous;
+//    public static final int TYPE_INSECTIVOROUS = R.string.animal_type_insectivorous;
+//    public static final int TYPE_OMNIVOROUS = R.string.animal_type_omnivorous;
+//    public static final int TYPE_FRUCTIVOROUS = R.string.animal_type_fructivorous;
+//    public static final int TYPE_GRANIVOROUS = R.string.animal_type_granivorous;
 
     // Static animals species
-    public static final int SPECIES_LION = R.string.animal_species_lion;
-    public static final int SPECIES_SURICAT = R.string.animal_species_suricat;
-    public static final int SPECIES_MONKEY = R.string.animal_species_monkey;
-    public static final int SPECIES_WARTHOG = R.string.animal_species_warthog;
-    public static final int SPECIES_TIGER = R.string.animal_species_tiger;
-    public static final int SPECIES_BIRD = R.string.animal_species_bird;
+//    public static final int SPECIES_LION = R.string.animal_species_lion;
+//    public static final int SPECIES_SURICAT = R.string.animal_species_suricat;
+//    public static final int SPECIES_MONKEY = R.string.animal_species_monkey;
+//    public static final int SPECIES_WARTHOG = R.string.animal_species_warthog;
+//    public static final int SPECIES_TIGER = R.string.animal_species_tiger;
+//    public static final int SPECIES_BIRD = R.string.animal_species_bird;
 
-    // Static animals sex
-    public static final int SEX_MALE = R.string.animal_sex_male;
-    public static final int SEX_FEMALE = R.string.animal_sex_female;
-    public static final int SEX_HERMAPHRODITE = R.string.animal_sex_hermaphrodite;
-    public static final int SEX_ASSEXUAL = R.string.animal_sex_assexual;
+    // Enum animal species
+    public static enum typeAnimal {
+        animal_type_carnivorous,
+        animal_type_herbivorous,
+        animal_type_insectivorous,
+        animal_type_omnivorous,
+        animal_type_fructivorous,
+        animal_type_granivorous
+    }
+
+    // Enum animals sex
+    public static enum sexAnimal {
+        animal_sex_male,
+        animal_sex_female,
+        animal_sex_hermaphrodite,
+        animal_sex_assexual
+    }
+
+    // Enum animal species
+    public static enum speciesAnimal {
+        animal_species_lion,
+        animal_species_suricat,
+        animal_species_monkey,
+        animal_species_warthog,
+        animal_species_tiger,
+        animal_species_bird
+    }
 
     protected int id;
     protected String name;
