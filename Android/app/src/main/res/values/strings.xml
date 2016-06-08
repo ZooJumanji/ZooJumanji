@@ -54,5 +54,6 @@
     <string name="ticket_type_student">student ticket</string>
     <string name="ticket_type_child">child ticket</string>
     <string name="ticket_type_group">group ticket</string>
+    <string name="Error_Not_Found_Exception">Error_Not_Found_Exception</string>
 
 </resources>
