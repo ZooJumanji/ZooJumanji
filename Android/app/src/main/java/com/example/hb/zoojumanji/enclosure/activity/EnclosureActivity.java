@@ -78,6 +78,7 @@ public class EnclosureActivity extends AppCompatActivity {
             }
         });
     }
+
     private void generateSnackBar() {
 
         // Activation deletion

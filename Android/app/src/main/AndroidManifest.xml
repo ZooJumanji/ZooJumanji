@@ -30,7 +30,8 @@
         <activity android:name=".ticket.activity.TicketTypeActivity" />
         <activity android:name=".ticket.activity.TicketDetailActivity" />
         <activity android:name=".enclosure.activity.EnclosureCreationActivity" />
-        <activity android:name=".enclosure.activity.EnclosureModifyActivity"></activity>
+        <activity android:name=".enclosure.activity.EnclosureModifyActivity" />
+        <activity android:name=".ticket.activity.TicketCreationActivity"></activity>
     </application>
 
 </manifest>

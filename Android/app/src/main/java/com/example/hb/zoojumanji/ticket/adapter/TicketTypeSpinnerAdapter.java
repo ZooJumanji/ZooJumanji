@@ -1,4 +1,4 @@
-package com.example.hb.zoojumanji.enclosure.adapter;
+package com.example.hb.zoojumanji.ticket.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,16 +8,16 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.hb.zoojumanji.R;
-import com.example.hb.zoojumanji.enclosure.EnclosureType;
+import com.example.hb.zoojumanji.ticket.TicketType;
 
 import java.util.List;
 
 /**
  * Created by hb on 08/06/2016.
  */
-public class EnclosureTypeSpinnerAdapter extends ArrayAdapter<EnclosureType> {
+public class TicketTypeSpinnerAdapter extends ArrayAdapter<TicketType> {
 
-    public EnclosureTypeSpinnerAdapter(Context context, int resource, List<EnclosureType> objects) {
+    public TicketTypeSpinnerAdapter(Context context, int resource, List<TicketType> objects) {
         super(context, resource, objects);
     }
 
@@ -34,13 +34,14 @@ public class EnclosureTypeSpinnerAdapter extends ArrayAdapter<EnclosureType> {
     }
 
     private View inflateStringResourceView(int position) {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.spinner_enclosure_type_item, null);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.spinner_ticket_type_item,
+                null);
 
         // Get animal from position
-        EnclosureType type = getItem(position);
+        TicketType type = getItem(position);
 
         // Get multiple elements
-        TextView name_text = (TextView) view.findViewById(R.id.enclosure_type_name);
+        TextView name_text = (TextView) view.findViewById(R.id.ticket_type_name);
 
         // Insert values
         name_text.setText(type.getStringResource());
