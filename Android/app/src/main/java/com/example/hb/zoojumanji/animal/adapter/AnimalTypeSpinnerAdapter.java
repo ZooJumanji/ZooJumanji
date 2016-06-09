@@ -35,7 +35,7 @@ public class AnimalTypeSpinnerAdapter extends ArrayAdapter<AnimalType>
     }
 
     private View inflateStringResourceView(int position) {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.list_animal_sex_item, null);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.spinner_animal_param_item, null);
 
         // Get animal from position
         AnimalType type = getItem(position);
