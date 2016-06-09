@@ -51,15 +51,17 @@ public class AnimalActivity extends AppCompatActivity {
 
         // Get clicked floatingButton to add a new animal
         FloatingActionButton button = (FloatingActionButton) findViewById(R.id.add_fab);
-        button.setOnClickListener(new View.OnClickListener() {
+        if (button != null) {
+            button.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View view) {
-                // Generate new Activity
-                Intent intent = new Intent(AnimalActivity.this, AnimalCreationActivity.class);
-                startActivity(intent);
-            }
-        });
+                @Override
+                public void onClick(View view) {
+                    // Generate new Activity
+                    Intent intent = new Intent(AnimalActivity.this, AnimalCreationActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
 
 
     }

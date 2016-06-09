@@ -1,5 +1,7 @@
 package com.example.hb.zoojumanji.animal;
 
+import android.content.Entity;
+
 import com.example.hb.zoojumanji.R;
 
 
@@ -33,15 +35,7 @@ public class Animal extends ZooEntity {
         animal_type_fructivorous,
         animal_type_granivorous
     }
-
-    // Enum animals sex
-    public static enum sexAnimal {
-        animal_sex_male,
-        animal_sex_female,
-        animal_sex_hermaphrodite,
-        animal_sex_assexual
-    }
-
+    
     // Enum animal species
     public static enum speciesAnimal {
         animal_species_lion,

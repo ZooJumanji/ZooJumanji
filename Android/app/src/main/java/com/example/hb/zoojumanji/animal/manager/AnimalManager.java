@@ -1,6 +1,7 @@
 package com.example.hb.zoojumanji.animal.manager;
 
 import com.example.hb.zoojumanji.animal.Animal;
+import com.example.hb.zoojumanji.animal.AnimalSexType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,28 +12,23 @@ import java.util.List;
 public class AnimalManager {
 
     // Static animals list
-    public static final Animal SIMBA = new Animal(0, "Simba", 8,
-            Animal.GetStringR(Animal.sexAnimal.animal_sex_male.toString()),
+    public static final Animal SIMBA = new Animal(0, "Simba", 8, AnimalSexType.MALE.getStringResource(),
             Animal.GetStringR(Animal.speciesAnimal.animal_species_lion.toString()),
             Animal.GetStringR(Animal.typeAnimal.animal_type_carnivorous.toString()));
 
-    public static final Animal TIMON = new Animal(1, "Timon", 12,
-            Animal.GetStringR(Animal.sexAnimal.animal_sex_male.toString()),
+    public static final Animal TIMON = new Animal(1, "Timon", 12,AnimalSexType.MALE.getStringResource(),
             Animal.GetStringR(Animal.speciesAnimal.animal_species_suricat.toString()),
             Animal.GetStringR(Animal.typeAnimal.animal_type_insectivorous.toString()));
 
-    public static final Animal PUMBA = new Animal(2, "Pumba", 15,
-            Animal.GetStringR(Animal.sexAnimal.animal_sex_male.toString()),
+    public static final Animal PUMBA = new Animal(2, "Pumba", 15,AnimalSexType.MALE.getStringResource(),
             Animal.GetStringR(Animal.speciesAnimal.animal_species_warthog.toString()),
             Animal.GetStringR(Animal.typeAnimal.animal_type_omnivorous.toString()));
 
-    public static final Animal NALA = new Animal(3, "Nala", 8,
-            Animal.GetStringR(Animal.sexAnimal.animal_sex_female.toString()),
+    public static final Animal NALA = new Animal(3, "Nala", 8,AnimalSexType.FEMELE.getStringResource(),
             Animal.GetStringR(Animal.speciesAnimal.animal_species_lion.toString()),
             Animal.GetStringR(Animal.typeAnimal.animal_type_carnivorous.toString()));
 
-    public static final Animal RAFIKKI = new Animal(4, "Rafikki", 82,
-            Animal.GetStringR(Animal.sexAnimal.animal_sex_male.toString()),
+    public static final Animal RAFIKKI = new Animal(4, "Rafikki", 82,AnimalSexType.MALE.getStringResource(),
             Animal.GetStringR(Animal.speciesAnimal.animal_species_monkey.toString()),
             Animal.GetStringR(Animal.typeAnimal.animal_type_omnivorous.toString()));
 
