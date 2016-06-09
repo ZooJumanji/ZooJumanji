@@ -24,6 +24,22 @@ public class StockActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock);
 
+        generateList();
+
+        // Get clicked floatingButton to add a new animal
+        FloatingActionButton button = (FloatingActionButton) findViewById(R.id.add_fab);
+        button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                // Generate new Activity
+                Intent intent = new Intent(StockActivity.this, StockCreationActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void generateList() {
         // Get list of stock
         List<Stock> list = StockManager.getStocks();
 
@@ -34,7 +50,6 @@ public class StockActivity extends AppCompatActivity {
         // Display list
         ListView listView = (ListView) findViewById(R.id.stocks_list);
         listView.setAdapter(adapter);
-
 
         // Add event listener on elements of list
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -50,15 +65,17 @@ public class StockActivity extends AppCompatActivity {
             }
         });
 
-        // Get clicked floatingButton to add a new animal
-        FloatingActionButton button = (FloatingActionButton) findViewById(R.id.add_fab);
-        button.setOnClickListener(new View.OnClickListener() {
-
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onClick(View view) {
-                // Generate new Activity
-                Intent intent = new Intent(StockActivity.this, StockCreationActivity.class);
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                // Send to detail page with id in argument
+                Intent intent = new Intent(StockActivity.this, StockDetailActivity.class);
+                TextView id_text = (TextView) view.findViewById(R.id.stock_id);
+                intent.putExtra("id", Integer.valueOf(String.valueOf(id_text.getText())));
+
                 startActivity(intent);
+                return false;
             }
         });
     }

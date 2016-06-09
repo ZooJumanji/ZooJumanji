@@ -33,8 +33,8 @@ public class AnimalDetailActivity extends AppCompatActivity {
         sexText = (TextView) findViewById(R.id.detail_animal_sex);
         speciesText = (TextView) findViewById(R.id.detail_animal_species);
         typeText = (TextView) findViewById(R.id.detail_animal_type);
-        showAnimalDetails();
 
+        showAnimalDetails();
 
         // Get clicked floatingButton
         FloatingActionButton deletionButton = (FloatingActionButton) findViewById(R.id.delete_fab);

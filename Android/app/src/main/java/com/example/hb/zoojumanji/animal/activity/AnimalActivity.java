@@ -82,6 +82,20 @@ public class AnimalActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                // Send to detail page with id in argument
+                Intent intent = new Intent(AnimalActivity.this, AnimalModifyActivity.class);
+                TextView id_text = (TextView) view.findViewById(R.id.animal_id);
+                intent.putExtra("id", Integer.valueOf(String.valueOf(id_text.getText())));
+
+                startActivity(intent);
+                return false;
+            }
+        });
     }
 
     private void generateUndeleteSnackBar() {
