@@ -63,7 +63,7 @@ public class AnimalActivity extends AppCompatActivity {
 
         // Generate specific adapter
         ArrayAdapter<Animal> adapter = new AnimalAdapter(this,
-                R.layout.list_animal_item, R.id.animal_name, list);
+                R.layout.list_animal_item, list);
 
         // Display list
         ListView listView = (ListView) findViewById(R.id.animals_list);

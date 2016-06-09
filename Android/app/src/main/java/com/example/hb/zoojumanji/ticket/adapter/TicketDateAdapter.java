@@ -18,9 +18,9 @@ import java.util.List;
 public class TicketDateAdapter extends ArrayAdapter<Ticket> {
 
     // Default constructor
-    public TicketDateAdapter(Context context, int resource, int textViewResourceId, List<Ticket> tickets) {
+    public TicketDateAdapter(Context context, int resource, List<Ticket> tickets) {
 
-        super(context, resource, textViewResourceId);
+        super(context, resource);
 
         // Sort listing by date
         Collections.sort(tickets, new Comparator<Ticket>() {

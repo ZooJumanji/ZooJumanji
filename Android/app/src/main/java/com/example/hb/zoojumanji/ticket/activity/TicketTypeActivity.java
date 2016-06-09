@@ -76,7 +76,7 @@ public class TicketTypeActivity extends AppCompatActivity {
 
         // Generate specific adapter
         ArrayAdapter<Ticket> adapter = new TicketDateAdapter(this,
-                R.layout.list_ticket_date_item, R.id.ticket_id, list);
+                R.layout.list_ticket_date_item, list);
 
         // Display list
         listView = (ListView) findViewById(R.id.tickets_list);

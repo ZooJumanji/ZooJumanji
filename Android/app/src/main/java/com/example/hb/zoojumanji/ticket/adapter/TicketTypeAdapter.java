@@ -22,9 +22,9 @@ import java.util.Map;
 public class TicketTypeAdapter extends ArrayAdapter<TicketTypeCeil> {
 
     // Default constructor
-    public TicketTypeAdapter(Context context, int resource, int textViewResourceId, List<Ticket> tickets) {
+    public TicketTypeAdapter(Context context, int resource, List<Ticket> tickets) {
 
-        super(context, resource, textViewResourceId);
+        super(context, resource);
 
         Map<TicketType, TicketTypeCeil> map = new HashMap<>();
         for (Ticket ticket : tickets) {

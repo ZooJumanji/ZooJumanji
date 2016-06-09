@@ -17,8 +17,8 @@ import java.util.List;
 public class AnimalAdapter extends ArrayAdapter<Animal> {
 
     // Default constructor
-    public AnimalAdapter(Context context, int resource, int textViewResourceId, List<Animal> objects) {
-        super(context, resource, textViewResourceId, objects);
+    public AnimalAdapter(Context context, int resource, List<Animal> objects) {
+        super(context, resource, objects);
     }
 
     @Override

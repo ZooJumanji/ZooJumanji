@@ -19,8 +19,8 @@ public class StockAdapter extends ArrayAdapter<Stock> {
 
 
     // Default constructor
-    public StockAdapter(Context context, int resource, int textViewResourceId, List<Stock> objects) {
-        super(context, resource, textViewResourceId, objects);
+    public StockAdapter(Context context, int resource, List<Stock> objects) {
+        super(context, resource, objects);
     }
 
     @Override

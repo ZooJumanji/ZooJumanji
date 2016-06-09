@@ -58,7 +58,7 @@ public class StockActivity extends AppCompatActivity {
 
         // Generate specific adaptper
         ArrayAdapter<Stock> adapter = new StockAdapter(this,
-                R.layout.list_stock_item, R.id.stock_name, list);
+                R.layout.list_stock_item, list);
 
         // Display list
         ListView listView = (ListView) findViewById(R.id.stocks_list);
