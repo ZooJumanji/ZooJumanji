@@ -2,6 +2,7 @@ package com.example.hb.zoojumanji.enclosure.activity;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.enclosure.adapter.EnclosureAdapter;
@@ -18,6 +20,8 @@ import com.example.hb.zoojumanji.enclosure.Enclosure;
 import java.util.List;
 
 public class EnclosureActivity extends AppCompatActivity {
+
+    protected boolean deletion = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,9 @@ public class EnclosureActivity extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         generateList();
+        if (EnclosureManager.isInDeletion()) {
+            generateSnackBar();
+        }
     }
 
     private void generateList() {
@@ -71,4 +78,48 @@ public class EnclosureActivity extends AppCompatActivity {
             }
         });
     }
+    private void generateSnackBar() {
+
+        // Activation deletion
+        deletion = true;
+
+        //The undo action that could be called by the following snackbar
+        final View.OnClickListener undoListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Abort deletion
+                deletion = false;
+                Toast.makeText(EnclosureActivity.this, R.string.message_undo_deletion, Toast.LENGTH_LONG)
+                        .show();
+                EnclosureManager.restoreEnclosure();
+                generateList();
+            }
+        };
+
+        // Generate snackbar
+        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
+                R.string.message_stock_deletion,
+                Snackbar.LENGTH_LONG);
+
+        // Generate snackbar events
+        snackbar.getView().addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+            @Override
+            public void onViewAttachedToWindow(View v) {
+                // Empty
+            }
+
+            @Override
+            public void onViewDetachedFromWindow(View v) {
+                if (deletion) {
+                    EnclosureManager.cleanEnclosure();
+                }
+            }
+        });
+
+        // Display snackbar
+        snackbar.setAction("Undo", undoListener)
+                .setActionTextColor(0xFFFF0000)
+                .show();
+    }
+
 }

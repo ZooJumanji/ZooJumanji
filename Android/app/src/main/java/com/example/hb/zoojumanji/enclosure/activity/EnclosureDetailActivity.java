@@ -22,7 +22,6 @@ public class EnclosureDetailActivity extends AppCompatActivity {
     protected TextView typeText;
 
     protected Enclosure enclosure;
-    protected Boolean deletion = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +45,7 @@ public class EnclosureDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Displays a snackbar with a red UNDO action
-                generateSnackBar();
+                deletionExecution();
 
             }
         });
@@ -62,48 +61,6 @@ public class EnclosureDetailActivity extends AppCompatActivity {
         if (enclosure.getAnimalsCount() == enclosure.getMax()) {
             countText.setTextColor(Color.RED);
         }
-    }
-
-    private void generateSnackBar() {
-
-        // Activation deletion
-        deletion = true;
-
-        //The undo action that could be called by the following snackbar
-        final OnClickListener undoListener = new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Abort deletion
-                deletion = false;
-                Toast.makeText(EnclosureDetailActivity.this, R.string.message_undo_deletion, Toast.LENGTH_LONG)
-                        .show();
-            }
-        };
-
-        // Generate snackbar
-        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
-                R.string.message_stock_deletion,
-                Snackbar.LENGTH_LONG);
-
-        // Generate snackbar events
-        snackbar.getView().addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
-            @Override
-            public void onViewAttachedToWindow(View v) {
-                // Empty
-            }
-
-            @Override
-            public void onViewDetachedFromWindow(View v) {
-                if (deletion) {
-                    deletionExecution();
-                }
-            }
-        });
-
-        // Display snackbar
-        snackbar.setAction("Undo", undoListener)
-                .setActionTextColor(0xFFFF0000)
-                .show();
     }
 
     private void deletionExecution() {
