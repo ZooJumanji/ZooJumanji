@@ -33,7 +33,7 @@
                 <TextView
                     android:layout_width="@dimen/detail_label"
                     android:layout_height="wrap_content"
-                    android:text="@string/detail_label_type" />
+                    android:text="@string/detail_label_unity" />
 
                 <Spinner
                     android:id="@+id/edit_ticket_type"

@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         // Add action on floatingButtons
         addMainButtonAction(R.id.animal_fab, AnimalActivity.class);
         addMainButtonAction(R.id.enclosure_fab, EnclosureActivity.class);
-        addMainButtonAction(R.id.food_fab, StockActivity.class);
+        addMainButtonAction(R.id.stock_fab, StockActivity.class);
         addMainButtonAction(R.id.ticket_fab, TicketActivity.class);
     }
 

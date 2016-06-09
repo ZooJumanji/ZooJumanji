@@ -16,13 +16,13 @@ public enum StockUnity {
         int resource = 0;
         switch (this) {
             case PIECE :
-                resource = R.string.enclosure_type_cage;
+                resource = R.string.stock_unity_piece;
                 break;
             case KILO :
-                resource = R.string.enclosure_type_paddock;
+                resource = R.string.stock_unity_kilo;
                 break;
             case GRAMME :
-                resource = R.string.enclosure_type_pool;
+                resource = R.string.stock_unity_gramme;
                 break;
         }
 

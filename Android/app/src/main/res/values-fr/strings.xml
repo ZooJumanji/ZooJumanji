@@ -6,7 +6,7 @@
     <string name="home_title">Zoo Jumanji</string>
     <string name="animal_title">Animaux</string>
     <string name="enclosure_title">Enclos</string>
-    <string name="food_title">Nourriture</string>
+    <string name="stock_title">Stocks</string>
     <string name="ticket_title">Tickets</string>
 
     <string name="animal_type_carnivorous">carnivore</string>
@@ -36,10 +36,11 @@
     <string name="detail_label_count">Quantité : </string>
     <string name="detail_label_in_stock">En stock : </string>
     <string name="detail_label_capacity">Capacité : </string>
-    <string name="detail_label_price">Prix :</string>
-    <string name="detail_label_quantity">Quantité :</string>
-    <string name="detail_label_date">Date :</string>
-    <string name="detail_label_max">Max :</string>
+    <string name="detail_label_price">Prix : </string>
+    <string name="detail_label_quantity">Quantité : </string>
+    <string name="detail_label_date">Date : </string>
+    <string name="detail_label_max">Max : </string>
+    <string name="detail_label_unity">Unité : </string>
 
     <string name="enclosure_type_cage">cage</string>
     <string name="enclosure_type_paddock">enclos</string>

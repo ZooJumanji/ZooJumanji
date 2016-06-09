@@ -20,28 +20,28 @@ public enum StockType {
         int resource = 0;
         switch (this) {
             case MEAT :
-                resource = R.string.enclosure_type_cage;
+                resource = R.string.stock_type_meat;
                 break;
             case APPLE :
-                resource = R.string.enclosure_type_paddock;
+                resource = R.string.stock_type_apple;
                 break;
             case BANANA :
-                resource = R.string.enclosure_type_pool;
+                resource = R.string.stock_type_banana;
                 break;
             case SEED :
-                resource = R.string.enclosure_type_aquarium;
+                resource = R.string.stock_type_seed;
                 break;
             case MOUSE :
-                resource = R.string.enclosure_type_vivarium;
+                resource = R.string.stock_type_mouse;
                 break;
             case HAY :
-                resource = R.string.enclosure_type_vivarium;
+                resource = R.string.stock_type_hay;
                 break;
             case BUG :
-                resource = R.string.enclosure_type_vivarium;
+                resource = R.string.stock_type_bug;
                 break;
             case POPCORN :
-                resource = R.string.enclosure_type_vivarium;
+                resource = R.string.stock_type_popcorn;
                 break;
         }
 
