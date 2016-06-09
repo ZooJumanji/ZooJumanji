@@ -32,12 +32,27 @@ public class Ticket {
         return price;
     }
 
+    public Ticket setPrice(double price) {
+        this.price = price;
+        return this;
+    }
+
     public int getQuantity() {
         return quantity;
     }
 
+    public Ticket setQuantity(int quantity) {
+        this.quantity = quantity;
+        return this;
+    }
+
     public TicketType getType() {
         return type;
+    }
+
+    public Ticket setType(TicketType type) {
+        this.type = type;
+        return this;
     }
 
     public Date getDate() {

@@ -77,7 +77,7 @@ public class StockManager {
         deletedStock = null;
     }
 
-    public static void modify(int id, StockType type, int quantity, int capacity, StockUnity unity) {
+    public static void modifyStock(int id, StockType type, int quantity, int capacity, StockUnity unity) {
         Stock stock = getStock(id);
         stock.setType(type)
                 .setQuantity(quantity)

@@ -81,7 +81,7 @@ public class AnimalManager {
         deletedAnimal = null;
     }
 
-    public static void modify(int id, String name, int age, AnimalSex sex, AnimalSpecies species, AnimalType type) {
+    public static void modifyAnimal(int id, String name, int age, AnimalSex sex, AnimalSpecies species, AnimalType type) {
         Animal animal = getAnimal(id);
         animal.setName(name)
                 .setAge(age)

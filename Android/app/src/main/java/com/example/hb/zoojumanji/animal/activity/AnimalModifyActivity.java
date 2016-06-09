@@ -52,7 +52,7 @@ public class AnimalModifyActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Update animal
-                AnimalManager.modify(animal.getId(),
+                AnimalManager.modifyAnimal(animal.getId(),
                         nameText.getText().toString(),
                         Integer.valueOf(ageText.getText().toString()),
                         (AnimalSex) sexSpinner.getSelectedItem(),

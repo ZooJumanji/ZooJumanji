@@ -105,4 +105,10 @@ public class TicketManager {
         deletedTicket = null;
     }
 
+    public static void modifyTicket(int id, TicketType type, Double price, Integer quantity) {
+        Ticket ticket = getTicket(id);
+        ticket.setType(type)
+                .setPrice(price)
+                .setQuantity(quantity);
+    }
 }

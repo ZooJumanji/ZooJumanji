@@ -49,7 +49,7 @@ public class StockModifyActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Update enclosure
-                StockManager.modify(stock.getId(),
+                StockManager.modifyStock(stock.getId(),
                         (StockType) typeSpinner.getSelectedItem(),
                         Integer.valueOf(quantityText.getText().toString()),
                         Integer.valueOf(capacityText.getText().toString()),

@@ -46,7 +46,7 @@ public class EnclosureModifyActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Update enclosure
-                EnclosureManager.modify(enclosure.getId(),
+                EnclosureManager.modifyEnclosure(enclosure.getId(),
                         nameText.getText().toString(),
                         Integer.valueOf(maxText.getText().toString()),
                         (EnclosureType) typeSpinner.getSelectedItem());

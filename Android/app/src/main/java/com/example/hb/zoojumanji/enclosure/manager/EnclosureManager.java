@@ -81,7 +81,7 @@ public class EnclosureManager {
         deletedEnclosure = null;
     }
 
-    public static void modify(int id, String name, int max, EnclosureType type) {
+    public static void modifyEnclosure(int id, String name, int max, EnclosureType type) {
         Enclosure enclosure = getEnclosure(id);
         enclosure.setName(name)
                 .setMax(max)
