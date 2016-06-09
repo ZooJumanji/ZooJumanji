@@ -52,4 +52,9 @@ public class EnclosureManager {
         enclosuresList.add(new Enclosure(name, capacity, type));
     }
 
+    public static void deleteEnclosure(Enclosure enclosure) {
+        if (enclosuresList.contains(enclosure)) {
+            enclosuresList.remove(enclosure);
+        }
+    }
 }
