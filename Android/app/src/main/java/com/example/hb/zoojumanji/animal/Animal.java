@@ -3,23 +3,25 @@ package com.example.hb.zoojumanji.animal;
 /**
  * Created by hb on 06/06/2016.
  */
-public class Animal extends ZooEntity {
+public class Animal {
 
     protected int id;
     protected String name;
     protected int age;
-    protected AnimalSexType sex;
+    protected AnimalSex sex;
     protected AnimalType type;
-    protected AnimalSpeciesType species;
+    protected AnimalSpecies species;
     protected String food;
+
+    private static int currentId = 0;
+
+    private static int getCurrentId() {
+        currentId++;
+        return currentId;
+    }
 
     public int getId() {
         return id;
-    }
-
-    public Animal setId(int id) {
-        this.id = id;
-        return this;
     }
 
     public String getName() {
@@ -40,11 +42,11 @@ public class Animal extends ZooEntity {
         return this;
     }
 
-    public AnimalSexType getSex() {
+    public AnimalSex getSex() {
         return sex;
     }
 
-    public Animal setSex(AnimalSexType sex) {
+    public Animal setSex(AnimalSex sex) {
         this.sex = sex;
         return this;
     }
@@ -58,11 +60,11 @@ public class Animal extends ZooEntity {
         return this;
     }
 
-    public AnimalSpeciesType getSpecies() {
+    public AnimalSpecies getSpecies() {
         return species;
     }
 
-    public Animal setSpecies(AnimalSpeciesType species) {
+    public Animal setSpecies(AnimalSpecies species) {
         this.species = species;
         return this;
     }
@@ -76,12 +78,13 @@ public class Animal extends ZooEntity {
         return this;
     }
 
-    public Animal(int id, String name, int age, AnimalSexType sex, AnimalSpeciesType species, AnimalType type) {
-        setId(id).setName(name)
-                .setAge(age)
-                .setSex(sex)
-                .setSpecies(species)
-                .setType(type);
+    public Animal(String name, int age, AnimalSex sex, AnimalSpecies species, AnimalType type) {
+        this.id = getCurrentId();
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.species = species;
+        this.type = type;
     }
 
 }

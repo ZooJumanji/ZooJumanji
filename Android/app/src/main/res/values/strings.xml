@@ -63,5 +63,6 @@
     <string name="message_undo_deletion">Undo deletion</string>
     <string name="message_stock_deletion">Stock deleted</string>
     <string name="message_ticket_deletion">Ticket deleted</string>
+    <string name="message_deletion_undo">UNDO</string>
 
 </resources>

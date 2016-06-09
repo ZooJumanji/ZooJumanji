@@ -48,7 +48,6 @@ public class EnclosureDetailActivity extends AppCompatActivity {
         deletionButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Displays a snackbar with a red UNDO action
                 deletionExecution();
 
             }

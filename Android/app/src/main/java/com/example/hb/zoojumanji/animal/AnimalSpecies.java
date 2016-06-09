@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by hb on 08/06/2016.
  */
-public enum AnimalSpeciesType {
+public enum AnimalSpecies {
     LION,
     SURICATE,
     MONKEY,
@@ -18,8 +18,8 @@ public enum AnimalSpeciesType {
     TIGER,
     BIRD;
 
-    public static List<AnimalSpeciesType> getAll() {
-        List<AnimalSpeciesType> list = new ArrayList<>();
+    public static List<AnimalSpecies> getAll() {
+        List<AnimalSpecies> list = new ArrayList<>();
 
         list.add(LION);
         list.add(SURICATE);
@@ -31,8 +31,8 @@ public enum AnimalSpeciesType {
         return list;
     }
 
-    public static AnimalSpeciesType fromResource(int resource) {
-        AnimalSpeciesType type;
+    public static AnimalSpecies fromResource(int resource) {
+        AnimalSpecies type;
         switch (resource) {
             case R.string.animal_species_lion:
                 type = LION;

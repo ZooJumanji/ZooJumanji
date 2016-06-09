@@ -8,17 +8,17 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.hb.zoojumanji.R;
-import com.example.hb.zoojumanji.animal.AnimalSpeciesType;
+import com.example.hb.zoojumanji.animal.AnimalSpecies;
 
 import java.util.List;
 
 /**
  * Created by jonas on 08/06/2016.
  */
-public class AnimalSpeciesSpinnerAdapter extends ArrayAdapter<AnimalSpeciesType>
+public class AnimalSpeciesSpinnerAdapter extends ArrayAdapter<AnimalSpecies>
 {
 
-    public AnimalSpeciesSpinnerAdapter(Context context, int resource, List<AnimalSpeciesType> objects) {
+    public AnimalSpeciesSpinnerAdapter(Context context, int resource, List<AnimalSpecies> objects) {
         super(context, resource, objects);
     }
 
@@ -38,7 +38,7 @@ public class AnimalSpeciesSpinnerAdapter extends ArrayAdapter<AnimalSpeciesType>
         View view = LayoutInflater.from(getContext()).inflate(R.layout.list_animal_sex_item, null);
 
         // Get animal from position
-        AnimalSpeciesType type = getItem(position);
+        AnimalSpecies type = getItem(position);
 
         // Get multiple elements
         TextView name_text = (TextView) view.findViewById(R.id.animal_sex_name);

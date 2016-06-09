@@ -1,8 +1,8 @@
 package com.example.hb.zoojumanji.animal.manager;
 
 import com.example.hb.zoojumanji.animal.Animal;
-import com.example.hb.zoojumanji.animal.AnimalSexType;
-import com.example.hb.zoojumanji.animal.AnimalSpeciesType;
+import com.example.hb.zoojumanji.animal.AnimalSex;
+import com.example.hb.zoojumanji.animal.AnimalSpecies;
 import com.example.hb.zoojumanji.animal.AnimalType;
 
 import java.util.ArrayList;
@@ -14,15 +14,13 @@ import java.util.List;
 public class AnimalManager {
 
     // Static animals list
-    public static final Animal SIMBA = new Animal(0, "Simba", 8, AnimalSexType.MALE, AnimalSpeciesType.LION, AnimalType.CARNIVOROUS);
+    public static final Animal SIMBA = new Animal("Simba", 8, AnimalSex.MALE, AnimalSpecies.LION, AnimalType.CARNIVOROUS);
+    public static final Animal TIMON = new Animal("Timon", 12, AnimalSex.MALE, AnimalSpecies.SURICATE, AnimalType.INSECTIVOROUS);
+    public static final Animal PUMBA = new Animal("Pumba", 15, AnimalSex.MALE, AnimalSpecies.WARTHOG, AnimalType.OMNIVOROUS);
+    public static final Animal NALA = new Animal("Nala", 8, AnimalSex.FEMALE, AnimalSpecies.LION, AnimalType.CARNIVOROUS);
+    public static final Animal RAFIKKI = new Animal("Rafikki", 82, AnimalSex.MALE, AnimalSpecies.MONKEY, AnimalType.OMNIVOROUS);
 
-    public static final Animal TIMON = new Animal(1, "Timon", 12, AnimalSexType.MALE, AnimalSpeciesType.SURICATE, AnimalType.INSECTIVOROUS);
-
-    public static final Animal PUMBA = new Animal(2, "Pumba", 15, AnimalSexType.MALE, AnimalSpeciesType.WARTHOG, AnimalType.OMNIVOROUS);
-
-    public static final Animal NALA = new Animal(3, "Nala", 8, AnimalSexType.FEMALE, AnimalSpeciesType.LION, AnimalType.CARNIVOROUS);
-
-    public static final Animal RAFIKKI = new Animal(4, "Rafikki", 82, AnimalSexType.MALE, AnimalSpeciesType.MONKEY, AnimalType.OMNIVOROUS);
+    protected static Animal deletedAnimal;
 
     protected static List<Animal> animalsList = new ArrayList<>();
 
@@ -52,9 +50,40 @@ public class AnimalManager {
         throw new IllegalArgumentException("Unknown animal");
     }
 
-    // Add animal to list
-    public static void addAnimal(Animal animal) {
+    public static void createAnimal(String name, int age, AnimalSex sex, AnimalSpecies species, AnimalType type) {
+        animalsList.add(new Animal(name, age, sex, species, type));
+    }
 
-        getAnimals().add(animal);
+    public static void deleteAnimal(Animal animal) {
+        if (animalsList.contains(animal)) {
+            animalsList.remove(animal);
+        }
+
+        deletedAnimal = animal;
+    }
+
+    public static void restoreAnimal() {
+        if (deletedAnimal != null && !animalsList.contains(deletedAnimal)) {
+            animalsList.add(deletedAnimal);
+        }
+
+        cleanEnclosure();
+    }
+
+    public static Boolean isInDeletion() {
+        return deletedAnimal != null;
+    }
+
+    public static void cleanEnclosure() {
+        deletedAnimal = null;
+    }
+
+    public static void modify(int id, String name, int age, AnimalSex sex, AnimalSpecies species, AnimalType type) {
+        Animal animal = getAnimal(id);
+        animal.setName(name)
+                .setAge(age)
+                .setSex(sex)
+                .setSpecies(species)
+                .setType(type);
     }
 }

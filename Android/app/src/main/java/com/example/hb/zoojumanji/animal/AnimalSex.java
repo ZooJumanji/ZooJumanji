@@ -10,14 +10,14 @@ import java.util.List;
 /**
  * Created by hb on 08/06/2016.
  */
-public enum AnimalSexType  {
+public enum AnimalSex {
     MALE,
     FEMALE,
     HERMAPHRODITE,
     ASSEXUAL;
 
-    public static List<AnimalSexType> getAll() {
-        List<AnimalSexType> list = new ArrayList<>();
+    public static List<AnimalSex> getAll() {
+        List<AnimalSex> list = new ArrayList<>();
 
         list.add(MALE);
         list.add(FEMALE);
@@ -27,8 +27,8 @@ public enum AnimalSexType  {
         return list;
     }
 
-    public static AnimalSexType fromResource(int resource) {
-        AnimalSexType type;
+    public static AnimalSex fromResource(int resource) {
+        AnimalSex type;
         switch (resource) {
             case R.string.animal_sex_male:
                 type = MALE;

@@ -20,6 +20,8 @@ public class AnimalDetailActivity extends AppCompatActivity {
     protected TextView speciesText;
     protected TextView typeText;
 
+    protected Animal animal;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,17 +33,8 @@ public class AnimalDetailActivity extends AppCompatActivity {
         sexText = (TextView) findViewById(R.id.detail_animal_sex);
         speciesText = (TextView) findViewById(R.id.detail_animal_species);
         typeText = (TextView) findViewById(R.id.detail_animal_type);
+        showAnimalDetails();
 
-        // Get Animal from id
-        Intent intent = getIntent();
-        Animal animal = AnimalManager.getAnimal(intent.getIntExtra("id", 0));
-
-        // Display parameters
-        nameText.setText(animal.getName());
-        ageText.setText(String.valueOf(animal.getAge()));
-        sexText.setText(animal.getSex().getStringResource());
-        speciesText.setText(animal.getSpecies().getStringResource());
-        typeText.setText(animal.getType().getStringResource());
 
         // Get clicked floatingButton
         FloatingActionButton button = (FloatingActionButton) findViewById(R.id.delete_fab);
@@ -49,10 +42,32 @@ public class AnimalDetailActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                // Toast deletion
-                Toast.makeText(AnimalDetailActivity.this, "Animal deleted", Toast.LENGTH_LONG)
-                    .show();
+                deletionExecution();
             }
         });
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        showAnimalDetails();
+    }
+
+    private void showAnimalDetails() {
+        // Get Animal from id
+        Intent intent = getIntent();
+        animal = AnimalManager.getAnimal(intent.getIntExtra("id", 0));
+
+        // Display parameters
+        nameText.setText(animal.getName());
+        ageText.setText(String.valueOf(animal.getAge()));
+        sexText.setText(animal.getSex().getStringResource());
+        speciesText.setText(animal.getSpecies().getStringResource());
+        typeText.setText(animal.getType().getStringResource());
+    }
+
+    private void deletionExecution() {
+        AnimalManager.deleteAnimal(animal);
+        finish();
     }
 }

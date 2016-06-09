@@ -49,7 +49,7 @@ public class TicketTypeActivity extends AppCompatActivity {
         super.onRestart();
         generateList();
         if (TicketManager.isInDeletion()) {
-            generateSnackBar();
+            generateUndeleteSnackBar();
         }
     }
 
@@ -96,7 +96,7 @@ public class TicketTypeActivity extends AppCompatActivity {
             }
         });
     }
-    private void generateSnackBar() {
+    private void generateUndeleteSnackBar() {
 
         // Activation deletion
         deletion = true;
@@ -136,7 +136,7 @@ public class TicketTypeActivity extends AppCompatActivity {
         });
 
         // Display snackbar
-        snackbar.setAction("Undo", undoListener)
+        snackbar.setAction(R.string.message_deletion_undo, undoListener)
                 .setActionTextColor(0xFFFF0000)
                 .show();
     }

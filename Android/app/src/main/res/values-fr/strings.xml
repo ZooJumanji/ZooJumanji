@@ -61,5 +61,6 @@
     <string name="message_undo_deletion">Suppression annulée</string>
     <string name="message_stock_deletion">Stock supprimé</string>
     <string name="message_ticket_deletion">Ticket supprimé</string>
+    <string name="message_deletion_undo">ANNULER</string>
 
 </resources>
