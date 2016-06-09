@@ -3,9 +3,11 @@ package com.example.hb.zoojumanji.enclosure.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +21,8 @@ public class EnclosureDetailActivity extends AppCompatActivity {
     protected TextView countText;
     protected TextView typeText;
 
+    protected Enclosure enclosure;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +35,23 @@ public class EnclosureDetailActivity extends AppCompatActivity {
 
         // Get Animal from id
         Intent intent = getIntent();
-        Enclosure enclosure = EnclosureManager.getEnclosure(intent.getIntExtra("id", 0));
+        enclosure = EnclosureManager.getEnclosure(intent.getIntExtra("id", 0));
+        showEnclosureDetails();
 
+        // Get clicked floatingButton
+        FloatingActionButton button = (FloatingActionButton) findViewById(R.id.delete_fab);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Displays a snackbar with a red UNDO action
+                deletionExecution();
+
+            }
+        });
+    }
+
+    private void showEnclosureDetails() {
         // Display parameters
         nameText.setText(enclosure.getName());
         countText.setText(String.valueOf(enclosure.getAnimalsCount())+"/"+String.valueOf(enclosure.getMax()));
@@ -42,17 +61,10 @@ public class EnclosureDetailActivity extends AppCompatActivity {
         if (enclosure.getAnimalsCount() == enclosure.getMax()) {
             countText.setTextColor(Color.RED);
         }
+    }
 
-        // Get clicked floatingButton
-        FloatingActionButton button = (FloatingActionButton) findViewById(R.id.delete_fab);
-        button.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                // Toast deletion
-                Toast.makeText(EnclosureDetailActivity.this, "Enclosure deleted", Toast.LENGTH_LONG)
-                        .show();
-            }
-        });
+    private void deletionExecution() {
+        EnclosureManager.deleteEnclosure(enclosure);
+        finish();
     }
 }
