@@ -2,6 +2,7 @@ package com.example.hb.zoojumanji.enclosure.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.annotation.ColorInt;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ public class EnclosureDetailActivity extends AppCompatActivity {
     protected TextView typeText;
 
     protected Enclosure enclosure;
+    protected int defaultTextColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,8 @@ public class EnclosureDetailActivity extends AppCompatActivity {
         nameText = (TextView) findViewById(R.id.detail_enclosure_name);
         countText = (TextView) findViewById(R.id.detail_enclosure_count);
         typeText = (TextView) findViewById(R.id.detail_enclosure_type);
+
+        defaultTextColor = countText.getCurrentTextColor();
 
         // Get Enclosure from id
         Intent intent = getIntent();
@@ -77,8 +81,11 @@ public class EnclosureDetailActivity extends AppCompatActivity {
         typeText.setText(enclosure.getType().getStringResource());
 
         // Show animal count in red if enclosure's full
-        if (enclosure.getAnimalsCount() == enclosure.getMax()) {
+        if (enclosure.getAnimalsCount() >= enclosure.getMax()) {
             countText.setTextColor(Color.RED);
+        }
+        else {
+            countText.setTextColor(defaultTextColor);
         }
     }
 

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.enclosure.EnclosureType;
@@ -42,11 +43,19 @@ public class EnclosureCreationActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
-                    EnclosureManager.createEnclosure(nameText.getText().toString(),
-                            Integer.valueOf(maxText.getText().toString()),
-                            (EnclosureType) typeSpinner.getSelectedItem());
+                    try {
+                        EnclosureManager.createEnclosure(nameText.getText().toString(),
+                                Integer.valueOf(maxText.getText().toString()),
+                                (EnclosureType) typeSpinner.getSelectedItem());
 
-                    EnclosureCreationActivity.this.finish();
+                        EnclosureCreationActivity.this.finish();
+                    }
+                    catch (RuntimeException e) {
+                        Toast.makeText(EnclosureCreationActivity.this,
+                                R.string.exception_formular_error,
+                                Toast.LENGTH_LONG)
+                                .show();
+                    }
                 }
             });
         }

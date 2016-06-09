@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.animal.Animal;
@@ -52,15 +53,22 @@ public class AnimalModifyActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Update animal
-                AnimalManager.modifyAnimal(animal.getId(),
-                        nameText.getText().toString(),
-                        Integer.valueOf(ageText.getText().toString()),
-                        (AnimalSex) sexSpinner.getSelectedItem(),
-                        (AnimalSpecies) speciesSpinner.getSelectedItem(),
-                        (AnimalType) typeSpinner.getSelectedItem());
+                try {
+                    AnimalManager.modifyAnimal(animal.getId(),
+                            nameText.getText().toString(),
+                            Integer.valueOf(ageText.getText().toString()),
+                            (AnimalSex) sexSpinner.getSelectedItem(),
+                            (AnimalSpecies) speciesSpinner.getSelectedItem(),
+                            (AnimalType) typeSpinner.getSelectedItem());
 
-                AnimalModifyActivity.this.finish();
-
+                    AnimalModifyActivity.this.finish();
+                }
+                catch (RuntimeException e) {
+                    Toast.makeText(AnimalModifyActivity.this,
+                            R.string.exception_formular_error,
+                            Toast.LENGTH_LONG)
+                            .show();
+                }
             }
         });
     }

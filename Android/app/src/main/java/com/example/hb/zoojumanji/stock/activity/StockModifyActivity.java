@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.stock.Stock;
@@ -48,15 +49,22 @@ public class StockModifyActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Update enclosure
-                StockManager.modifyStock(stock.getId(),
+                // Update stock
+                try {
+                    StockManager.modifyStock(stock.getId(),
                         (StockType) typeSpinner.getSelectedItem(),
                         Integer.valueOf(quantityText.getText().toString()),
                         Integer.valueOf(capacityText.getText().toString()),
                         (StockUnity) unitySpinner.getSelectedItem());
 
-                StockModifyActivity.this.finish();
-
+                    StockModifyActivity.this.finish();
+                }
+                catch (RuntimeException e) {
+                    Toast.makeText(StockModifyActivity.this,
+                            R.string.exception_formular_error,
+                            Toast.LENGTH_LONG)
+                            .show();
+                }
             }
         });
     }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.stock.StockType;
@@ -50,12 +51,20 @@ public class StockCreationActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
-                    StockManager.createStock((StockType) typeSpinner.getSelectedItem(),
-                            Integer.valueOf(quantityText.getText().toString()),
-                            Integer.valueOf(capacityText.getText().toString()),
-                            (StockUnity) unitySpinner.getSelectedItem());
+                    try {
+                        StockManager.createStock((StockType) typeSpinner.getSelectedItem(),
+                                Integer.valueOf(quantityText.getText().toString()),
+                                Integer.valueOf(capacityText.getText().toString()),
+                                (StockUnity) unitySpinner.getSelectedItem());
 
-                    StockCreationActivity.this.finish();
+                        StockCreationActivity.this.finish();
+                    }
+                    catch (RuntimeException e) {
+                        Toast.makeText(StockCreationActivity.this,
+                                R.string.exception_formular_error,
+                                Toast.LENGTH_LONG)
+                                .show();
+                    }
                 }
             });
         }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.animal.AnimalSex;
@@ -42,14 +43,21 @@ public class AnimalCreationActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
-                    AnimalManager.createAnimal(nameText.getText().toString(),
-                            Integer.valueOf(ageText.getText().toString()),
-                            (AnimalSex) sexSpinner.getSelectedItem(),
-                            (AnimalSpecies) speciesSpinner.getSelectedItem(),
-                            (AnimalType) typeSpinner.getSelectedItem());
+                    try {
+                        AnimalManager.createAnimal(nameText.getText().toString(),
+                                Integer.valueOf(ageText.getText().toString()),
+                                (AnimalSex) sexSpinner.getSelectedItem(),
+                                (AnimalSpecies) speciesSpinner.getSelectedItem(),
+                                (AnimalType) typeSpinner.getSelectedItem());
 
-                    AnimalCreationActivity.this.finish();
-
+                        AnimalCreationActivity.this.finish();
+                    }
+                    catch (RuntimeException e) {
+                        Toast.makeText(AnimalCreationActivity.this,
+                                R.string.exception_formular_error,
+                                Toast.LENGTH_LONG)
+                            .show();
+                    }
                 }
             });
         }

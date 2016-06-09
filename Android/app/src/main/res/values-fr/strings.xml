@@ -81,5 +81,6 @@
     <string name="exception_unknown_enclosure">Enclos inconnu</string>
     <string name="exception_unknown_stock">Stock inconnu</string>
     <string name="exception_unknown_ticket">Ticket inconnu</string>
+    <string name="exception_formular_error">Erreur dans le formulaire</string>
 
 </resources>

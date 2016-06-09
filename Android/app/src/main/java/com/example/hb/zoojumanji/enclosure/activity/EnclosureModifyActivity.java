@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.enclosure.Enclosure;
@@ -46,13 +47,20 @@ public class EnclosureModifyActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Update enclosure
-                EnclosureManager.modifyEnclosure(enclosure.getId(),
+                try {
+                    EnclosureManager.modifyEnclosure(enclosure.getId(),
                         nameText.getText().toString(),
                         Integer.valueOf(maxText.getText().toString()),
                         (EnclosureType) typeSpinner.getSelectedItem());
 
-                EnclosureModifyActivity.this.finish();
-
+                    EnclosureModifyActivity.this.finish();
+                }
+                catch (RuntimeException e) {
+                    Toast.makeText(EnclosureModifyActivity.this,
+                            R.string.exception_formular_error,
+                            Toast.LENGTH_LONG)
+                            .show();
+                }
             }
         });
     }

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.ticket.Ticket;
@@ -45,14 +46,22 @@ public class TicketModifyActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Update enclosure
-                TicketManager.modifyTicket(ticket.getId(),
-                        (TicketType) typeSpinner.getSelectedItem(),
-                        Double.valueOf(priceText.getText().toString()),
-                        Integer.valueOf(quantityText.getText().toString()));
+                // Update ticket
+                try {
+                    TicketManager.modifyTicket(ticket.getId(),
+                            (TicketType) typeSpinner.getSelectedItem(),
+                            Double.valueOf(priceText.getText().toString()),
+                            Integer.valueOf(quantityText.getText().toString()));
 
-                TicketModifyActivity.this.finish();
+                    TicketModifyActivity.this.finish();
 
+                }
+                catch (RuntimeException e) {
+                    Toast.makeText(TicketModifyActivity.this,
+                            R.string.exception_formular_error,
+                            Toast.LENGTH_LONG)
+                            .show();
+                }
             }
         });
     }
