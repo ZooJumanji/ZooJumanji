@@ -22,6 +22,8 @@ public class TicketDetailActivity extends AppCompatActivity {
     protected TextView quantityText;
     protected TextView dateText;
 
+    protected Ticket ticket;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +37,27 @@ public class TicketDetailActivity extends AppCompatActivity {
 
         // Get Animal from id
         Intent intent = getIntent();
-        Ticket ticket = TicketManager.getTicket(intent.getIntExtra("id", 0));
+        ticket = TicketManager.getTicket(intent.getIntExtra("id", 0));
 
+        showTicketDetail();
+        generateButtonsListener();
+    }
+
+    private void generateButtonsListener() {
+        // Get clicked floatingButton
+        FloatingActionButton deletionButton = (FloatingActionButton) findViewById(R.id.delete_fab);
+
+        deletionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Displays a snackbar with a red UNDO action
+                deletionExecution();
+
+            }
+        });
+    }
+
+    private void showTicketDetail() {
         // Formatting price
         DecimalFormatSymbols symbols = new DecimalFormatSymbols();
         symbols.setGroupingSeparator(' ');
@@ -57,10 +78,13 @@ public class TicketDetailActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                // Toast deletion
-                Toast.makeText(TicketDetailActivity.this, "Ticket deleted", Toast.LENGTH_LONG)
-                        .show();
+                deletionExecution();
             }
         });
+    }
+
+    private void deletionExecution() {
+        TicketManager.deleteTicket(ticket);
+        finish();
     }
 }

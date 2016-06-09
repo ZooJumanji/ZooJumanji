@@ -27,6 +27,8 @@ public class TicketManager {
     public static final Ticket TICKET_CHILD_YESTERDAY = new Ticket(TicketType.CHILD, 4.50, 3, YESTERDAY);
     public static final Ticket TICKET_CHILD_BEFORE_YESTERDAY = new Ticket(TicketType.CHILD, 4.50, 5, BEFORE_YESTERDAY);
 
+    protected static Ticket deletedTicket;
+
     protected static List<Ticket> ticketsList = new ArrayList<>();
 
     public static List<Ticket> getTickets() {
@@ -71,4 +73,33 @@ public class TicketManager {
 
         throw new IllegalArgumentException("Unknown ticket");
     }
+
+    public static void createTicket(TicketType type, Double price, Integer quantity) {
+        Ticket ticket = new Ticket(type, price, quantity, new Date());
+        ticketsList.add(ticket);
+    }
+    public static void deleteTicket(Ticket ticket) {
+        if (ticketsList.contains(ticket)) {
+            ticketsList.remove(ticket);
+        }
+
+        deletedTicket = ticket;
+    }
+
+    public static void restoreTicket() {
+        if (deletedTicket != null && !ticketsList.contains(deletedTicket)) {
+            ticketsList.add(deletedTicket);
+        }
+
+        cleanTicket();
+    }
+
+    public static Boolean isInDeletion() {
+        return deletedTicket != null;
+    }
+
+    public static void cleanTicket() {
+        deletedTicket = null;
+    }
+
 }

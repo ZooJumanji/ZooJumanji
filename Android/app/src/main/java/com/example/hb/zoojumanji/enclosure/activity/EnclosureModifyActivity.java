@@ -67,7 +67,7 @@ public class EnclosureModifyActivity extends AppCompatActivity {
         maxText.setText(String.valueOf(enclosure.getMax()));
 
         ArrayAdapter<EnclosureType> adapter = new EnclosureTypeSpinnerAdapter(this,
-                R.layout.list_enclosure_type_item,
+                R.layout.spinner_enclosure_type_item,
                 Arrays.asList(EnclosureType.values()));
 
         typeSpinner.setAdapter(adapter);

@@ -4,20 +4,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.enclosure.EnclosureType;
 import com.example.hb.zoojumanji.enclosure.adapter.EnclosureTypeSpinnerAdapter;
 import com.example.hb.zoojumanji.enclosure.manager.EnclosureManager;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 public class EnclosureCreationActivity extends AppCompatActivity {
 
@@ -36,7 +31,7 @@ public class EnclosureCreationActivity extends AppCompatActivity {
         typeSpinner = (Spinner) findViewById(R.id.edit_enclosure_type);
 
         typeSpinner.setAdapter(new EnclosureTypeSpinnerAdapter(this,
-                R.layout.list_enclosure_type_item,
+                R.layout.spinner_enclosure_type_item,
                 Arrays.asList(EnclosureType.values())));
 
         // Get clicked floatingButton
