@@ -16,6 +16,8 @@ public class EnclosureManager {
     public static final Enclosure MONKEY_CAGE = new Enclosure("Rafikki cage", 12, EnclosureType.CAGE);
     public static final Enclosure TIMON_POOL = new Enclosure("Timon pool", 4, EnclosureType.POOL);
 
+    protected static Enclosure deletedEnclosure;
+
     protected static List<Enclosure> enclosuresList = new ArrayList<>();
 
     public static List<Enclosure> getEnclosures() {
@@ -52,4 +54,27 @@ public class EnclosureManager {
         enclosuresList.add(new Enclosure(name, capacity, type));
     }
 
+    public static void deleteEnclosure(Enclosure enclosure) {
+        if (enclosuresList.contains(enclosure)) {
+            enclosuresList.remove(enclosure);
+        }
+
+        deletedEnclosure = enclosure;
+    }
+
+    public static void restoreEnclosure() {
+        if (deletedEnclosure != null && !enclosuresList.contains(deletedEnclosure)) {
+            enclosuresList.add(deletedEnclosure);
+        }
+
+        cleanEnclosure();
+    }
+
+    public static Boolean isInDeletion() {
+        return deletedEnclosure != null;
+    }
+
+    public static void cleanEnclosure() {
+        deletedEnclosure = null;
+    }
 }

@@ -60,4 +60,7 @@
     <string name="ticket_type_group">group ticket</string>
     <string name="Error_Not_Found_Exception">Error_Not_Found_Exception</string>
 
+    <string name="message_undo_deletion">Undo deletion</string>
+    <string name="message_stock_deletion">Stock deleted</string>
+
 </resources>
