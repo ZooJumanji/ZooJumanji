@@ -34,13 +34,13 @@ public class EnclosureTypeSpinnerAdapter extends ArrayAdapter<EnclosureType> {
     }
 
     private View inflateStringResourceView(int position) {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.spinner_enclosure_type_item, null);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.spinner_enclosure_param_item, null);
 
         // Get animal from position
         EnclosureType type = getItem(position);
 
         // Get multiple elements
-        TextView name_text = (TextView) view.findViewById(R.id.enclosure_type_name);
+        TextView name_text = (TextView) view.findViewById(R.id.enclosure_param_name);
 
         // Insert values
         name_text.setText(type.getStringResource());

@@ -8,10 +8,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.hb.zoojumanji.R;
-import com.example.hb.zoojumanji.ticket.Ticket;
 import com.example.hb.zoojumanji.ticket.TicketType;
 import com.example.hb.zoojumanji.ticket.adapter.TicketTypeSpinnerAdapter;
 import com.example.hb.zoojumanji.ticket.manager.TicketManager;
@@ -65,7 +63,7 @@ public class TicketCreationActivity extends AppCompatActivity {
         typeSpinner = (Spinner) findViewById(R.id.edit_ticket_type);
 
         ArrayAdapter<TicketType> adapter = new TicketTypeSpinnerAdapter(this,
-                R.layout.spinner_ticket_type_item,
+                R.layout.spinner_ticket_param_item,
                 Arrays.asList(TicketType.values()));
 
         typeSpinner.setAdapter(adapter);

@@ -48,6 +48,19 @@
     <string name="enclosure_type_aquarium">aquarium</string>
     <string name="enclosure_type_vivarium">vivarium</string>
 
+    <string name="stock_type_meat">meat</string>
+    <string name="stock_type_apple">apple</string>
+    <string name="stock_type_banana">banana</string>
+    <string name="stock_type_seed">seed</string>
+    <string name="stock_type_mouse">mouse</string>
+    <string name="stock_type_hay">hay</string>
+    <string name="stock_type_bug">bug</string>
+    <string name="stock_type_popcorn">popcorn</string>
+
+    <string name="stock_unity_piece">piece</string>
+    <string name="stock_unity_kilo">kilo</string>
+    <string name="stock_unity_gramme">gramme</string>
+
     <string name="ticket_privilege_feed_timon">feed Timon</string>
     <string name="ticket_privilege_care_entrance">care entrance</string>
     <string name="ticket_privilege_enclosure_entrance">enclosure entrance</string>

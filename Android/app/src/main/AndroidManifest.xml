@@ -32,7 +32,8 @@
         <activity android:name=".enclosure.activity.EnclosureCreationActivity" />
         <activity android:name=".enclosure.activity.EnclosureModifyActivity" />
         <activity android:name=".ticket.activity.TicketCreationActivity" />
-        <activity android:name=".animal.activity.AnimalModifyActivity"></activity>
+        <activity android:name=".animal.activity.AnimalModifyActivity" />
+        <activity android:name=".stock.activity.StockModifyActivity"></activity>
     </application>
 
 </manifest>

@@ -31,7 +31,7 @@ public class EnclosureCreationActivity extends AppCompatActivity {
         typeSpinner = (Spinner) findViewById(R.id.edit_enclosure_type);
 
         typeSpinner.setAdapter(new EnclosureTypeSpinnerAdapter(this,
-                R.layout.spinner_enclosure_type_item,
+                R.layout.spinner_enclosure_param_item,
                 Arrays.asList(EnclosureType.values())));
 
         // Get clicked floatingButton

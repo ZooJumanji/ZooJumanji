@@ -34,10 +34,9 @@ public class EnclosureDetailActivity extends AppCompatActivity {
         // Get Enclosure from id
         Intent intent = getIntent();
         enclosure = EnclosureManager.getEnclosure(intent.getIntExtra("id", 0));
+
         showEnclosureDetails();
         generateButtonsListener();
-
-
     }
 
     private void generateButtonsListener() {

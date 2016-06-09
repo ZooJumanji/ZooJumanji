@@ -1,4 +1,4 @@
-package com.example.hb.zoojumanji.ticket.adapter;
+package com.example.hb.zoojumanji.stock.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,16 +8,16 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.hb.zoojumanji.R;
-import com.example.hb.zoojumanji.ticket.TicketType;
+import com.example.hb.zoojumanji.stock.StockType;
 
 import java.util.List;
 
 /**
  * Created by hb on 08/06/2016.
  */
-public class TicketTypeSpinnerAdapter extends ArrayAdapter<TicketType> {
+public class StockTypeSpinnerAdapter extends ArrayAdapter<StockType> {
 
-    public TicketTypeSpinnerAdapter(Context context, int resource, List<TicketType> objects) {
+    public StockTypeSpinnerAdapter(Context context, int resource, List<StockType> objects) {
         super(context, resource, objects);
     }
 
@@ -34,14 +34,14 @@ public class TicketTypeSpinnerAdapter extends ArrayAdapter<TicketType> {
     }
 
     private View inflateStringResourceView(int position) {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.spinner_ticket_param_item,
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.spinner_stock_param_item,
                 null);
 
         // Get animal from position
-        TicketType type = getItem(position);
+        StockType type = getItem(position);
 
         // Get multiple elements
-        TextView name_text = (TextView) view.findViewById(R.id.ticket_param_name);
+        TextView name_text = (TextView) view.findViewById(R.id.stock_param_name);
 
         // Insert values
         name_text.setText(type.getStringResource());

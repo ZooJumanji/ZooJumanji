@@ -15,12 +15,12 @@ import com.example.hb.zoojumanji.stock.Stock;
 
 public class StockDetailActivity extends AppCompatActivity {
 
-    protected TextView nameText;
-    protected TextView currentCountText;
-    protected TextView maxCountText;
     protected TextView typeText;
+    protected TextView quantityText;
+    protected TextView capacityText;
+    protected TextView unityText;
 
-    View.OnClickListener mOnClickListener;
+    protected Stock stock;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,41 +28,59 @@ public class StockDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_stock_detail);
 
         // Initialize TextView
-        nameText = (TextView) findViewById(R.id.detail_stock_name);
         typeText = (TextView) findViewById(R.id.detail_stock_type);
-        currentCountText = (TextView) findViewById(R.id.detail_stock_actual_count);
-        maxCountText = (TextView) findViewById(R.id.detail_stock_max_count);
+        quantityText = (TextView) findViewById(R.id.detail_stock_quantity);
+        capacityText = (TextView) findViewById(R.id.detail_stock_capacity);
+        unityText = (TextView) findViewById(R.id.detail_stock_unity);
 
         // Get stock from id
         Intent intent = getIntent();
-        Stock stock = StockManager.getStock(intent.getIntExtra("id", 0));
+        stock = StockManager.getStock(intent.getIntExtra("id", 0));
 
-        // Display parameters
-        nameText.setText(stock.getName());
-        currentCountText.setText(String.valueOf(stock.getQuantity()));
-        maxCountText.setText(String.valueOf(stock.getCapacity()));
-        typeText.setText(getString(stock.getType()));
+        showStockDetails();
+        generateButtonsListener();
+    }
 
+    private void generateButtonsListener() {
         // Get clicked delete floatingButton
         FloatingActionButton button = (FloatingActionButton) findViewById(R.id.delete_fab);
+        FloatingActionButton modifyButton = (FloatingActionButton) findViewById(R.id.modify_fab);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //The undo action that could be called by the following snackbar
-                mOnClickListener = new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(StockDetailActivity.this, "Stock UNdeleted", Toast.LENGTH_LONG)
-                                .show();
-                    }
-                };
-                //Displays a snackbar with a red UNDO action
-                Snackbar.make(findViewById(android.R.id.content), "Stock deleted", Snackbar.LENGTH_LONG)
-                        .setAction("Undo", mOnClickListener)
-                        .setActionTextColor(0xFFFF0000)
-                        .show();
-
+                deletionExecution();
             }
         });
+
+        modifyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Send to detail page with id in argument
+                Intent intent = new Intent(StockDetailActivity.this, StockModifyActivity.class);
+                intent.putExtra("id", stock.getId());
+
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        showStockDetails();
+    }
+
+    private void showStockDetails() {
+        // Display parameters
+        typeText.setText(stock.getType().getStringResource());
+        quantityText.setText(String.valueOf(stock.getQuantity()));
+        capacityText.setText(String.valueOf(stock.getCapacity()));
+        unityText.setText(getString(stock.getUnity().getStringResource()));
+    }
+
+    private void deletionExecution() {
+        StockManager.deleteStock(stock);
+        finish();
     }
 }

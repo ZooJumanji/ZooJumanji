@@ -4,6 +4,8 @@ import android.content.res.Resources;
 
 import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.stock.Stock;
+import com.example.hb.zoojumanji.stock.StockType;
+import com.example.hb.zoojumanji.stock.StockUnity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,16 +15,24 @@ import java.util.List;
  */
 public class StockManager {
     // static Stock list
-    public static final Stock HAY = new Stock("Hay", Stock.TYPE_FOOD, 8, 10);
-    public static final Stock PEANUT = new Stock("Peanut", Stock.TYPE_FOOD, 75, 100);
+    public static final Stock MEAT = new Stock(StockType.MEAT, 82, 100, StockUnity.PIECE);
+    public static final Stock APPLE = new Stock(StockType.APPLE, 3, 80, StockUnity.KILO);
+    public static final Stock BANANA = new Stock(StockType.BANANA, 50, 80, StockUnity.PIECE);
+    public static final Stock BUG = new Stock(StockType.BUG, 400, 400, StockUnity.GRAMME);
+    public static final Stock POPCORN = new Stock(StockType.POPCORN, 1223, 1500, StockUnity.KILO);
+
+    protected static Stock deletedStock;
 
     protected static List<Stock> stockList = new ArrayList<>();
 
     public static List<Stock> getStocks() {
         // Initialize list if is empty
         if (stockList.isEmpty()) {
-            stockList.add(HAY);
-            stockList.add(PEANUT);
+            stockList.add(MEAT);
+            stockList.add(APPLE);
+            stockList.add(BANANA);
+            stockList.add(BUG);
+            stockList.add(POPCORN);
         }
         return stockList;
     }
@@ -37,5 +47,41 @@ public class StockManager {
         }
 
         throw new IllegalArgumentException(Resources.getSystem().getString(R.string.exception_unknown_stock));
+    }
+
+    public static void createStock(StockType type, int quantity, int capacity, StockUnity unity) {
+        stockList.add(new Stock(type, quantity, capacity, unity));
+    }
+
+    public static void deleteStock(Stock stock) {
+        if (stockList.contains(stock)) {
+            stockList.remove(stock);
+        }
+
+        deletedStock = stock;
+    }
+
+    public static void restoreStock() {
+        if (deletedStock != null && !stockList.contains(deletedStock)) {
+            stockList.add(deletedStock);
+        }
+
+        cleanStock();
+    }
+
+    public static Boolean isInDeletion() {
+        return deletedStock != null;
+    }
+
+    public static void cleanStock() {
+        deletedStock = null;
+    }
+
+    public static void modify(int id, StockType type, int quantity, int capacity, StockUnity unity) {
+        Stock stock = getStock(id);
+        stock.setType(type)
+                .setQuantity(quantity)
+                .setCapacity(capacity)
+                .setUnity(unity);
     }
 }

@@ -34,7 +34,7 @@ public class EnclosureModifyActivity extends AppCompatActivity {
         Intent intent = getIntent();
         enclosure = EnclosureManager.getEnclosure(intent.getIntExtra("id", 0));
 
-        showEnclosureDetail();
+        showEnclosureDetails();
         generateButtonsListener();
     }
 
@@ -57,7 +57,7 @@ public class EnclosureModifyActivity extends AppCompatActivity {
         });
     }
 
-    private void showEnclosureDetail() {
+    private void showEnclosureDetails() {
         // get TextView
         nameText = (EditText) findViewById(R.id.edit_enclosure_name);
         maxText = (EditText) findViewById(R.id.edit_enclosure_max);
@@ -67,7 +67,7 @@ public class EnclosureModifyActivity extends AppCompatActivity {
         maxText.setText(String.valueOf(enclosure.getMax()));
 
         ArrayAdapter<EnclosureType> adapter = new EnclosureTypeSpinnerAdapter(this,
-                R.layout.spinner_enclosure_type_item,
+                R.layout.spinner_enclosure_param_item,
                 Arrays.asList(EnclosureType.values()));
 
         typeSpinner.setAdapter(adapter);
