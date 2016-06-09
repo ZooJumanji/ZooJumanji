@@ -1,5 +1,8 @@
 package com.example.hb.zoojumanji.animal.manager;
 
+import android.content.res.Resources;
+
+import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.animal.Animal;
 import com.example.hb.zoojumanji.animal.AnimalSex;
 import com.example.hb.zoojumanji.animal.AnimalSpecies;
@@ -47,7 +50,7 @@ public class AnimalManager {
             }
         }
 
-        throw new IllegalArgumentException("Unknown animal");
+        throw new IllegalArgumentException(Resources.getSystem().getString(R.string.exception_unknown_animal));
     }
 
     public static void createAnimal(String name, int age, AnimalSex sex, AnimalSpecies species, AnimalType type) {

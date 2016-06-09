@@ -1,5 +1,8 @@
 package com.example.hb.zoojumanji.enclosure.manager;
 
+import android.content.res.Resources;
+
+import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.animal.manager.AnimalManager;
 import com.example.hb.zoojumanji.enclosure.Enclosure;
 import com.example.hb.zoojumanji.enclosure.EnclosureType;
@@ -47,7 +50,7 @@ public class EnclosureManager {
             }
         }
 
-        throw new IllegalArgumentException("Unknown enclosure");
+        throw new IllegalArgumentException(Resources.getSystem().getString(R.string.exception_unknown_enclosure));
     }
 
     public static void createEnclosure(String name, int capacity, EnclosureType type) {

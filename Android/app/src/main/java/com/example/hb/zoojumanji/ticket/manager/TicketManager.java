@@ -1,5 +1,8 @@
 package com.example.hb.zoojumanji.ticket.manager;
 
+import android.content.res.Resources;
+
+import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.ticket.Ticket;
 import com.example.hb.zoojumanji.ticket.TicketType;
 
@@ -71,7 +74,7 @@ public class TicketManager {
             }
         }
 
-        throw new IllegalArgumentException("Unknown ticket");
+        throw new IllegalArgumentException(Resources.getSystem().getString(R.string.exception_unknown_ticket));
     }
 
     public static void createTicket(TicketType type, Double price, Integer quantity) {

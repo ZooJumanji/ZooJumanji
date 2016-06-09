@@ -63,4 +63,9 @@
     <string name="message_ticket_deletion">Ticket supprimé</string>
     <string name="message_deletion_undo">ANNULER</string>
 
+    <string name="exception_unknown_animal">Animal inconnu</string>
+    <string name="exception_unknown_enclosure">Enclos inconnu</string>
+    <string name="exception_unknown_stock">Stock inconnu</string>
+    <string name="exception_unknown_ticket">Ticket inconnu</string>
+
 </resources>

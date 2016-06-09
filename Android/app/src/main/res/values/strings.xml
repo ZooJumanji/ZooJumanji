@@ -65,4 +65,9 @@
     <string name="message_ticket_deletion">Ticket deleted</string>
     <string name="message_deletion_undo">UNDO</string>
 
+    <string name="exception_unknown_animal">Unknown animal</string>
+    <string name="exception_unknown_enclosure">Unknown enclosure</string>
+    <string name="exception_unknown_stock">Unknown stock</string>
+    <string name="exception_unknown_ticket">Unknown ticket</string>
+
 </resources>

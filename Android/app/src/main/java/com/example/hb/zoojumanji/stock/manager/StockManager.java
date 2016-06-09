@@ -1,5 +1,8 @@
 package com.example.hb.zoojumanji.stock.manager;
 
+import android.content.res.Resources;
+
+import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.stock.Stock;
 
 import java.util.ArrayList;
@@ -33,6 +36,6 @@ public class StockManager {
             }
         }
 
-        throw new IllegalArgumentException("Unknown stock");
+        throw new IllegalArgumentException(Resources.getSystem().getString(R.string.exception_unknown_stock));
     }
 }
