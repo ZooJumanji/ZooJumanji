@@ -36,7 +36,7 @@ public class AnimalModifyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_enclosure_modify);
+        setContentView(R.layout.activity_animal_modify);
 
         // Get Enclosure from id
         Intent intent = getIntent();
@@ -75,8 +75,9 @@ public class AnimalModifyActivity extends AppCompatActivity {
         speciesSpinner = (Spinner) findViewById(R.id.edit_animal_species);
         typeSpinner = (Spinner) findViewById(R.id.edit_animal_type);
 
-        nameText.setText(animal.getName());
-        ageText.setText(animal.getName());
+        nameText.setText(
+                animal.getName());
+        ageText.setText(String.valueOf(animal.getAge()));
 
         ArrayAdapter<AnimalSex> sexAdapter = new AnimalSexSpinnerAdapter(this,
                 R.layout.spinner_animal_param_item,

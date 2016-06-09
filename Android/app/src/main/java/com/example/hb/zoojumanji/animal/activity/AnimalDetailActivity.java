@@ -37,12 +37,26 @@ public class AnimalDetailActivity extends AppCompatActivity {
 
 
         // Get clicked floatingButton
-        FloatingActionButton button = (FloatingActionButton) findViewById(R.id.delete_fab);
-        button.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton deletionButton = (FloatingActionButton) findViewById(R.id.delete_fab);
+        FloatingActionButton modifyButton = (FloatingActionButton) findViewById(R.id.modify_fab);
+
+        deletionButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 deletionExecution();
+            }
+        });
+
+        modifyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Send to detail page with id in argument
+                Intent intent = new Intent(AnimalDetailActivity.this, AnimalModifyActivity
+                        .class);
+                intent.putExtra("id", animal.getId());
+
+                startActivity(intent);
             }
         });
     }
