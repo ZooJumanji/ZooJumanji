@@ -38,7 +38,7 @@ public class AnimalAdapter extends ArrayAdapter<Animal> {
         // Insert values
         id_text.setText(String.valueOf(animal.getId()));
         name_text.setText(animal.getName());
-        species_text.setText(animal.getSpecies());
+        species_text.setText(animal.getSpecies().getStringResource());
 
         return view;
     }

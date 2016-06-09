@@ -39,9 +39,9 @@ public class AnimalDetailActivity extends AppCompatActivity {
         // Display parameters
         nameText.setText(animal.getName());
         ageText.setText(String.valueOf(animal.getAge()));
-        sexText.setText(getString(animal.getSex()));
-        speciesText.setText(getString(animal.getSpecies()));
-        typeText.setText(getString(animal.getType()));
+        sexText.setText(animal.getSex().getStringResource());
+        speciesText.setText(animal.getSpecies().getStringResource());
+        typeText.setText(animal.getType().getStringResource());
 
         // Get clicked floatingButton
         FloatingActionButton button = (FloatingActionButton) findViewById(R.id.delete_fab);

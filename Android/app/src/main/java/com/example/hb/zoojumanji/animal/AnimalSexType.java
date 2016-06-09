@@ -12,7 +12,7 @@ import java.util.List;
  */
 public enum AnimalSexType  {
     MALE,
-    FEMELE,
+    FEMALE,
     HERMAPHRODITE,
     ASSEXUAL;
 
@@ -20,7 +20,7 @@ public enum AnimalSexType  {
         List<AnimalSexType> list = new ArrayList<>();
 
         list.add(MALE);
-        list.add(FEMELE);
+        list.add(FEMALE);
         list.add(HERMAPHRODITE);
         list.add(ASSEXUAL);
 
@@ -30,16 +30,16 @@ public enum AnimalSexType  {
     public static AnimalSexType fromResource(int resource) {
         AnimalSexType type;
         switch (resource) {
-            case R.string.enclosure_type_cage:
+            case R.string.animal_sex_male:
                 type = MALE;
                 break;
-            case R.string.enclosure_type_paddock:
-                type = FEMELE;
+            case R.string.animal_sex_female:
+                type = FEMALE;
                 break;
-            case R.string.enclosure_type_pool:
+            case R.string.animal_sex_hermaphrodite:
                 type = HERMAPHRODITE;
                 break;
-            case R.string.enclosure_type_aquarium:
+            case R.string.animal_sex_assexual:
                 type = ASSEXUAL;
                 break;
             default:
@@ -54,7 +54,7 @@ public enum AnimalSexType  {
         switch (this) {
             case MALE:
                 return R.string.animal_sex_male;
-            case FEMELE:
+            case FEMALE:
                 return R.string.animal_sex_female;
             case HERMAPHRODITE:
                 return R.string.animal_sex_hermaphrodite;
