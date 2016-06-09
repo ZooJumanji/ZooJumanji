@@ -3,13 +3,11 @@ package com.example.hb.zoojumanji.enclosure.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.enclosure.manager.EnclosureManager;
@@ -33,15 +31,21 @@ public class EnclosureDetailActivity extends AppCompatActivity {
         countText = (TextView) findViewById(R.id.detail_enclosure_count);
         typeText = (TextView) findViewById(R.id.detail_enclosure_type);
 
-        // Get Animal from id
+        // Get Enclosure from id
         Intent intent = getIntent();
         enclosure = EnclosureManager.getEnclosure(intent.getIntExtra("id", 0));
         showEnclosureDetails();
+        generateButtonsListener();
 
+
+    }
+
+    private void generateButtonsListener() {
         // Get clicked floatingButton
-        FloatingActionButton button = (FloatingActionButton) findViewById(R.id.delete_fab);
+        FloatingActionButton deletionButton = (FloatingActionButton) findViewById(R.id.delete_fab);
+        FloatingActionButton modifyButton = (FloatingActionButton) findViewById(R.id.modify_fab);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        deletionButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Displays a snackbar with a red UNDO action
@@ -49,6 +53,23 @@ public class EnclosureDetailActivity extends AppCompatActivity {
 
             }
         });
+
+        modifyButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Send to detail page with id in argument
+                Intent intent = new Intent(EnclosureDetailActivity.this, EnclosureModifyActivity.class);
+                intent.putExtra("id", enclosure.getId());
+
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        showEnclosureDetails();
     }
 
     private void showEnclosureDetails() {

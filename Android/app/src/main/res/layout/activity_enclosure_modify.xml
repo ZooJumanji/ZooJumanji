@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".animal.activity.AnimalDetailActivity" >
+    tools:context=".stock.activity.StockDetailActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,17 +29,17 @@
             <TextView
                 android:layout_width="@dimen/detail_label"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:text="@string/detail_label_name" />
+                android:text="@string/detail_label_name"
+                android:textSize="@dimen/text_size" />
 
-            <TextView
+            <EditText
+                android:id="@+id/edit_enclosure_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:id="@+id/detail_enclosure_name"/>
-
+                android:textSize="@dimen/text_size" />
         </LinearLayout>
 
+        <!-- Type -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,17 +48,18 @@
             <TextView
                 android:layout_width="@dimen/detail_label"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:text="@string/detail_label_count" />
+                android:text="@string/detail_label_type"
+                android:textSize="@dimen/text_size" />
 
-            <TextView
+            <Spinner
+                android:id="@+id/edit_enclosure_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:id="@+id/detail_enclosure_count"/>
+                android:textSize="@dimen/text_size" />
 
         </LinearLayout>
 
+        <!-- Actual Count  -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,43 +68,27 @@
             <TextView
                 android:layout_width="@dimen/detail_label"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:text="@string/detail_label_type" />
+                android:text="@string/detail_label_max"
+                android:textSize="@dimen/text_size" />
 
-            <TextView
+            <EditText
+                android:id="@+id/edit_enclosure_max"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:id="@+id/detail_enclosure_type"/>
+                android:inputType="number"
+                android:textSize="@dimen/text_size" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/save_fab"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:gravity="end" >
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/modify_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/fab_margin"
-            android:layout_gravity="bottom|end"
-            android:scaleType="center"
-            android:src="@android:drawable/ic_menu_edit" />
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/delete_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/fab_margin"
-            android:layout_gravity="bottom|end"
-            android:scaleType="center"
-            android:src="@android:drawable/ic_menu_delete" />
-
-    </LinearLayout>
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:scaleType="center"
+        android:src="@android:drawable/ic_menu_save" />
 
 </android.support.design.widget.CoordinatorLayout>

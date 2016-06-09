@@ -32,12 +32,27 @@ public class Enclosure {
         return name;
     }
 
+    public Enclosure setName(String name) {
+        this.name = name;
+        return this;
+    }
+
     public int getMax() {
         return max;
     }
 
+    public Enclosure setMax(int max) {
+        this.max = max;
+        return this;
+    }
+
     public EnclosureType getType() {
         return type;
+    }
+
+    public Enclosure setType(EnclosureType type) {
+        this.type = type;
+        return this;
     }
 
     public List<Animal> getAnimals() {
