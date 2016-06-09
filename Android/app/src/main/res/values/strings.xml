@@ -37,6 +37,10 @@
     <string name="detail_label_count">Count : </string>
     <string name="detail_label_in_stock">In stock : </string>
     <string name="detail_label_capacity">Capacity : </string>
+    <string name="detail_label_price">Price :</string>
+    <string name="detail_label_quantity">Quantity :</string>
+    <string name="detail_label_date">Date :</string>
+    <string name="detail_label_max">Max :</string>
 
     <string name="enclosure_type_cage">cage</string>
     <string name="enclosure_type_paddock">paddock</string>

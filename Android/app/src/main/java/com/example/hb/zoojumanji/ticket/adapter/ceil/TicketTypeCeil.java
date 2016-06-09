@@ -1,6 +1,7 @@
 package com.example.hb.zoojumanji.ticket.adapter.ceil;
 
 import com.example.hb.zoojumanji.ticket.Ticket;
+import com.example.hb.zoojumanji.ticket.TicketType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,14 +11,14 @@ import java.util.List;
  */
 public class TicketTypeCeil {
 
-    protected int type;
+    protected TicketType type;
     protected List<Ticket> tickets = new ArrayList<>();
 
-    public int getType() {
+    public TicketType getType() {
         return type;
     }
 
-    public TicketTypeCeil setType(int type) {
+    public TicketTypeCeil setType(TicketType type) {
         this.type = type;
         return this;
     }
@@ -40,7 +41,7 @@ public class TicketTypeCeil {
         return this;
     }
 
-    public TicketTypeCeil(int ticketType) {
+    public TicketTypeCeil(TicketType ticketType) {
         setType(ticketType);
     }
 

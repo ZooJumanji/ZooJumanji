@@ -27,7 +27,9 @@
         <activity android:name=".enclosure.activity.EnclosureDetailActivity" />
         <activity android:name=".animal.activity.AnimalCreationActivity" />
         <activity android:name=".stock.activity.StockCreationActivity" />
-        <activity android:name=".ticket.activity.TicketTypeActivity"></activity>
+        <activity android:name=".ticket.activity.TicketTypeActivity" />
+        <activity android:name=".ticket.activity.TicketDetailActivity" />
+        <activity android:name=".enclosure.activity.EnclosureCreationActivity"></activity>
     </application>
 
 </manifest>

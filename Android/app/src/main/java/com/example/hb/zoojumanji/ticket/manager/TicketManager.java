@@ -1,6 +1,7 @@
 package com.example.hb.zoojumanji.ticket.manager;
 
 import com.example.hb.zoojumanji.ticket.Ticket;
+import com.example.hb.zoojumanji.ticket.TicketType;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,14 +18,14 @@ public class TicketManager {
     public static final Date YESTERDAY = new Date(System.currentTimeMillis() - DAY_IN_MILLISECONDS);
     public static final Date BEFORE_YESTERDAY = new Date(System.currentTimeMillis() - 2 * DAY_IN_MILLISECONDS);
 
-    public static final Ticket TICKET_NORMAL_TODAY = new Ticket(0, Ticket.TICKET_TYPE_NORMAL, 8.50, 12, TODAY);
-    public static final Ticket TICKET_NORMAL_YESTERDAY = new Ticket(1, Ticket.TICKET_TYPE_NORMAL, 8.50, 120, YESTERDAY);
-    public static final Ticket TICKET_VIP_TODAY = new Ticket(2, Ticket.TICKET_TYPE_VIP, 18.00, 22, TODAY);
-    public static final Ticket TICKET_STUDENT_TODAY = new Ticket(3, Ticket.TICKET_TYPE_STUDENT, 6.50, 34, TODAY);
-    public static final Ticket TICKET_GROUP_YESTERDAY = new Ticket(4, Ticket.TICKET_TYPE_GROUP, 7.00, 2, YESTERDAY);
-    public static final Ticket TICKET_CHILD_TODAY = new Ticket(5, Ticket.TICKET_TYPE_CHILD, 4.50, 16, TODAY);
-    public static final Ticket TICKET_CHILD_YESTERDAY = new Ticket(6, Ticket.TICKET_TYPE_CHILD, 4.50, 3, YESTERDAY);
-    public static final Ticket TICKET_CHILD_BEFORE_YESTERDAY = new Ticket(7, Ticket.TICKET_TYPE_CHILD, 4.50, 5, BEFORE_YESTERDAY);
+    public static final Ticket TICKET_NORMAL_TODAY = new Ticket(TicketType.NORMAL, 8.50, 12, TODAY);
+    public static final Ticket TICKET_NORMAL_YESTERDAY = new Ticket(TicketType.NORMAL, 8.50, 120, YESTERDAY);
+    public static final Ticket TICKET_VIP_TODAY = new Ticket(TicketType.VIP, 18.00, 22, TODAY);
+    public static final Ticket TICKET_STUDENT_TODAY = new Ticket(TicketType.STUDENT, 6.50, 34, TODAY);
+    public static final Ticket TICKET_GROUP_YESTERDAY = new Ticket(TicketType.GROUP, 7.00, 2, YESTERDAY);
+    public static final Ticket TICKET_CHILD_TODAY = new Ticket(TicketType.CHILD, 4.50, 16, TODAY);
+    public static final Ticket TICKET_CHILD_YESTERDAY = new Ticket(TicketType.CHILD, 4.50, 3, YESTERDAY);
+    public static final Ticket TICKET_CHILD_BEFORE_YESTERDAY = new Ticket(TicketType.CHILD, 4.50, 5, BEFORE_YESTERDAY);
 
     protected static List<Ticket> ticketsList = new ArrayList<>();
 
@@ -46,12 +47,12 @@ public class TicketManager {
     }
 
     // Get Ticket from id
-    public static List<Ticket> getTickets(int type_id) {
+    public static List<Ticket> getTickets(TicketType type) {
         List<Ticket> list = getTickets();
         List<Ticket> returnList = new ArrayList<>();
 
         for (Ticket ticket : list) {
-            if (ticket.getType() == type_id) {
+            if (ticket.getType() == type) {
                 returnList.add(ticket);
             }
         }

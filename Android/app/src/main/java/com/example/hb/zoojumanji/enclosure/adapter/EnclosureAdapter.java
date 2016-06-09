@@ -19,8 +19,8 @@ import java.util.List;
 public class EnclosureAdapter extends ArrayAdapter<Enclosure> {
 
     // Default constructor
-    public EnclosureAdapter(Context context, int resource, int textViewResourceId, List<Enclosure> objects) {
-        super(context, resource, textViewResourceId, objects);
+    public EnclosureAdapter(Context context, int resource, List<Enclosure> objects) {
+        super(context, resource, objects);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class EnclosureAdapter extends ArrayAdapter<Enclosure> {
         // Insert values
         id_text.setText(String.valueOf(enclosure.getId()));
         name_text.setText(enclosure.getName());
-        type_text.setText(enclosure.getType());
+        type_text.setText(enclosure.getType().getStringResource());
 
         return view;
     }

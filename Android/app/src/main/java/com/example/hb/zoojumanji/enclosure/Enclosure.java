@@ -11,52 +11,33 @@ import java.util.List;
  */
 public class Enclosure {
 
-    public static final int ENCLOSURE_TYPE_CAGE = R.string.enclosure_type_cage;
-    public static final int ENCLOSURE_TYPE_PADDOCK = R.string.enclosure_type_paddock;
-    public static final int ENCLOSURE_TYPE_POOL = R.string.enclosure_type_pool;
-    public static final int ENCLOSURE_TYPE_AQUARIUM = R.string.enclosure_type_aquarium;
-    public static final int ENCLOSURE_TYPE_VIVARIUM = R.string.enclosure_type_vivarium;
-
     protected int id;
     protected String name;
     protected int max;
-    protected int type;
+    protected EnclosureType type;
     protected List<Animal> animals = new ArrayList<>();
+
+    private static int currentId = 0;
+
+    private static int getCurrentId() {
+        currentId++;
+        return currentId;
+    }
 
     public int getId() {
         return id;
-    }
-
-    public Enclosure setId(int id) {
-        this.id = id;
-        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public Enclosure setName(String name) {
-        this.name = name;
-        return this;
-    }
-
     public int getMax() {
         return max;
     }
 
-    public Enclosure setMax(int max) {
-        this.max = max;
-        return this;
-    }
-
-    public int getType() {
+    public EnclosureType getType() {
         return type;
-    }
-
-    public Enclosure setType(int type) {
-        this.type = type;
-        return this;
     }
 
     public List<Animal> getAnimals() {
@@ -77,10 +58,10 @@ public class Enclosure {
         return animals.size();
     }
 
-    public Enclosure(int id, String name, int max, int type) {
-        setId(id)
-            .setName(name)
-            .setMax(max)
-            .setType(type);
+    public Enclosure(String name, int max, EnclosureType type) {
+        this.id = getCurrentId();
+        this.name = name;
+        this.max = max;
+        this.type = type;
     }
 }

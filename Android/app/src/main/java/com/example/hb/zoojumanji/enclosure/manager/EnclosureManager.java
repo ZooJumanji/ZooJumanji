@@ -2,6 +2,7 @@ package com.example.hb.zoojumanji.enclosure.manager;
 
 import com.example.hb.zoojumanji.animal.manager.AnimalManager;
 import com.example.hb.zoojumanji.enclosure.Enclosure;
+import com.example.hb.zoojumanji.enclosure.EnclosureType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +12,9 @@ import java.util.List;
  */
 public class EnclosureManager {
     // Static Enclosure List
-    public static final Enclosure LION_FOSS = new Enclosure(0, "lion foss", 2, Enclosure.ENCLOSURE_TYPE_PADDOCK);
-    public static final Enclosure MONKEY_CAGE = new Enclosure(1, "Rafikki cage", 12, Enclosure.ENCLOSURE_TYPE_CAGE);
-    public static final Enclosure TIMON_POOL = new Enclosure(2, "Timon pool", 4, Enclosure.ENCLOSURE_TYPE_POOL);
+    public static final Enclosure LION_FOSS = new Enclosure("lion foss", 2, EnclosureType.PADDOCK);
+    public static final Enclosure MONKEY_CAGE = new Enclosure("Rafikki cage", 12, EnclosureType.CAGE);
+    public static final Enclosure TIMON_POOL = new Enclosure("Timon pool", 4, EnclosureType.POOL);
 
     protected static List<Enclosure> enclosuresList = new ArrayList<>();
 
@@ -46,4 +47,9 @@ public class EnclosureManager {
 
         throw new IllegalArgumentException("Unknown enclosure");
     }
+
+    public static void createEnclosure(String name, int capacity, EnclosureType type) {
+        enclosuresList.add(new Enclosure(name, capacity, type));
+    }
+
 }

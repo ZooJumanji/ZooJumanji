@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.hb.zoojumanji.R;
+import com.example.hb.zoojumanji.ticket.TicketType;
 import com.example.hb.zoojumanji.ticket.adapter.TicketTypeAdapter;
 import com.example.hb.zoojumanji.ticket.adapter.ceil.TicketTypeCeil;
 import com.example.hb.zoojumanji.ticket.manager.TicketManager;
@@ -43,7 +44,8 @@ public class TicketActivity extends AppCompatActivity {
                 // Send to detail page with id in argument
                 Intent intent = new Intent(TicketActivity.this, TicketTypeActivity.class);
                 TextView id_text = (TextView) view.findViewById(R.id.ticket_type_id);
-                intent.putExtra("id", Integer.valueOf(String.valueOf(id_text.getText())));
+                intent.putExtra("type", Enum.valueOf(TicketType.class, String.valueOf(id_text
+                        .getText())));
 
                 startActivity(intent);
             }

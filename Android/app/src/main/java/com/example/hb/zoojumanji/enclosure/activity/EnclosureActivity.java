@@ -1,6 +1,7 @@
 package com.example.hb.zoojumanji.enclosure.activity;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,12 +24,34 @@ public class EnclosureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enclosure);
 
+        generateList();
+
+        // Get clicked floatingButton to add a new animal
+        FloatingActionButton button = (FloatingActionButton) findViewById(R.id.add_fab);
+        button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                // Generate new Activity
+                Intent intent = new Intent(EnclosureActivity.this, EnclosureCreationActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        generateList();
+    }
+
+    private void generateList() {
         // Get list of animals
         List<Enclosure> list = EnclosureManager.getEnclosures();
 
         // Generate specific adapter
         ArrayAdapter<Enclosure> adapter = new EnclosureAdapter(this,
-                R.layout.list_enclosure_item, R.id.enclosure_name, list);
+                R.layout.list_enclosure_item, list);
 
         // Display list
         ListView listView = (ListView) findViewById(R.id.enclosures_list);

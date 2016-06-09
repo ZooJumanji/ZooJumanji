@@ -36,8 +36,9 @@ public class EnclosureDetailActivity extends AppCompatActivity {
         // Display parameters
         nameText.setText(enclosure.getName());
         countText.setText(String.valueOf(enclosure.getAnimalsCount())+"/"+String.valueOf(enclosure.getMax()));
-        typeText.setText(getString(enclosure.getType()));
+        typeText.setText(enclosure.getType().getStringResource());
 
+        // Show animal count in red if enclosure's full
         if (enclosure.getAnimalsCount() == enclosure.getMax()) {
             countText.setTextColor(Color.RED);
         }
