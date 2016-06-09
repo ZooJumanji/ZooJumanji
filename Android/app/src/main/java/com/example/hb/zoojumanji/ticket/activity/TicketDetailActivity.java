@@ -45,13 +45,25 @@ public class TicketDetailActivity extends AppCompatActivity {
     private void generateButtonsListener() {
         // Get clicked floatingButton
         FloatingActionButton deletionButton = (FloatingActionButton) findViewById(R.id.delete_fab);
+        FloatingActionButton modifyButton = (FloatingActionButton) findViewById(R.id.modify_fab);
 
         deletionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Displays a snackbar with a red UNDO action
                 deletionExecution();
 
+            }
+        });
+
+        modifyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Send to detail page with id in argument
+                Intent intent = new Intent(TicketDetailActivity.this, TicketModifyActivity
+                        .class);
+                intent.putExtra("id", ticket.getId());
+
+                startActivity(intent);
             }
         });
     }

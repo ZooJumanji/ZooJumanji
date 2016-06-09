@@ -95,7 +95,22 @@ public class TicketTypeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        // Add event listener on elements of list
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                // Send to detail page with id in argument
+                Intent intent = new Intent(TicketTypeActivity.this, TicketModifyActivity.class);
+                TextView id_text = (TextView) view.findViewById(R.id.ticket_id);
+                intent.putExtra("id", Integer.valueOf(String.valueOf(id_text.getText())));
+
+                startActivity(intent);
+                return false;
+            }
+        });
     }
+
     private void generateUndeleteSnackBar() {
 
         // Activation deletion

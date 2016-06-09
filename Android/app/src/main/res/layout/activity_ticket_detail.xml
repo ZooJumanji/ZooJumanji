@@ -98,13 +98,30 @@
 
     </ScrollView>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/delete_fab"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        android:layout_gravity="bottom|end"
-        android:scaleType="center"
-        android:src="@android:drawable/ic_menu_delete" />
+        android:layout_gravity="bottom"
+        android:gravity="end" >
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/modify_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            android:layout_gravity="bottom|end"
+            android:scaleType="center"
+            android:src="@android:drawable/ic_menu_edit" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/delete_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            android:layout_gravity="bottom|end"
+            android:scaleType="center"
+            android:src="@android:drawable/ic_menu_delete" />
+
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
