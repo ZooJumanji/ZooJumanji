@@ -8,18 +8,11 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.hb.zoojumanji.R;
-import com.example.hb.zoojumanji.ticket.adapter.ceil.TicketDateCeil;
 import com.example.hb.zoojumanji.ticket.Ticket;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 
 // Adapter for tickets displaying list classed by type
 public class TicketDateAdapter extends ArrayAdapter<Ticket> {

@@ -1,8 +1,5 @@
 package com.example.hb.zoojumanji.stock;
 
-import com.example.hb.zoojumanji.R;
-
-
 /**
  * Created by jonas on 07//06/2016.
  */

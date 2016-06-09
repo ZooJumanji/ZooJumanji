@@ -34,11 +34,11 @@ public class StockAdapter extends ArrayAdapter<Stock> {
 
         // Get multiple elements
         TextView id_text = (TextView) view.findViewById(R.id.stock_id);
-        TextView name_text = (TextView) view.findViewById(R.id.stock_name);
+        TextView type_text = (TextView) view.findViewById(R.id.stock_type);
 
         // Insert values
         id_text.setText(String.valueOf(stock.getId()));
-        name_text.setText(stock.getName());
+        type_text.setText(stock.getType().getStringResource());
 
         return view;
     }

@@ -1,6 +1,5 @@
 package com.example.hb.zoojumanji.enclosure;
 
-import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.animal.Animal;
 
 import java.util.ArrayList;

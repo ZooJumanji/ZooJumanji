@@ -1,7 +1,5 @@
 package com.example.hb.zoojumanji.ticket;
 
-import com.example.hb.zoojumanji.R;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;

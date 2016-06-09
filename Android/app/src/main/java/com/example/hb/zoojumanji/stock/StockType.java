@@ -1,11 +1,6 @@
 package com.example.hb.zoojumanji.stock;
 
-import android.content.res.Resources;
-
 import com.example.hb.zoojumanji.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by hb on 08/06/2016.

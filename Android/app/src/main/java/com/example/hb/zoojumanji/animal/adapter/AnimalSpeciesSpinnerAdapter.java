@@ -41,7 +41,7 @@ public class AnimalSpeciesSpinnerAdapter extends ArrayAdapter<AnimalSpecies>
         AnimalSpecies type = getItem(position);
 
         // Get multiple elements
-        TextView name_text = (TextView) view.findViewById(R.id.animal_sex_name);
+        TextView name_text = (TextView) view.findViewById(R.id.animal_param_name);
 
         // Insert values
         name_text.setText(type.getStringResource());

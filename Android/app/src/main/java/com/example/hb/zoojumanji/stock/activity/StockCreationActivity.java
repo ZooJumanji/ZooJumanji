@@ -8,9 +8,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.hb.zoojumanji.R;
-import com.example.hb.zoojumanji.enclosure.EnclosureType;
-import com.example.hb.zoojumanji.enclosure.adapter.EnclosureTypeSpinnerAdapter;
-import com.example.hb.zoojumanji.enclosure.manager.EnclosureManager;
 import com.example.hb.zoojumanji.stock.StockType;
 import com.example.hb.zoojumanji.stock.StockUnity;
 import com.example.hb.zoojumanji.stock.adapter.StockTypeSpinnerAdapter;

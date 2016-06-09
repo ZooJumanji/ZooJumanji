@@ -18,8 +18,6 @@ import com.example.hb.zoojumanji.animal.adapter.AnimalSexSpinnerAdapter;
 import com.example.hb.zoojumanji.animal.adapter.AnimalSpeciesSpinnerAdapter;
 import com.example.hb.zoojumanji.animal.adapter.AnimalTypeSpinnerAdapter;
 import com.example.hb.zoojumanji.animal.manager.AnimalManager;
-import com.example.hb.zoojumanji.enclosure.EnclosureType;
-import com.example.hb.zoojumanji.enclosure.adapter.EnclosureTypeSpinnerAdapter;
 
 import java.util.Arrays;
 
