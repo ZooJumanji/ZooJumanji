@@ -60,12 +60,6 @@ public class EnclosureService extends IntentService {
             serviceList.add(enclosure);
         }
 
-        try {
-            Thread.sleep(3 * 1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         return serviceList;
     }
 
