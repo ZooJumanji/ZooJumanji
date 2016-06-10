@@ -48,7 +48,8 @@ public class TicketCreationActivity extends AppCompatActivity {
                 public void onClick(View view) {
 
                     try {
-                        TicketManager.createTicket((TicketType) typeSpinner.getSelectedItem(),
+                        TicketManager.createTicket(getApplicationContext(),
+                                (TicketType) typeSpinner.getSelectedItem(),
                                 Double.valueOf(priceText.getText().toString()),
                                 Integer.valueOf(quantityText.getText().toString()));
 

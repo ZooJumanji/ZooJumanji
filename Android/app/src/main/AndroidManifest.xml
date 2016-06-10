@@ -37,6 +37,9 @@
         <activity android:name=".ticket.activity.TicketModifyActivity" />
 
         <service
+            android:name=".ticket.service.TicketService"
+            android:exported="false"></service>
+        <service
             android:name=".enclosure.service.EnclosureService"
             android:exported="false"></service>
     </application>
