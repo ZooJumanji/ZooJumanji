@@ -16,6 +16,8 @@ import com.example.hb.zoojumanji.enclosure.Enclosure;
 
 public class EnclosureDetailActivity extends AppCompatActivity {
 
+    protected EnclosureManager manager;
+
     protected TextView nameText;
     protected TextView countText;
     protected TextView typeText;
@@ -28,6 +30,8 @@ public class EnclosureDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enclosure_detail);
 
+        manager = new EnclosureManager(getApplicationContext());
+
         // Initialize TextView
         nameText = (TextView) findViewById(R.id.detail_enclosure_name);
         countText = (TextView) findViewById(R.id.detail_enclosure_count);
@@ -37,7 +41,7 @@ public class EnclosureDetailActivity extends AppCompatActivity {
 
         // Get Enclosure from id
         Intent intent = getIntent();
-        enclosure = EnclosureManager.getEnclosure(intent.getIntExtra("id", 0));
+        enclosure = manager.getEnclosure(intent.getIntExtra("id", 0));
 
         showEnclosureDetails();
         generateButtonsListener();
@@ -90,7 +94,7 @@ public class EnclosureDetailActivity extends AppCompatActivity {
     }
 
     private void deletionExecution() {
-        EnclosureManager.deleteEnclosure(enclosure);
+        manager.deleteEnclosure(enclosure);
         finish();
     }
 }

@@ -21,6 +21,7 @@ import java.util.List;
 
 public class EnclosureActivity extends AppCompatActivity {
 
+    protected EnclosureManager manager;
     protected boolean deletion = false;
 
     @Override
@@ -28,6 +29,7 @@ public class EnclosureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enclosure);
 
+        manager = new EnclosureManager(this);
         generateList();
 
         // Get clicked floatingButton to add a new animal
@@ -53,9 +55,13 @@ public class EnclosureActivity extends AppCompatActivity {
     }
 
     private void generateList() {
-        // Get list of animals
-        List<Enclosure> list = EnclosureManager.getEnclosures();
+        // Get list of enclosures
+        List<Enclosure> list = manager.getEnclosures();
 
+        generateList(list);
+    }
+
+    private void generateList(List<Enclosure> list) {
         // Generate specific adapter
         ArrayAdapter<Enclosure> adapter = new EnclosureAdapter(this,
                 R.layout.list_enclosure_item, list);
@@ -107,7 +113,7 @@ public class EnclosureActivity extends AppCompatActivity {
                 deletion = false;
                 Toast.makeText(EnclosureActivity.this, R.string.message_undo_deletion, Toast.LENGTH_LONG)
                         .show();
-                EnclosureManager.restoreEnclosure();
+                manager.restoreEnclosure();
                 generateList();
             }
         };
@@ -138,4 +144,7 @@ public class EnclosureActivity extends AppCompatActivity {
                 .show();
     }
 
+    public void refreshList(List<Enclosure> updatedList) {
+        generateList(updatedList);
+    }
 }

@@ -20,6 +20,8 @@ import java.util.Arrays;
 
 public class EnclosureModifyActivity extends AppCompatActivity {
 
+    protected EnclosureManager manager;
+
     protected EditText nameText;
     protected EditText maxText;
     protected Spinner typeSpinner;
@@ -31,9 +33,11 @@ public class EnclosureModifyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enclosure_modify);
 
+        manager = new EnclosureManager(getApplicationContext());
+
         // Get Enclosure from id
         Intent intent = getIntent();
-        enclosure = EnclosureManager.getEnclosure(intent.getIntExtra("id", 0));
+        enclosure = manager.getEnclosure(intent.getIntExtra("id", 0));
 
         showEnclosureDetails();
         generateButtonsListener();
@@ -48,10 +52,10 @@ public class EnclosureModifyActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // Update enclosure
                 try {
-                    EnclosureManager.modifyEnclosure(enclosure.getId(),
-                        nameText.getText().toString(),
-                        Integer.valueOf(maxText.getText().toString()),
-                        (EnclosureType) typeSpinner.getSelectedItem());
+                        manager.modifyEnclosure(enclosure.getId(),
+                            nameText.getText().toString(),
+                            Integer.valueOf(maxText.getText().toString()),
+                            (EnclosureType) typeSpinner.getSelectedItem());
 
                     EnclosureModifyActivity.this.finish();
                 }

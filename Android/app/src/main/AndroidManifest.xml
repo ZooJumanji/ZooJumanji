@@ -34,7 +34,11 @@
         <activity android:name=".ticket.activity.TicketCreationActivity" />
         <activity android:name=".animal.activity.AnimalModifyActivity" />
         <activity android:name=".stock.activity.StockModifyActivity" />
-        <activity android:name=".ticket.activity.TicketModifyActivity"></activity>
+        <activity android:name=".ticket.activity.TicketModifyActivity" />
+
+        <service
+            android:name=".enclosure.service.EnclosureService"
+            android:exported="false"></service>
     </application>
 
 </manifest>

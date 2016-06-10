@@ -17,6 +17,8 @@ import java.util.Arrays;
 
 public class EnclosureCreationActivity extends AppCompatActivity {
 
+    protected EnclosureManager manager;
+
     protected EditText nameText;
     protected EditText maxText;
     protected Spinner typeSpinner;
@@ -25,6 +27,8 @@ public class EnclosureCreationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enclosure_creation);
+
+        manager = new EnclosureManager(getApplicationContext());
 
         // get TextView
         nameText = (EditText) findViewById(R.id.edit_enclosure_name);
@@ -44,7 +48,7 @@ public class EnclosureCreationActivity extends AppCompatActivity {
                 public void onClick(View view) {
 
                     try {
-                        EnclosureManager.createEnclosure(nameText.getText().toString(),
+                        manager.createEnclosure(nameText.getText().toString(),
                                 Integer.valueOf(maxText.getText().toString()),
                                 (EnclosureType) typeSpinner.getSelectedItem());
 
