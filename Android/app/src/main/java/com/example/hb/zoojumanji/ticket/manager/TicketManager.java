@@ -1,10 +1,13 @@
 package com.example.hb.zoojumanji.ticket.manager;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 
 import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.ticket.Ticket;
 import com.example.hb.zoojumanji.ticket.TicketType;
+import com.example.hb.zoojumanji.ticket.service.TicketService;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -77,9 +80,14 @@ public class TicketManager {
         throw new IllegalArgumentException(Resources.getSystem().getString(R.string.exception_unknown_ticket));
     }
 
-    public static void createTicket(TicketType type, Double price, Integer quantity) {
+    public static void createTicket(Context context, TicketType type, Double price, Integer quantity) {
+        //Creates the ticket locally
         Ticket ticket = new Ticket(type, price, quantity, new Date());
         ticketsList.add(ticket);
+
+        //Ask the TicketService to ask the server to create the ticket
+        Intent ticketServiceIntent = new Intent(context, TicketService.class);
+        TicketService.startActionCreateTicket(context,ticket.getId());
     }
     public static void deleteTicket(Ticket ticket) {
         if (ticketsList.contains(ticket)) {

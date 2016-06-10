@@ -18,6 +18,7 @@ import com.example.hb.zoojumanji.ticket.adapter.TicketTypeAdapter;
 import com.example.hb.zoojumanji.ticket.adapter.ceil.TicketTypeCeil;
 import com.example.hb.zoojumanji.ticket.manager.TicketManager;
 import com.example.hb.zoojumanji.ticket.Ticket;
+import com.example.hb.zoojumanji.ticket.service.TicketService;
 
 import java.util.List;
 
@@ -57,6 +58,7 @@ public class TicketActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.tickets_list);
         listView.setAdapter(adapter);
 
+
         // Add event listener on elements of list
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -74,7 +76,7 @@ public class TicketActivity extends AppCompatActivity {
     }
 
     private void generateButtonsListener() {
-        // Get clicked floatingButton
+        // Get clicked add ticket floatingButton
         FloatingActionButton button = (FloatingActionButton) findViewById(R.id.add_fab);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +86,22 @@ public class TicketActivity extends AppCompatActivity {
                 Intent intent = new Intent(TicketActivity.this, TicketCreationActivity.class);
 
                 startActivity(intent);
+            }
+        });
+
+        // Get clicked launch ticket service floatingButton
+        FloatingActionButton buttonServiceStart = (FloatingActionButton) findViewById(R.id.test_fab);
+
+        buttonServiceStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Send to detail page with id in argument
+//                Intent intent = new Intent(TicketActivity.this, TicketCreationActivity.class);
+//                startActivity(intent);
+
+                Intent ticketServiceIntent = new Intent(TicketActivity.this, TicketService.class);
+                TicketService.startActionGetTicketList(TicketActivity.this,"titi", "toto");
+                //TicketActivity.this.startService(ticketServiceIntent);
             }
         });
     }
