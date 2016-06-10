@@ -65,34 +65,50 @@ public class EnclosureManager {
 
     public void startBindingService() {
 
-        Intent intent = new Intent(context, EnclosureService.class);
-        intent.setAction("list");
-
-        connection = new ServiceConnection() {
-
+        Thread thread = new Thread() {
             @Override
-            public void onServiceConnected(ComponentName name, IBinder service) {
-                EnclosureServiceBinder serviceBinder = (EnclosureServiceBinder) service;
-                List<Enclosure> updatedList = serviceBinder.getEnclosureList();
-                if (context.getClass() == EnclosureActivity.class) {
-                    EnclosureActivity activity = (EnclosureActivity) context;
-                    activity.refreshList(updatedList);
-                }
-            }
+            public void run() {
+                Intent intent = new Intent(EnclosureManager.this.context, EnclosureService
+                        .class);
+                intent.setAction("list");
 
-            @Override
-            public void onServiceDisconnected(ComponentName name) {
+                connection = new ServiceConnection() {
+
+                    @Override
+                    public void onServiceConnected(ComponentName name, IBinder service) {
+                        EnclosureServiceBinder serviceBinder = (EnclosureServiceBinder) service;
+                        List<Enclosure> updatedList = serviceBinder.getEnclosureList();
+                        if (context.getClass() == EnclosureActivity.class) {
+                            EnclosureActivity activity = (EnclosureActivity) context;
+                            activity.refreshList(updatedList);
+                        }
+                    }
+
+                    @Override
+                    public void onServiceDisconnected(ComponentName name) {
+                    }
+                };
+
+                context.bindService(intent, connection, Context.BIND_AUTO_CREATE);
             }
         };
 
-        context.bindService(intent, connection, Context.BIND_AUTO_CREATE);
+        thread.start();
     }
 
-    public void startService(String action, int id) {
-        Intent intent = new Intent(context, EnclosureService.class);
-        intent.setAction(action);
-        intent.putExtra("id", id);
-        context.startService(intent);
+    public void startService(final String action, final int id) {
+
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(EnclosureManager.this.context, EnclosureService.class);
+                intent.setAction(action);
+                intent.putExtra("id", id);
+                context.startService(intent);
+            }
+        };
+
+        thread.start();
     }
 
     // Get Animal from id
