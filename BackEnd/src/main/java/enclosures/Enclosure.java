@@ -22,7 +22,17 @@ public class Enclosure {
     }
 
     public Enclosure setId(int id) {
-        this.id = id;
+    	if (id > currentId) {
+    		currentId = id + 1;
+    	}
+    	
+    	if (id == 0) {
+    		this.id = getCurrentId();
+    	}
+    	else {
+    		this.id = id;
+    	}
+    	
         return this;
     }
 
@@ -52,11 +62,22 @@ public class Enclosure {
         this.type = type;
         return this;
     }
+    
+    public Enclosure() {
+    	
+    }
 
     public Enclosure(String name, int max, EnclosureType type) {
         this.id = getCurrentId();
         this.name = name;
         this.max = max;
         this.type = type;
+    }
+    
+    public void copyFrom(Enclosure enclosure) {
+    	this.id = enclosure.getId();
+    	this.name = enclosure.getName();
+    	this.max = enclosure.getMax();
+    	this.type = enclosure.getType();
     }
 }
