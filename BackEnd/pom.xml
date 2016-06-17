@@ -22,7 +22,7 @@
     <groupId>com.zoomanji</groupId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>WildFly Quickstarts: zoomanji-rs</name>
+    <name>WildFly Quickstarts: zoomanji</name>
     <description>A starter Java EE 7 webapp project for use on JBoss WildFly / WildFly, generated from the jboss-javaee6-webapp archetype</description>
 
     <url>http://wildfly.org</url>
@@ -297,5 +297,5 @@
         </profile>
 
     </profiles>
-    <artifactId>rest</artifactId>
+    <artifactId>zoomanji</artifactId>
 </project>
