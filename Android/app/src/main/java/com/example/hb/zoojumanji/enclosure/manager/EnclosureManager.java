@@ -7,7 +7,7 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 
 import com.example.hb.zoojumanji.R;
-import com.example.hb.zoojumanji.animal.manager.AnimalManager;
+import com.example.hb.zoojumanji.animal.Repository.AnimalRepository;
 import com.example.hb.zoojumanji.enclosure.Enclosure;
 import com.example.hb.zoojumanji.enclosure.EnclosureType;
 import com.example.hb.zoojumanji.enclosure.activity.EnclosureActivity;
@@ -46,11 +46,11 @@ public class EnclosureManager {
             enclosuresList.add(MONKEY_CAGE);
             enclosuresList.add(TIMON_POOL);
 
-            LION_FOSS.addAnimal(AnimalManager.SIMBA);
-            LION_FOSS.addAnimal(AnimalManager.NALA);
-            MONKEY_CAGE.addAnimal(AnimalManager.RAFIKKI);
-            TIMON_POOL.addAnimal(AnimalManager.TIMON);
-            TIMON_POOL.addAnimal(AnimalManager.PUMBA);
+            LION_FOSS.addAnimal(AnimalRepository.SIMBA);
+            LION_FOSS.addAnimal(AnimalRepository.NALA);
+            MONKEY_CAGE.addAnimal(AnimalRepository.RAFIKKI);
+            TIMON_POOL.addAnimal(AnimalRepository.TIMON);
+            TIMON_POOL.addAnimal(AnimalRepository.PUMBA);
         }
 
         startBindingService();

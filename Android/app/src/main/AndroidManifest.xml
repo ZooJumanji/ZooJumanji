@@ -37,6 +37,8 @@
         <activity android:name=".stock.activity.StockModifyActivity" />
         <activity android:name=".ticket.activity.TicketModifyActivity" />
 
+        <activity android:name=".ticket.activity.TicketModifyActivity" />
+
         <service
             android:name=".ticket.service.TicketService"
             android:exported="false"></service>
