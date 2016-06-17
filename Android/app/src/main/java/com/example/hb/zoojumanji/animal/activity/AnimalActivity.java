@@ -21,12 +21,15 @@ import java.util.List;
 
 public class AnimalActivity extends AppCompatActivity {
 
+    protected  AnimalManager manager;
     protected boolean deletion = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animal);
+
+        manager = new AnimalManager(this);
 
         generateList();
         generateButtonListener();
@@ -58,9 +61,12 @@ public class AnimalActivity extends AppCompatActivity {
     }
 
     private void generateList() {
-        // Get list of animals
-        List<Animal> list = AnimalManager.getAnimals();
+        // Get list of enclosures
+        List<Animal> list = manager.getAnimalList();
 
+        generateList(list);
+    }
+    private void generateList(List<Animal> list ) {
         // Generate specific adapter
         ArrayAdapter<Animal> adapter = new AnimalAdapter(this,
                 R.layout.list_animal_item, list);
@@ -141,5 +147,11 @@ public class AnimalActivity extends AppCompatActivity {
         snackbar.setAction(R.string.message_deletion_undo, undoListener)
                 .setActionTextColor(0xFFFF0000)
                 .show();
+    }
+
+    public void refreshList(List<Animal> updatedList) {
+        Toast.makeText(this, "Updated list : "+String.valueOf(updatedList.size()), Toast.LENGTH_LONG)
+                .show();
+        generateList(updatedList);
     }
 }
