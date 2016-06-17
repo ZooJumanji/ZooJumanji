@@ -1,14 +1,15 @@
 package rest;
 
-import java.util.ArrayList;
-import java.util.List;
+import animal.Animal;
+import animal.repository.AnimalRepository;
+import enclosures.Enclosure;
+import enclosures.EnclosureType;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-
-import enclosures.Enclosure;
-import enclosures.EnclosureType;
+import java.util.ArrayList;
+import java.util.List;
 
 @Path("/")
 public class EnclosureService {
@@ -31,5 +32,14 @@ public class EnclosureService {
 		}
 		
 		return list;
+	}
+
+	@GET
+	@Path("animaux")
+	@Produces({ "application/json" })
+	public List<Animal> getAnimalList() {
+		AnimalRepository repo = new AnimalRepository();
+		List<Animal> maList = repo.GetList();
+		return maList;
 	}
 }
