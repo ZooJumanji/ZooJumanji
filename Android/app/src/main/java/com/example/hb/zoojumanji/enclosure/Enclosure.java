@@ -27,6 +27,11 @@ public class Enclosure {
         return id;
     }
 
+    public Enclosure setId(int id) {
+        this.id = id;
+        return this;
+    }
+
     public String getName() {
         return name;
     }
@@ -77,5 +82,6 @@ public class Enclosure {
         this.name = name;
         this.max = max;
         this.type = type;
+        this.animals = new ArrayList<>();
     }
 }

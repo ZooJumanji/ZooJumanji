@@ -15,6 +15,7 @@ import com.example.hb.zoojumanji.enclosure.service.EnclosureService;
 import com.example.hb.zoojumanji.enclosure.service.EnclosureServiceBinder;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -38,10 +39,6 @@ public class EnclosureManager {
     }
 
     public List<Enclosure> getEnclosures() {
-        return getEnclosures(true);
-    }
-
-    public List<Enclosure> getEnclosures(boolean refresh) {
 
         // Initialize list if is empty
         if (enclosuresList.isEmpty()) {
@@ -56,44 +53,33 @@ public class EnclosureManager {
             TIMON_POOL.addAnimal(AnimalManager.PUMBA);
         }
 
-        if (refresh) {
-            startBindingService();
-        }
+        startBindingService();
 
         return enclosuresList;
     }
 
     public void startBindingService() {
 
-        Thread thread = new Thread() {
+        Intent intent = new Intent(EnclosureManager.this.context, EnclosureService
+                .class);
+        intent.setAction("list");
+
+        connection = new ServiceConnection() {
+
+            EnclosureServiceBinder serviceBinder;
+
             @Override
-            public void run() {
-                Intent intent = new Intent(EnclosureManager.this.context, EnclosureService
-                        .class);
-                intent.setAction("list");
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                serviceBinder = (EnclosureServiceBinder) service;
+                serviceBinder.getEnclosureList(EnclosureManager.this);
+            }
 
-                connection = new ServiceConnection() {
-
-                    @Override
-                    public void onServiceConnected(ComponentName name, IBinder service) {
-                        EnclosureServiceBinder serviceBinder = (EnclosureServiceBinder) service;
-                        List<Enclosure> updatedList = serviceBinder.getEnclosureList();
-                        if (context.getClass() == EnclosureActivity.class) {
-                            EnclosureActivity activity = (EnclosureActivity) context;
-                            activity.refreshList(updatedList);
-                        }
-                    }
-
-                    @Override
-                    public void onServiceDisconnected(ComponentName name) {
-                    }
-                };
-
-                context.bindService(intent, connection, Context.BIND_AUTO_CREATE);
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
             }
         };
 
-        thread.start();
+        context.bindService(intent, connection, Context.BIND_AUTO_CREATE);
     }
 
     public void startService(final String action, final int id) {
@@ -113,7 +99,7 @@ public class EnclosureManager {
 
     // Get Animal from id
     public Enclosure getEnclosure(int id) {
-        List<Enclosure> list = getEnclosures(false);
+        List<Enclosure> list = enclosuresList;
 
         startService("detail", id);
 
@@ -166,5 +152,14 @@ public class EnclosureManager {
         enclosure.setName(name)
                 .setMax(max)
                 .setType(type);
+    }
+
+    public void updateList(List<Enclosure> enclosures) {
+        enclosuresList = enclosures;
+
+        if (context != null && context.getClass() == EnclosureActivity.class) {
+            EnclosureActivity activity = (EnclosureActivity) context;
+            activity.refreshList(enclosuresList);
+        }
     }
 }

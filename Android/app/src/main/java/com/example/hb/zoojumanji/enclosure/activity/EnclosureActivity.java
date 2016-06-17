@@ -145,7 +145,8 @@ public class EnclosureActivity extends AppCompatActivity {
     }
 
     public void refreshList(List<Enclosure> updatedList) {
-        Toast.makeText(this, "Updated list", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Updated list : "+String.valueOf(updatedList.size()), Toast.LENGTH_LONG)
+        .show();
         generateList(updatedList);
     }
 }

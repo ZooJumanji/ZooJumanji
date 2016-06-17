@@ -3,6 +3,7 @@ package com.example.hb.zoojumanji.enclosure.service;
 import android.os.Binder;
 
 import com.example.hb.zoojumanji.enclosure.Enclosure;
+import com.example.hb.zoojumanji.enclosure.manager.EnclosureManager;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class EnclosureServiceBinder extends Binder {
         this.service = service;
     }
 
-    public List<Enclosure> getEnclosureList() {
-        return service.getEnclosureList();
+    public void getEnclosureList(EnclosureManager manager) {
+        service.getEnclosureList(manager);
     }
 }
