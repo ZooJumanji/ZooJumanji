@@ -1,17 +1,19 @@
 package animal.repository;
 
-import animal.Animal;
-import animal.AnimalSex;
-import animal.AnimalSpecies;
-import animal.AnimalType;
+import animal.Entity.Animal;
+import animal.Entity.AnimalSex;
+import animal.Entity.AnimalSpecies;
+import animal.Entity.AnimalType;
 
+import javax.ejb.Stateless;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by isher on 17/06/2016.
  */
-public class AnimalRepository {
+@Stateless
+public class AnimalRepository implements IAnimalRepository {
 
     // Static animals list
     public static final Animal SIMBA = new Animal("Simba", 8, AnimalSex.MALE, AnimalSpecies.LION, AnimalType.CARNIVOROUS);
@@ -20,20 +22,20 @@ public class AnimalRepository {
     public static final Animal NALA = new Animal("Nala", 8, AnimalSex.FEMALE, AnimalSpecies.LION, AnimalType.CARNIVOROUS);
     public static final Animal RAFIKKI = new Animal("Rafikki", 82, AnimalSex.MALE, AnimalSpecies.MONKEY, AnimalType.OMNIVOROUS);
 
-    private static List<Animal> animalList;
+    private static List<Animal> animalList  = new ArrayList<Animal>();
     public static int counter = 0;
 
 
-    private static AnimalRepository instance;
-    public static AnimalRepository getInstance() {
-        // singleton
-        if (instance == null) {
-            instance = new AnimalRepository();
-
-            animalList = new ArrayList<>();
-        }
-        return instance;
-    }
+//    private static AnimalRepository instance;
+//    public static AnimalRepository getInstance() {
+//        // singleton
+//        if (instance == null) {
+//            instance = new AnimalRepository();
+//
+//            animalList = new ArrayList<>();
+//        }
+//        return instance;
+//    }
 
     /**
      * Retourne la liste des animaux

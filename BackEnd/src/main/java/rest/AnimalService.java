@@ -1,15 +1,19 @@
 package rest;
 
-import animal.Animal;
-import animal.repository.AnimalRepository;
+import animal.Entity.Animal;
+import animal.repository.IAnimalRepository;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import java.util.List;
 
 @Path("/animaux")
 public class AnimalService {
 
-    AnimalRepository repo = AnimalRepository.getInstance();
+    @Inject
+    IAnimalRepository repo;
+
+    //AnimalRepository repo = AnimalRepository.getInstance();
 
     @GET
     @Produces({"application/json"})
