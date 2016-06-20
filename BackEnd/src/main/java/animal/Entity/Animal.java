@@ -1,11 +1,11 @@
-package animal;
+package animal.Entity;
 
 /**
- * Created by hb on 06/06/2016.
+ * Created by isher on 17/06/2016.
  */
 public class Animal {
 
-    protected int id = 0;
+    protected int id;
     protected String name;
     protected int age;
     protected AnimalSex sex;
@@ -22,10 +22,6 @@ public class Animal {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -92,13 +88,5 @@ public class Animal {
         this.sex = sex;
         this.species = species;
         this.type = type;
-    }
-
-    public void merge(Animal animal) {
-        this.setAge(animal.age);
-        this.setFood(animal.food);
-        this.setName(animal.name);
-        this.setSpecies(animal.species);
-        this.setSex(animal.sex);
     }
 }
