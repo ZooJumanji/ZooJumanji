@@ -20,21 +20,58 @@ public class AnimalRepository {
     public static final Animal NALA = new Animal("Nala", 8, AnimalSex.FEMALE, AnimalSpecies.LION, AnimalType.CARNIVOROUS);
     public static final Animal RAFIKKI = new Animal("Rafikki", 82, AnimalSex.MALE, AnimalSpecies.MONKEY, AnimalType.OMNIVOROUS);
 
-    List<Animal> animalsList = new ArrayList<>();
-    
+    private static List<Animal> animalList;
+    public static int counter = 0;
+
+
+    private static AnimalRepository instance;
+    public static AnimalRepository getInstance() {
+        // singleton
+        if (instance == null) {
+            instance = new AnimalRepository();
+
+            animalList = new ArrayList<>();
+        }
+        return instance;
+    }
+
     /**
      * Retourne la liste des animaux
+     *
      * @return List<Animal>
      */
-    public List<Animal> getList() {
-        if (animalsList.isEmpty()) {
-            animalsList.add(SIMBA);
-            animalsList.add(TIMON);
-            animalsList.add(PUMBA);
-            animalsList.add(NALA);
-            animalsList.add(RAFIKKI);
+    public List<Animal> GetList() {
+        if (animalList.size() == 0) {
+            animalList.add(SIMBA);
+            animalList.add(TIMON);
+            animalList.add(PUMBA);
+            animalList.add(NALA);
+            animalList.add(RAFIKKI);
+            counter = 5;
         }
 
-        return animalsList;
+        return animalList;
+    }
+
+    public Animal GetListById(Integer id) {
+        if (id < counter){
+            return animalList.get(id);
+        }
+        return null;
+    }
+
+
+    public Animal CreateAndUpdate(Animal animal) {
+        // create
+        if (animal.getId() == 0) {
+            animal.setId(++counter);
+            animalList.add(animal);
+        }
+        else {
+            Animal localAnimal = animalList.get(animal.getId());
+            localAnimal.merge(animal);
+        }
+
+        return animal;
     }
 }
