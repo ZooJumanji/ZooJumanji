@@ -7,7 +7,6 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 
 import com.example.hb.zoojumanji.R;
-import com.example.hb.zoojumanji.animal.Repository.AnimalRepository;
 import com.example.hb.zoojumanji.enclosure.Enclosure;
 import com.example.hb.zoojumanji.enclosure.EnclosureType;
 import com.example.hb.zoojumanji.enclosure.activity.EnclosureActivity;
@@ -15,7 +14,6 @@ import com.example.hb.zoojumanji.enclosure.service.EnclosureService;
 import com.example.hb.zoojumanji.enclosure.service.EnclosureServiceBinder;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -27,9 +25,11 @@ public class EnclosureManager {
     private ServiceConnection connection;
 
     // Static Enclosure List
+    /*
     public static final Enclosure LION_FOSS = new Enclosure("lion foss", 2, EnclosureType.PADDOCK);
     public static final Enclosure MONKEY_CAGE = new Enclosure("Rafikki cage", 12, EnclosureType.CAGE);
     public static final Enclosure TIMON_POOL = new Enclosure("Timon pool", 4, EnclosureType.POOL);
+    //*/
 
     protected static Enclosure deletedEnclosure;
     protected static List<Enclosure> enclosuresList = new ArrayList<>();
@@ -40,22 +40,37 @@ public class EnclosureManager {
 
     public List<Enclosure> getEnclosures() {
 
+        /*
         // Initialize list if is empty
         if (enclosuresList.isEmpty()) {
             enclosuresList.add(LION_FOSS);
             enclosuresList.add(MONKEY_CAGE);
-            enclosuresList.add(TIMON_POOL);
+            //enclosuresList.add(TIMON_POOL);
 
             LION_FOSS.addAnimal(AnimalRepository.SIMBA);
             LION_FOSS.addAnimal(AnimalRepository.NALA);
             MONKEY_CAGE.addAnimal(AnimalRepository.RAFIKKI);
-            TIMON_POOL.addAnimal(AnimalRepository.TIMON);
-            TIMON_POOL.addAnimal(AnimalRepository.PUMBA);
+            //TIMON_POOL.addAnimal(AnimalRepository.TIMON);
+            //TIMON_POOL.addAnimal(AnimalRepository.PUMBA);
         }
+        //*/
 
         startBindingService();
 
-        return enclosuresList;
+        return cleanEnclosureList(enclosuresList);
+    }
+
+    public static List<Enclosure> cleanEnclosureList(List<Enclosure> enclosures) {
+        List<Enclosure> list = new ArrayList<>();
+
+        for (Enclosure enclosure : enclosures) {
+            if ( deletedEnclosure == null ||
+                    (!enclosure.equals(deletedEnclosure) && enclosure.getId() != deletedEnclosure.getId())) {
+                list.add(enclosure);
+            }
+        }
+
+        return list;
     }
 
     public void startBindingService() {
@@ -97,11 +112,9 @@ public class EnclosureManager {
         thread.start();
     }
 
-    // Get Animal from id
+    // Get Enclosure from id
     public Enclosure getEnclosure(int id) {
         List<Enclosure> list = enclosuresList;
-
-        startService("detail", id);
 
         for (Enclosure enclosure : list) {
             if (enclosure.getId() == id) {
@@ -115,6 +128,10 @@ public class EnclosureManager {
     public void createEnclosure(String name, int capacity, EnclosureType type) {
 
         Enclosure enclosure = new Enclosure(name, capacity, type);
+
+        /* CANCEL ANDROID ID AUTO-INCREMENT */
+        enclosure.setId(0);
+
         startService("create", enclosure.getId());
         enclosuresList.add(enclosure);
     }
@@ -124,7 +141,6 @@ public class EnclosureManager {
             enclosuresList.remove(enclosure);
         }
 
-        startService("delete", enclosure.getId());
         deletedEnclosure = enclosure;
     }
 
@@ -133,15 +149,16 @@ public class EnclosureManager {
             enclosuresList.add(deletedEnclosure);
         }
 
-        startService("restore", deletedEnclosure.getId());
-        cleanEnclosure();
+        deletedEnclosure = null;
+        updateList(enclosuresList);
     }
 
     public static Boolean isInDeletion() {
         return deletedEnclosure != null;
     }
 
-    public static void cleanEnclosure() {
+    public void cleanEnclosure() {
+        startService("delete", deletedEnclosure.getId());
         deletedEnclosure = null;
     }
 

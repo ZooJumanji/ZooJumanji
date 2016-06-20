@@ -2,17 +2,16 @@ package com.example.hb.zoojumanji.enclosure.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.annotation.ColorInt;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import com.example.hb.zoojumanji.R;
-import com.example.hb.zoojumanji.enclosure.manager.EnclosureManager;
 import com.example.hb.zoojumanji.enclosure.Enclosure;
+import com.example.hb.zoojumanji.enclosure.manager.EnclosureManager;
 
 public class EnclosureDetailActivity extends AppCompatActivity {
 
@@ -81,7 +80,8 @@ public class EnclosureDetailActivity extends AppCompatActivity {
     private void showEnclosureDetails() {
         // Display parameters
         nameText.setText(enclosure.getName());
-        countText.setText(String.valueOf(enclosure.getAnimalsCount())+"/"+String.valueOf(enclosure.getMax()));
+        countText.setText(String.valueOf(enclosure.getAnimalsCount())+"/"+String.valueOf
+                (enclosure.getMax()));
         typeText.setText(enclosure.getType().getStringResource());
 
         // Show animal count in red if enclosure's full

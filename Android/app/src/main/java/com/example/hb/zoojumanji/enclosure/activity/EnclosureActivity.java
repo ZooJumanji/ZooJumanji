@@ -61,7 +61,9 @@ public class EnclosureActivity extends AppCompatActivity {
         generateList(list);
     }
 
-    private void generateList(List<Enclosure> list) {
+    private void generateList(List<Enclosure> initialList) {
+
+        List<Enclosure> list = EnclosureManager.cleanEnclosureList(initialList);
         // Generate specific adapter
         ArrayAdapter<Enclosure> adapter = new EnclosureAdapter(this,
                 R.layout.list_enclosure_item, list);
@@ -133,7 +135,8 @@ public class EnclosureActivity extends AppCompatActivity {
             @Override
             public void onViewDetachedFromWindow(View v) {
                 if (deletion) {
-                    EnclosureManager.cleanEnclosure();
+                    EnclosureManager manager = new EnclosureManager(EnclosureActivity.this);
+                    manager.cleanEnclosure();
                 }
             }
         });
