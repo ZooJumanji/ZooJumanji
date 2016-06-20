@@ -1,4 +1,4 @@
-package stock;
+package stocks;
 
 public enum StockUnity {
     PIECE,

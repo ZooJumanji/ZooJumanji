@@ -1,4 +1,4 @@
-package stock;
+package stocks;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
