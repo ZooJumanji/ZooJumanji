@@ -22,6 +22,8 @@ import java.util.Arrays;
 
 public class StockModifyActivity extends AppCompatActivity {
 
+    protected StockManager manager;
+
     protected Spinner typeSpinner;
     protected EditText quantityText;
     protected EditText capacityText;
@@ -34,9 +36,11 @@ public class StockModifyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_modify);
 
-        // Get Enclosure from id
+        manager = new StockManager(getApplicationContext());
+
+        // Get Stock from id
         Intent intent = getIntent();
-        stock = StockManager.getStock(intent.getIntExtra("id", 0));
+        stock = manager.getStock(intent.getIntExtra("id", 0));
 
         showStockDetails();
         generateButtonsListener();
@@ -51,7 +55,7 @@ public class StockModifyActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // Update stock
                 try {
-                    StockManager.modifyStock(stock.getId(),
+                    manager.modifyStock(stock.getId(),
                         (StockType) typeSpinner.getSelectedItem(),
                         Integer.valueOf(quantityText.getText().toString()),
                         Integer.valueOf(capacityText.getText().toString()),

@@ -13,6 +13,8 @@ import com.example.hb.zoojumanji.stock.Stock;
 
 public class StockDetailActivity extends AppCompatActivity {
 
+    protected StockManager manager;
+
     protected TextView typeText;
     protected TextView quantityText;
     protected TextView capacityText;
@@ -25,6 +27,8 @@ public class StockDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_detail);
 
+        manager = new StockManager(getApplicationContext());
+
         // Initialize TextView
         typeText = (TextView) findViewById(R.id.detail_stock_type);
         quantityText = (TextView) findViewById(R.id.detail_stock_quantity);
@@ -33,7 +37,7 @@ public class StockDetailActivity extends AppCompatActivity {
 
         // Get stock from id
         Intent intent = getIntent();
-        stock = StockManager.getStock(intent.getIntExtra("id", 0));
+        stock = manager.getStock(intent.getIntExtra("id", 0));
 
         showStockDetails();
         generateButtonsListener();
@@ -41,10 +45,10 @@ public class StockDetailActivity extends AppCompatActivity {
 
     private void generateButtonsListener() {
         // Get clicked delete floatingButton
-        FloatingActionButton button = (FloatingActionButton) findViewById(R.id.delete_fab);
+        FloatingActionButton deletionButton = (FloatingActionButton) findViewById(R.id.delete_fab);
         FloatingActionButton modifyButton = (FloatingActionButton) findViewById(R.id.modify_fab);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        deletionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 deletionExecution();
@@ -78,7 +82,7 @@ public class StockDetailActivity extends AppCompatActivity {
     }
 
     private void deletionExecution() {
-        StockManager.deleteStock(stock);
+        manager.deleteStock(stock);
         finish();
     }
 }

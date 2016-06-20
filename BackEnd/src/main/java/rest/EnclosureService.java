@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response.Status;
 import enclosures.Enclosure;
 import enclosures.EnclosureType;
 
-@Path("/")
+@Path("/enclosures")
 public class EnclosureService {
 
 	public static final Enclosure LION_FOSS = new Enclosure("lion foss", 2, EnclosureType.PADDOCK);
@@ -29,7 +29,7 @@ public class EnclosureService {
 	private static List<Enclosure> list = new ArrayList<>();
 
 	@GET
-	@Path("enclosures")
+	@Path("/")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public List<Enclosure> getEnclosuresList() {
 		
@@ -66,7 +66,7 @@ public class EnclosureService {
 	}
 	
 	@GET
-	@Path("enclosures/{name:[a-zA-Z]+}")
+	@Path("/{name:[a-zA-Z]+}")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public List<Enclosure> getEnclosureByName(@PathParam("name") String subname) {
 		
@@ -74,7 +74,7 @@ public class EnclosureService {
 	}
 	
 	@GET
-	@Path("enclosures/{id:[0-9]+}")
+	@Path("/{id:[0-9]+}")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Enclosure getEnclosureById(@PathParam("id") int id) {
 		
@@ -82,7 +82,7 @@ public class EnclosureService {
 	}
 	
 	@PUT
-	@Path("enclosures/{id:[0-9]+}")
+	@Path("/{id:[0-9]+}")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public Response modifyEnclosureById(Enclosure enclosure, @PathParam("id") int id) {
 		
@@ -100,7 +100,7 @@ public class EnclosureService {
 	}
 	
 	@DELETE
-	@Path("enclosures/{id:[0-9]+}")
+	@Path("/{id:[0-9]+}")
 	public Response deleteEnclosureById(@PathParam("id") int id) {
 		
 		Enclosure enclosure = searchEnclosureById(id);
@@ -115,7 +115,7 @@ public class EnclosureService {
 	}
 	
 	@POST
-	@Path("enclosures/new")
+	@Path("/new")
 	public Response addEnclosure(Enclosure enclosure) {
 		
 		if (enclosure == null) {

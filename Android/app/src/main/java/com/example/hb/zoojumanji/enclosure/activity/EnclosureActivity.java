@@ -135,8 +135,7 @@ public class EnclosureActivity extends AppCompatActivity {
             @Override
             public void onViewDetachedFromWindow(View v) {
                 if (deletion) {
-                    EnclosureManager manager = new EnclosureManager(EnclosureActivity.this);
-                    manager.cleanEnclosure();
+                    EnclosureActivity.this.manager.cleanEnclosure();
                 }
             }
         });

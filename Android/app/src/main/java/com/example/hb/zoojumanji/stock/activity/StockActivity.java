@@ -21,6 +21,7 @@ import java.util.List;
 
 public class StockActivity extends AppCompatActivity {
 
+    protected StockManager manager;
     protected boolean deletion = false;
 
     @Override
@@ -28,6 +29,7 @@ public class StockActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock);
 
+        manager = new StockManager(this);
         generateList();
 
         // Get clicked floatingButton to add a new animal
@@ -54,8 +56,14 @@ public class StockActivity extends AppCompatActivity {
 
     private void generateList() {
         // Get list of stock
-        List<Stock> list = StockManager.getStocks();
+        List<Stock> list = manager.getStocks();
 
+        generateList(list);
+    }
+
+    private void generateList(List<Stock> initialList) {
+
+        List<Stock> list = StockManager.cleanStockList(initialList);
         // Generate specific adaptper
         ArrayAdapter<Stock> adapter = new StockAdapter(this,
                 R.layout.list_stock_item, list);
@@ -78,6 +86,7 @@ public class StockActivity extends AppCompatActivity {
             }
         });
 
+        // Add event listener on elements of list
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -104,10 +113,9 @@ public class StockActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Abort deletion
                 deletion = false;
-                Toast.makeText(StockActivity.this, R.string.message_undo_deletion, Toast
-                        .LENGTH_LONG)
+                Toast.makeText(StockActivity.this, R.string.message_undo_deletion, Toast.LENGTH_LONG)
                         .show();
-                StockManager.restoreStock();
+                manager.restoreStock();
                 generateList();
             }
         };
@@ -127,7 +135,7 @@ public class StockActivity extends AppCompatActivity {
             @Override
             public void onViewDetachedFromWindow(View v) {
                 if (deletion) {
-                    StockManager.cleanStock();
+                    StockActivity.this.manager.cleanStock();
                 }
             }
         });
@@ -136,5 +144,11 @@ public class StockActivity extends AppCompatActivity {
         snackbar.setAction(R.string.message_deletion_undo, undoListener)
                 .setActionTextColor(0xFFFF0000)
                 .show();
+    }
+
+    public void refreshList(List<Stock> updatedList) {
+        Toast.makeText(this, "Updated list : "+String.valueOf(updatedList.size()), Toast.LENGTH_LONG)
+                .show();
+        generateList(updatedList);
     }
 }

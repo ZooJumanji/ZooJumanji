@@ -1,8 +1,8 @@
-package com.example.hb.zoojumanji.stock;
+package stock;
 
-/**
- * Created by jonas on 07//06/2016.
- */
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Stock {
 
     protected int id;
@@ -18,13 +18,23 @@ public class Stock {
         return currentId;
     }
 
-    public int getId() {
-        return id;
+    public Stock setId(int id) {
+    	if (id > currentId) {
+    		currentId = id + 1;
+    	}
+    	
+    	if (id == 0) {
+    		this.id = getCurrentId();
+    	}
+    	else {
+    		this.id = id;
+    	}
+    	
+        return this;
     }
 
-    public Stock setId(int id) {
-        this.id = id;
-        return this;
+    public int getId() {
+        return id;
     }
 
     public StockType getType() {
@@ -62,8 +72,9 @@ public class Stock {
         this.unity = unity;
         return this;
     }
-
+    
     public Stock() {
+    	
     }
 
     public Stock(StockType type, int quantity, int capacity, StockUnity unity) {
@@ -74,4 +85,12 @@ public class Stock {
         this.unity = unity;
     }
 
+    
+    public void copyFrom(Stock stock) {
+    	this.id = stock.getId();
+    	this.type = stock.getType();
+    	this.quantity = stock.getQuantity();
+    	this.capacity = stock.getCapacity();
+    	this.unity = stock.getUnity();
+    }
 }

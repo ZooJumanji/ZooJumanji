@@ -9,6 +9,7 @@ public enum StockUnity {
     PIECE,
     KILO,
     GRAMME,
+    TONNE,
     ;
 
     public int getStringResource() {
@@ -23,6 +24,9 @@ public enum StockUnity {
                 break;
             case GRAMME :
                 resource = R.string.stock_unity_gramme;
+                break;
+            case TONNE :
+                resource = R.string.stock_unity_tonne;
                 break;
         }
 

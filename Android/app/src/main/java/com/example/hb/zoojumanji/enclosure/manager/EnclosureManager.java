@@ -24,13 +24,6 @@ public class EnclosureManager {
     protected Context context;
     private ServiceConnection connection;
 
-    // Static Enclosure List
-    /*
-    public static final Enclosure LION_FOSS = new Enclosure("lion foss", 2, EnclosureType.PADDOCK);
-    public static final Enclosure MONKEY_CAGE = new Enclosure("Rafikki cage", 12, EnclosureType.CAGE);
-    public static final Enclosure TIMON_POOL = new Enclosure("Timon pool", 4, EnclosureType.POOL);
-    //*/
-
     protected static Enclosure deletedEnclosure;
     protected static List<Enclosure> enclosuresList = new ArrayList<>();
 
@@ -39,22 +32,6 @@ public class EnclosureManager {
     }
 
     public List<Enclosure> getEnclosures() {
-
-        /*
-        // Initialize list if is empty
-        if (enclosuresList.isEmpty()) {
-            enclosuresList.add(LION_FOSS);
-            enclosuresList.add(MONKEY_CAGE);
-            //enclosuresList.add(TIMON_POOL);
-
-            LION_FOSS.addAnimal(AnimalRepository.SIMBA);
-            LION_FOSS.addAnimal(AnimalRepository.NALA);
-            MONKEY_CAGE.addAnimal(AnimalRepository.RAFIKKI);
-            //TIMON_POOL.addAnimal(AnimalRepository.TIMON);
-            //TIMON_POOL.addAnimal(AnimalRepository.PUMBA);
-        }
-        //*/
-
         startBindingService();
 
         return cleanEnclosureList(enclosuresList);
@@ -73,7 +50,7 @@ public class EnclosureManager {
         return list;
     }
 
-    public void startBindingService() {
+    protected void startBindingService() {
 
         Intent intent = new Intent(EnclosureManager.this.context, EnclosureService
                 .class);
@@ -97,7 +74,7 @@ public class EnclosureManager {
         context.bindService(intent, connection, Context.BIND_AUTO_CREATE);
     }
 
-    public void startService(final String action, final int id) {
+    protected void startService(final String action, final int id) {
 
         Thread thread = new Thread() {
             @Override

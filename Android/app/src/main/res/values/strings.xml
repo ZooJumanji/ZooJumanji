@@ -59,6 +59,7 @@
     <string name="stock_unity_piece">piece</string>
     <string name="stock_unity_kilo">kilo</string>
     <string name="stock_unity_gramme">gramme</string>
+    <string name="stock_unity_tonne">tonne</string>
 
     <string name="ticket_privilege_feed_timon">feed Timon</string>
     <string name="ticket_privilege_care_entrance">care entrance</string>

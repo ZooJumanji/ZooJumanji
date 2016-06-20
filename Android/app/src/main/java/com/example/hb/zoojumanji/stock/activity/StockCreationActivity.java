@@ -19,6 +19,8 @@ import java.util.Arrays;
 
 public class StockCreationActivity extends AppCompatActivity {
 
+    protected StockManager manager;
+
     protected Spinner typeSpinner;
     protected EditText quantityText;
     protected EditText capacityText;
@@ -28,6 +30,8 @@ public class StockCreationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_creation);
+
+        manager = new StockManager(getApplicationContext());
 
         // get TextView
         typeSpinner = (Spinner) findViewById(R.id.edit_stock_type);
@@ -52,7 +56,7 @@ public class StockCreationActivity extends AppCompatActivity {
                 public void onClick(View view) {
 
                     try {
-                        StockManager.createStock((StockType) typeSpinner.getSelectedItem(),
+                        manager.createStock((StockType) typeSpinner.getSelectedItem(),
                                 Integer.valueOf(quantityText.getText().toString()),
                                 Integer.valueOf(capacityText.getText().toString()),
                                 (StockUnity) unitySpinner.getSelectedItem());

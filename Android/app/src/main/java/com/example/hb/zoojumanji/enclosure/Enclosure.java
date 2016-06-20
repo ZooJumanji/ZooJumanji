@@ -1,11 +1,9 @@
 package com.example.hb.zoojumanji.enclosure;
 
-import java.io.Serializable;
-
 /**
  * Created by hb on 07/06/2016.
  */
-public class Enclosure implements Serializable {
+public class Enclosure {
 
     protected int id;
     protected String name;
