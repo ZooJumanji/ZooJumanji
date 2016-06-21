@@ -23,6 +23,9 @@ public class Animal {
     public int getId() {
         return id;
     }
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -88,5 +91,13 @@ public class Animal {
         this.sex = sex;
         this.species = species;
         this.type = type;
+    }
+
+    public void merge(Animal animal) {
+        this.setName(animal.name);
+        this.setSex(animal.sex);
+        this.setSpecies(animal.species);
+        this.setFood(animal.food);
+        this.setType(animal.type);
     }
 }
