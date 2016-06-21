@@ -21,16 +21,19 @@ public class StockManager implements IStockManager {
     public static final Stock POPCORN = new Stock(StockType.POPCORN, 1223, 1500, StockUnity.KILO);
 
 	private static List<Stock> list = new ArrayList<>();
+	private static boolean initialize = false;
 
 	@Override
 	public List<Stock> getAll() {
 		
-		if (list.isEmpty()) {
+		if (!initialize) {
 			list.add(MEAT);
 			list.add(APPLE);
 			list.add(BANANA);
 			list.add(BUG);
 			list.add(POPCORN);
+			
+			initialize = true;
 		}
 		
 		return list;

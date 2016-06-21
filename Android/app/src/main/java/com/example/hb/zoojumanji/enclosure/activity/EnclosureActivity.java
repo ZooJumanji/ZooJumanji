@@ -21,6 +21,9 @@ import java.util.List;
 
 public class EnclosureActivity extends AppCompatActivity {
 
+    protected ListView listView;
+    protected TextView emptyTextView;
+
     protected EnclosureManager manager;
     protected boolean deletion = false;
 
@@ -28,6 +31,9 @@ public class EnclosureActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enclosure);
+
+        emptyTextView = (TextView) findViewById(R.id.empty_text);
+        listView = (ListView) findViewById(R.id.enclosures_list);
 
         manager = new EnclosureManager(this);
         generateList();
@@ -54,6 +60,16 @@ public class EnclosureActivity extends AppCompatActivity {
         }
     }
 
+    private void displayEmptyText() {
+        listView.setVisibility(View.GONE);
+        emptyTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void displayList() {
+        listView.setVisibility(View.VISIBLE);
+        emptyTextView.setVisibility(View.GONE);
+    }
+
     private void generateList() {
         // Get list of enclosures
         List<Enclosure> list = manager.getEnclosures();
@@ -64,12 +80,20 @@ public class EnclosureActivity extends AppCompatActivity {
     private void generateList(List<Enclosure> initialList) {
 
         List<Enclosure> list = EnclosureManager.cleanEnclosureList(initialList);
+
+        if (list.size() == 0) {
+            displayEmptyText();
+            return;
+        }
+        else {
+            displayList();
+        }
+
         // Generate specific adapter
         ArrayAdapter<Enclosure> adapter = new EnclosureAdapter(this,
                 R.layout.list_enclosure_item, list);
 
         // Display list
-        ListView listView = (ListView) findViewById(R.id.enclosures_list);
         listView.setAdapter(adapter);
 
         // Add event listener on elements of list
@@ -147,8 +171,6 @@ public class EnclosureActivity extends AppCompatActivity {
     }
 
     public void refreshList(List<Enclosure> updatedList) {
-        Toast.makeText(this, "Updated list : "+String.valueOf(updatedList.size()), Toast.LENGTH_LONG)
-        .show();
         generateList(updatedList);
     }
 }

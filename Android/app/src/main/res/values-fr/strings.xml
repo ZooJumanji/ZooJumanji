@@ -50,7 +50,7 @@
 
     <string name="stock_type_meat">viande</string>
     <string name="stock_type_apple">pomme</string>
-    <string name="stock_type_banana">bannane</string>
+    <string name="stock_type_banana">banane</string>
     <string name="stock_type_seed">graine</string>
     <string name="stock_type_mouse">souris</string>
     <string name="stock_type_hay">foins</string>
@@ -73,10 +73,15 @@
     <string name="ticket_type_child">ticket enfant</string>
     <string name="ticket_type_group">ticket de groupe</string>
 
+    <string name="empty_list">Liste vide</string>
+
     <string name="message_undo_deletion">Suppression annulée</string>
     <string name="message_stock_deletion">Stock supprimé</string>
     <string name="message_ticket_deletion">Ticket supprimé</string>
     <string name="message_deletion_undo">ANNULER</string>
+    <string name="message_updating">Mise à jour</string>
+    <string name="message_update_success">Mise à jour réussi</string>
+    <string name="message_update_failure">Échec de la mise à jour</string>
 
     <string name="exception_unknown_animal">Animal inconnu</string>
     <string name="exception_unknown_enclosure">Enclos inconnu</string>

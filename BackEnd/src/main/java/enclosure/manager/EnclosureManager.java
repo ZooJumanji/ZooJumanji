@@ -18,14 +18,17 @@ public class EnclosureManager implements IEnclosureManager {
 	public static final Enclosure TIMON_POOL = new Enclosure("Timon pool", 4, EnclosureType.POOL);
 
 	private static List<Enclosure> list = new ArrayList<>();
+	private static boolean initialize = false;
 
 	@Override
 	public List<Enclosure> getAll() {
 		
-		if (list.isEmpty()) {
+		if (!initialize) {
 			list.add(LION_FOSS);
 			list.add(MONKEY_CAGE);
 			list.add(TIMON_POOL);
+			
+			initialize = true;
 		}
 		
 		return list;
