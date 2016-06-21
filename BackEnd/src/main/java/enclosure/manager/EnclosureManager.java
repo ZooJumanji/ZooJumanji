@@ -1,14 +1,16 @@
-package enclosure;
+package enclosure.manager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateful;
 
+import enclosure.Enclosure;
+import enclosure.EnclosureType;
 import rest.WebServiceResponse;
 
 @Stateful
-public class EnclosureManager implements IEnclosure {
+public class EnclosureManager implements IEnclosureManager {
 
 	// static Enclosure list
 	public static final Enclosure LION_FOSS = new Enclosure("lion foss", 2, EnclosureType.PADDOCK);

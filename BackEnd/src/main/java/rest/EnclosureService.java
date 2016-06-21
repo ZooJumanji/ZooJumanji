@@ -16,13 +16,13 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import enclosure.Enclosure;
-import enclosure.IEnclosure;
+import enclosure.manager.IEnclosureManager;
 
 @Path("/enclosures")
 public class EnclosureService {
 
 	@Inject
-	IEnclosure ienclosure;
+	IEnclosureManager ienclosure;
 	
 	@GET
 	@Path("/")

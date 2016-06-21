@@ -1,4 +1,4 @@
-package stock;
+package stock.manager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,9 +6,12 @@ import java.util.List;
 import javax.ejb.Stateful;
 
 import rest.WebServiceResponse;
+import stock.Stock;
+import stock.StockType;
+import stock.StockUnity;
 
 @Stateful
-public class StockManager implements IStock {
+public class StockManager implements IStockManager {
 
 	// static Stock list
     public static final Stock MEAT = new Stock(StockType.MEAT, 82, 100, StockUnity.PIECE);

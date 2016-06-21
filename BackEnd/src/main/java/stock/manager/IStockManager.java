@@ -1,10 +1,11 @@
-package stock;
+package stock.manager;
 
 import java.util.List;
 
 import rest.WebServiceResponse;
+import stock.Stock;
 
-public interface IStock {
+public interface IStockManager {
 	
 	public List<Stock> getAll(); 
 

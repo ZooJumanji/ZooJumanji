@@ -1,10 +1,11 @@
-package enclosure;
+package enclosure.manager;
 
 import java.util.List;
 
+import enclosure.Enclosure;
 import rest.WebServiceResponse;
 
-public interface IEnclosure {
+public interface IEnclosureManager {
 	
 	public List<Enclosure> getAll(); 
 

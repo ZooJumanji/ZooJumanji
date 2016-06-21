@@ -15,14 +15,14 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import stock.IStock;
 import stock.Stock;
+import stock.manager.IStockManager;
 
 @Path("/stocks")
 public class StockService {
 
 	@Inject
-	IStock istock;
+	IStockManager istock;
 	
 	@GET
 	@Path("/")
