@@ -1,4 +1,4 @@
-package enclosures;
+package enclosure;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

@@ -1,4 +1,4 @@
-package enclosures;
+package enclosure;
 
 import java.util.ArrayList;
 import java.util.List;

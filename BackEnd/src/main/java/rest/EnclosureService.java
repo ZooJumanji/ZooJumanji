@@ -15,8 +15,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import enclosures.Enclosure;
-import enclosures.IEnclosure;
+import enclosure.Enclosure;
+import enclosure.IEnclosure;
 
 @Path("/enclosures")
 public class EnclosureService {

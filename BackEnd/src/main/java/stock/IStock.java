@@ -1,4 +1,4 @@
-package stocks;
+package stock;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package stocks;
+package stock;
 
 public enum StockType {
     MEAT,

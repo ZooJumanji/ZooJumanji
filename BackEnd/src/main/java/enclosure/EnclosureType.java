@@ -1,4 +1,4 @@
-package enclosures;
+package enclosure;
 
 public enum EnclosureType {
     CAGE,
