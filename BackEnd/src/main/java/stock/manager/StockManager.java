@@ -3,14 +3,14 @@ package stock.manager;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 
 import rest.WebServiceResponse;
 import stock.Stock;
 import stock.StockType;
 import stock.StockUnity;
 
-@Stateful
+@Stateless
 public class StockManager implements IStockManager {
 
 	// static Stock list

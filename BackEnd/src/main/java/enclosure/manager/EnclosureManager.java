@@ -3,13 +3,13 @@ package enclosure.manager;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 
 import enclosure.Enclosure;
 import enclosure.EnclosureType;
 import rest.WebServiceResponse;
 
-@Stateful
+@Stateless
 public class EnclosureManager implements IEnclosureManager {
 
 	// static Enclosure list
