@@ -21,6 +21,9 @@ import java.util.List;
 
 public class StockActivity extends AppCompatActivity {
 
+    protected ListView listView;
+    protected TextView emptyTextView;
+
     protected StockManager manager;
     protected boolean deletion = false;
 
@@ -28,6 +31,9 @@ public class StockActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock);
+
+        emptyTextView = (TextView) findViewById(R.id.empty_text);
+        listView = (ListView) findViewById(R.id.stocks_list);
 
         manager = new StockManager(this);
         generateList();
@@ -54,6 +60,16 @@ public class StockActivity extends AppCompatActivity {
         }
     }
 
+    private void displayEmptyText() {
+        listView.setVisibility(View.GONE);
+        emptyTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void displayList() {
+        listView.setVisibility(View.VISIBLE);
+        emptyTextView.setVisibility(View.GONE);
+    }
+
     private void generateList() {
         // Get list of stock
         List<Stock> list = manager.getStocks();
@@ -64,12 +80,20 @@ public class StockActivity extends AppCompatActivity {
     private void generateList(List<Stock> initialList) {
 
         List<Stock> list = StockManager.cleanStockList(initialList);
+
+        if (list.size() == 0) {
+            displayEmptyText();
+            return;
+        }
+        else {
+            displayList();
+        }
+
         // Generate specific adaptper
         ArrayAdapter<Stock> adapter = new StockAdapter(this,
                 R.layout.list_stock_item, list);
 
         // Display list
-        ListView listView = (ListView) findViewById(R.id.stocks_list);
         listView.setAdapter(adapter);
 
         // Add event listener on elements of list
@@ -147,8 +171,6 @@ public class StockActivity extends AppCompatActivity {
     }
 
     public void refreshList(List<Stock> updatedList) {
-        Toast.makeText(this, "Updated list : "+String.valueOf(updatedList.size()), Toast.LENGTH_LONG)
-                .show();
         generateList(updatedList);
     }
 }

@@ -3,14 +3,16 @@ package com.example.hb.zoojumanji.enclosure.service;
 import android.app.IntentService;
 import android.content.Intent;
 import android.os.IBinder;
+import android.widget.Toast;
 
-import com.example.hb.zoojumanji.JumanjiNotification;
+import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.enclosure.Enclosure;
 import com.example.hb.zoojumanji.enclosure.manager.EnclosureManager;
 
 import java.util.List;
 
 import okhttp3.OkHttpClient;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -42,15 +44,14 @@ public class EnclosureService extends IntentService {
             ServerEnclosure serverEnclosure = ServiceGenerator.createService(ServerEnclosure.class);
             EnclosureManager manager = new EnclosureManager(this);
 
-            JumanjiNotification.make(this, "Action : "+action+
-                    " on enclosure of id "+String.valueOf(id), 12345);
-
-            Call<Enclosure> call;
+            Call<ResponseBody> call;
             switch(action) {
 
+                /*
                 case "detail" :
                     call = serverEnclosure.get(id);
                     break;
+                //*/
                 case "create" :
                     call = serverEnclosure.add(manager.getEnclosure(id));
                     break;
@@ -61,27 +62,26 @@ public class EnclosureService extends IntentService {
                     call = serverEnclosure.delete(id);
                     break;
                 default :
-                    JumanjiNotification.make(EnclosureService.this, "unknow action " + action, 12345);
                     return;
             }
 
-            call.enqueue(new Callback<Enclosure>() {
+            call.enqueue(new Callback<ResponseBody>() {
                              @Override
-                             public void onResponse(Call<Enclosure> call, Response<Enclosure> response) {
+                             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
                                  if (response.isSuccessful()) {
-                                     JumanjiNotification.make(EnclosureService.this, action +
-                                             " succes : " + response.code(), 12345);
+                                     Toast.makeText(EnclosureService.this, R.string.message_update_success,
+                                             Toast.LENGTH_SHORT).show();
                                  } else {
-                                     JumanjiNotification.make(EnclosureService.this, action +
-                                             " error : " + response.code(), 12345);
+                                     Toast.makeText(EnclosureService.this, R.string .message_update_failure,
+                                             Toast.LENGTH_SHORT).show();
                                  }
                              }
 
                              @Override
-                             public void onFailure(Call<Enclosure> call, Throwable t) {
-                                 JumanjiNotification.make(EnclosureService.this, action +
-                                         " failure : " + t.getMessage(), 12345);
+                             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                 Toast.makeText(EnclosureService.this, R.string.message_update_failure,
+                                         Toast.LENGTH_SHORT).show();
                              }
                          }
             );
@@ -95,7 +95,7 @@ public class EnclosureService extends IntentService {
 
         Call<List<Enclosure>> call = serverEnclosure.list();
 
-        JumanjiNotification.make(this, "Refresh list of enclosures", 1234);
+        Toast.makeText(this, R.string.message_updating, Toast.LENGTH_SHORT).show();
 
         call.enqueue(new Callback<List<Enclosure>>() {
                          @Override
@@ -104,16 +104,19 @@ public class EnclosureService extends IntentService {
                              if (response.isSuccessful()) {
                                  List<Enclosure> enclosures = response.body();
                                  manager.updateList(enclosures);
+
+                                 Toast.makeText(EnclosureService.this, R.string.message_update_success,
+                                         Toast.LENGTH_SHORT).show();
                              } else {
-                                 JumanjiNotification.make(EnclosureService.this, "Listing error :"
-                                         + response.code(), 1234);
+                                 Toast.makeText(EnclosureService.this, R.string.message_update_failure,
+                                         Toast.LENGTH_SHORT).show();
                              }
                          }
 
                          @Override
                          public void onFailure(Call<List<Enclosure>> call, Throwable t) {
-                             JumanjiNotification.make(EnclosureService.this, "Listing failure :"
-                                     + t.getMessage(), 1234);
+                             Toast.makeText(EnclosureService.this, R.string.message_update_failure,
+                                     Toast.LENGTH_SHORT).show();
                          }
                      }
         );
@@ -137,18 +140,18 @@ public class EnclosureService extends IntentService {
         );
 
         @PUT("/zoomanji/rest/enclosures/{id}")
-        Call<Enclosure> modify(
+        Call<ResponseBody> modify(
                 @Path("id") int id,
                 @Body Enclosure enclosure
         );
 
         @DELETE("/zoomanji/rest/enclosures/{id}")
-        Call<Enclosure> delete(
+        Call<ResponseBody> delete(
                 @Path("id") int id
         );
 
         @POST("/zoomanji/rest/enclosures/new")
-        Call<Enclosure> add(
+        Call<ResponseBody> add(
                 @Body Enclosure enclosure
         );
 

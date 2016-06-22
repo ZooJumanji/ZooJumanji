@@ -1,0 +1,9 @@
+package rest;
+
+public enum WebServiceResponse {
+	BAD_REQUEST,
+	CONFLICT,
+	REQUESTED_RANGE_NOT_SATISFIABLE,
+	UNAUTHORIZED,
+	ACCEPTED
+}

@@ -3,14 +3,17 @@ package com.example.hb.zoojumanji.stock.service;
 import android.app.IntentService;
 import android.content.Intent;
 import android.os.IBinder;
+import android.widget.Toast;
 
 import com.example.hb.zoojumanji.JumanjiNotification;
+import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.stock.Stock;
 import com.example.hb.zoojumanji.stock.manager.StockManager;
 
 import java.util.List;
 
 import okhttp3.OkHttpClient;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -45,12 +48,14 @@ public class StockService extends IntentService {
             JumanjiNotification.make(this, "Action : "+action+
                     " on stock of id "+String.valueOf(id), 12345);
 
-            Call<Stock> call;
+            Call<ResponseBody> call;
             switch(action) {
 
+                /*
                 case "detail" :
                     call = serverStock.get(id);
                     break;
+                //*/
                 case "create" :
                     call = serverStock.add(manager.getStock(id));
                     break;
@@ -65,23 +70,23 @@ public class StockService extends IntentService {
                     return;
             }
 
-            call.enqueue(new Callback<Stock>() {
+            call.enqueue(new Callback<ResponseBody>() {
                              @Override
-                             public void onResponse(Call<Stock> call, Response<Stock> response) {
+                             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
                                  if (response.isSuccessful()) {
-                                     JumanjiNotification.make(StockService.this, action +
-                                             " succes : " + response.code(), 12345);
+                                     Toast.makeText(StockService.this, R.string.message_update_success,
+                                             Toast.LENGTH_SHORT).show();
                                  } else {
-                                     JumanjiNotification.make(StockService.this, action +
-                                             " error : " + response.code(), 12345);
+                                     Toast.makeText(StockService.this, R.string.message_update_failure,
+                                             Toast.LENGTH_SHORT).show();
                                  }
                              }
 
                              @Override
-                             public void onFailure(Call<Stock> call, Throwable t) {
-                                 JumanjiNotification.make(StockService.this, action +
-                                         " failure : " + t.getMessage(), 12345);
+                             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                 Toast.makeText(StockService.this, R.string.message_update_failure,
+                                         Toast.LENGTH_SHORT).show();
                              }
                          }
             );
@@ -95,7 +100,7 @@ public class StockService extends IntentService {
 
         Call<List<Stock>> call = serverStock.list();
 
-        JumanjiNotification.make(this, "Refresh list of stocks", 1234);
+        Toast.makeText(this, R.string.message_updating, Toast.LENGTH_SHORT).show();
 
         call.enqueue(new Callback<List<Stock>>() {
                          @Override
@@ -104,16 +109,19 @@ public class StockService extends IntentService {
                              if (response.isSuccessful()) {
                                  List<Stock> stocks = response.body();
                                  manager.updateList(stocks);
+
+                                 Toast.makeText(StockService.this, R.string.message_update_success,
+                                         Toast.LENGTH_SHORT).show();
                              } else {
-                                 JumanjiNotification.make(StockService.this, "Listing error :"
-                                         + response.code(), 1234);
+                                 Toast.makeText(StockService.this, R.string.message_update_failure,
+                                         Toast.LENGTH_SHORT).show();
                              }
                          }
 
                          @Override
                          public void onFailure(Call<List<Stock>> call, Throwable t) {
-                             JumanjiNotification.make(StockService.this, "Listing failure :"
-                                     + t.getMessage(), 1234);
+                             Toast.makeText(StockService.this, R.string.message_update_failure,
+                                     Toast.LENGTH_SHORT).show();
                          }
                      }
         );
@@ -137,18 +145,18 @@ public class StockService extends IntentService {
         );
 
         @PUT("/zoomanji/rest/stocks/{id}")
-        Call<Stock> modify(
+        Call<ResponseBody> modify(
                 @Path("id") int id,
                 @Body Stock stock
         );
 
         @DELETE("/zoomanji/rest/stocks/{id}")
-        Call<Stock> delete(
+        Call<ResponseBody> delete(
                 @Path("id") int id
         );
 
         @POST("/zoomanji/rest/stocks/new")
-        Call<Stock> add(
+        Call<ResponseBody> add(
                 @Body Stock stock
         );
 
