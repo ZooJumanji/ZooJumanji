@@ -2,6 +2,7 @@ package com.example.hb.zoojumanji.ticket.manager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.res.Resources;
 
 import com.example.hb.zoojumanji.R;
@@ -14,7 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Poulpy on 07/06/2016.
+ * Created by Poulpy (from motofondue's enclosure) on 07/06/2016.
  */
 public class TicketManager {
     // Static tickets list
@@ -32,9 +33,10 @@ public class TicketManager {
     public static final Ticket TICKET_CHILD_TODAY = new Ticket(TicketType.CHILD, 4.50, 16, TODAY);
     public static final Ticket TICKET_CHILD_YESTERDAY = new Ticket(TicketType.CHILD, 4.50, 3, YESTERDAY);
     public static final Ticket TICKET_CHILD_BEFORE_YESTERDAY = new Ticket(TicketType.CHILD, 4.50, 5, BEFORE_YESTERDAY);
+    protected Context context;
+    private ServiceConnection connection;
 
     protected static Ticket deletedTicket;
-
     protected static List<Ticket> ticketsList = new ArrayList<>();
 
     public static List<Ticket> getTickets() {
@@ -54,7 +56,7 @@ public class TicketManager {
         return ticketsList;
     }
 
-    // Get Ticket from id
+    // Get Tickets from type
     public static List<Ticket> getTickets(TicketType type) {
         List<Ticket> list = getTickets();
         List<Ticket> returnList = new ArrayList<>();

@@ -1,17 +1,14 @@
 package com.example.hb.zoojumanji.ticket.service;
 
 import android.app.IntentService;
-import android.content.Intent;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.hb.zoojumanji.ticket.Ticket;
-
-import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.ticket.manager.TicketManager;
 
-import java.util.Date;
+import java.util.List;
 
 /**
  * An {@link IntentService} subclass for handling asynchronous task requests in
@@ -77,7 +74,7 @@ public class TicketService extends IntentService {
             } else if (ACTION_GET_LIST.equals(action)) {
                 final String param1 = intent.getStringExtra(EXTRA_PARAM1);
                 final String param2 = intent.getStringExtra(EXTRA_PARAM2);
-                handleActionBaz(param1, param2);
+                handleActionGetList(param1, param2);
             }
         }
         else {
@@ -92,7 +89,6 @@ public class TicketService extends IntentService {
     private void handleActionCreate(int param1) {
         Ticket ticket = TicketManager.getTicket(param1);
         Log.e("tag", "Created " + ticket.getQuantity() + " ticket(s) ID:" + ticket.getId() + " for " + ticket.getPrice()+ "€");
-        // TODO: Handle action Foo
         //throw new UnsupportedOperationException("Not yet implemented");
     }
 
@@ -100,8 +96,15 @@ public class TicketService extends IntentService {
      * Handle action Baz in the provided background thread with the provided
      * parameters.
      */
-    private void handleActionBaz(String param1, String param2) {
-        // TODO: Handle action Baz
-        throw new UnsupportedOperationException("Not yet implemented");
+    private void handleActionGetList(String param1, String param2) {
+        //Log.e("tag", "Ticket " + param1 + " ticket(s) ID:" + param2);
+        List<Repository> repos = GithubRepositoryListSyncService.startSyncLocalRepositoryAction("fpoyer"/*, textView*/);
+        StringBuilder builder = new StringBuilder("List of repos online : \n");
+        for (Repository repo :
+                repos) {
+            builder.append(repo.getName()).append('\n');
+        }
+        Log.e("tag", builder.toString());
+        //throw new UnsupportedOperationException("Not yet implemented");
     }
 }
