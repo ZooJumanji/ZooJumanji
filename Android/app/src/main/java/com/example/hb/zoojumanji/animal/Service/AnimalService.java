@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.widget.Toast;
 
-import com.example.hb.zoojumanji.MainActivity;
 import com.example.hb.zoojumanji.R;
+import com.example.hb.zoojumanji.WebService;
 import com.example.hb.zoojumanji.animal.Animal;
 import com.example.hb.zoojumanji.animal.manager.AnimalManager;
 
@@ -203,7 +203,7 @@ public class AnimalService extends IntentService {
         public static <T> T createService(Class<T> serviceClass) {
 
             String API_BASE_URL = "http://" +
-                    MainActivity.getWebServiceIP() + ":8080";
+                    WebService.getIP() + ":8080";
 
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 

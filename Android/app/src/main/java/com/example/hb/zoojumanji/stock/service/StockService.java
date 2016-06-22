@@ -6,8 +6,8 @@ import android.os.IBinder;
 import android.widget.Toast;
 
 import com.example.hb.zoojumanji.JumanjiNotification;
-import com.example.hb.zoojumanji.MainActivity;
 import com.example.hb.zoojumanji.R;
+import com.example.hb.zoojumanji.WebService;
 import com.example.hb.zoojumanji.stock.Stock;
 import com.example.hb.zoojumanji.stock.manager.StockManager;
 
@@ -168,7 +168,7 @@ public class StockService extends IntentService {
         public static <T> T createService(Class<T> serviceClass) {
 
             String API_BASE_URL = "http://" +
-                    MainActivity.getWebServiceIP() + ":8080";
+                    WebService.getIP() + ":8080";
 
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 

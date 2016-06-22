@@ -21,6 +21,9 @@ import java.util.List;
 
 public class AnimalActivity extends AppCompatActivity {
 
+    protected ListView listView;
+    protected TextView emptyTextView;
+
     protected AnimalManager manager;
     protected boolean deletion = false;
 
@@ -28,6 +31,9 @@ public class AnimalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animal);
+
+        emptyTextView = (TextView) findViewById(R.id.empty_text);
+        listView = (ListView) findViewById(R.id.animals_list);
 
         manager = new AnimalManager(this);
 
@@ -42,6 +48,16 @@ public class AnimalActivity extends AppCompatActivity {
         if (AnimalManager.isInDeletion()) {
             generateUndeleteSnackBar();
         }
+    }
+
+    private void displayEmptyText() {
+        listView.setVisibility(View.GONE);
+        emptyTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void displayList() {
+        listView.setVisibility(View.VISIBLE);
+        emptyTextView.setVisibility(View.GONE);
     }
 
     private void generateButtonListener() {
@@ -66,13 +82,22 @@ public class AnimalActivity extends AppCompatActivity {
 
         generateList(list);
     }
-    private void generateList(List<Animal> list ) {
+    private void generateList(List<Animal> initialList) {
+        List<Animal> list = AnimalManager.cleanAnimalList(initialList);
+
+        if (list.size() == 0) {
+            displayEmptyText();
+            return;
+        }
+        else {
+            displayList();
+        }
+
         // Generate specific adapter
         ArrayAdapter<Animal> adapter = new AnimalAdapter(this,
                 R.layout.list_animal_item, list);
 
         // Display list
-        ListView listView = (ListView) findViewById(R.id.animals_list);
         listView.setAdapter(adapter);
 
         // Add event listener on elements of list

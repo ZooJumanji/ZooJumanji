@@ -22,15 +22,7 @@ import com.example.hb.zoojumanji.ticket.activity.TicketActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    // IP local          "192.168.1.27"
-    // IP virtual device "10.0.2.22"
-    // IP Baya           "172.16.110.169"
-    private static String webServiceIP = "192.168.1.37";
     protected TextView titleText;
-
-    public static String getWebServiceIP() {
-        return webServiceIP;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText userInput = (EditText) promptsView
                 .findViewById(R.id.prompt_result);
-        userInput.setText(webServiceIP);
+        userInput.setText(WebService.getIP());
 
         // set dialog message
         alertDialogBuilder
@@ -113,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton(getString(R.string.prompt_button_ok),
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,int id) {
-                                webServiceIP = userInput.getText().toString();
+                                WebService.setIP(userInput.getText().toString());
                             }
                         })
                 .setNegativeButton(getString(R.string.prompt_button_cancel),
