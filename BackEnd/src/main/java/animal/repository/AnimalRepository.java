@@ -1,11 +1,13 @@
 package animal.repository;
 
-import animal.Entity.Animal;
-import animal.Entity.AnimalSex;
-import animal.Entity.AnimalSpecies;
-import animal.Entity.AnimalType;
-
 import javax.ejb.Stateless;
+
+import animal.entity.Animal;
+import animal.entity.AnimalSex;
+import animal.entity.AnimalSpecies;
+import animal.entity.AnimalType;
+import rest.WebServiceResponse;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,58 +24,76 @@ public class AnimalRepository implements IAnimalRepository {
     public static final Animal NALA = new Animal("Nala", 8, AnimalSex.FEMALE, AnimalSpecies.LION, AnimalType.CARNIVOROUS);
     public static final Animal RAFIKKI = new Animal("Rafikki", 82, AnimalSex.MALE, AnimalSpecies.MONKEY, AnimalType.OMNIVOROUS);
 
-    private static List<Animal> animalList  = new ArrayList<Animal>();
-    public static int counter = 0;
-
-
-//    private static AnimalRepository instance;
-//    public static AnimalRepository getInstance() {
-//        // singleton
-//        if (instance == null) {
-//            instance = new AnimalRepository();
-//
-//            animalList = new ArrayList<>();
-//        }
-//        return instance;
-//    }
+    private static List<Animal> animalsList  = new ArrayList<>();
+	private static boolean initialize = false;
 
     /**
      * Retourne la liste des animaux
      *
      * @return List<Animal>
      */
-    public List<Animal> GetList() {
-        if (animalList.size() == 0) {
-            animalList.add(SIMBA);
-            animalList.add(TIMON);
-            animalList.add(PUMBA);
-            animalList.add(NALA);
-            animalList.add(RAFIKKI);
-            counter = 5;
+    public List<Animal> getList() {
+        if (!initialize) {
+            animalsList.add(SIMBA);
+            animalsList.add(TIMON);
+            animalsList.add(PUMBA);
+            animalsList.add(NALA);
+            animalsList.add(RAFIKKI);
+            
+            initialize = true;
         }
 
-        return animalList;
+        return animalsList;
     }
 
-    public Animal GetListById(Integer id) {
-        if (id < counter){
-            return animalList.get(id);
-        }
+    public Animal get(Integer id) {
+		for (Animal animal : animalsList) {
+			if (animal.getId() == id) {
+				return animal;
+			}
+		}
         return null;
     }
 
+	@Override
+	public List<Animal> getByName(String subname) {
+		List<Animal> animals = new ArrayList<>();
+		
+		for (Animal animal : animalsList) {
+			if (animal.getName().contains(subname)) {
+				animals.add(animal);
+			}
+		}
+		
+		return animals;
+	}
 
-    public Animal CreateAndUpdate(Animal animal) {
-        // create
-        if (animal.getId() == 0) {
-            animal.setId(++counter);
-            animalList.add(animal);
-        }
-        else {
-            Animal localAnimal = animalList.get(animal.getId());
-            localAnimal.merge(animal);
-        }
+	@Override
+	public Animal create(Animal animal) {
+		
+		animalsList.add(animal);	
+		return animal;
+	}
 
-        return animal;
-    }
+	@Override
+	public Animal update(Animal animal) {
+		
+        Animal localAnimal = get(animal.getId());
+		
+        localAnimal.merge(animal);
+		
+		return animal;
+	}
+
+	@Override
+	public WebServiceResponse delete(int id) {
+		Animal animal = get(id);
+		
+		if (animal == null) {
+			return WebServiceResponse.REQUESTED_RANGE_NOT_SATISFIABLE;
+		}
+		
+		animalsList.remove(animal);
+		return WebServiceResponse.ACCEPTED;
+	}
 }

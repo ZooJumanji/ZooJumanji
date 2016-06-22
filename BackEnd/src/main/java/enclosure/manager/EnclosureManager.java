@@ -50,7 +50,7 @@ public class EnclosureManager implements IEnclosureManager {
 	public List<Enclosure> getByName(String subname) {
 		List<Enclosure> enclosures = new ArrayList<>();
 		
-		for (Enclosure enclosure : enclosures) {
+		for (Enclosure enclosure : list) {
 			if (enclosure.getName().contains(subname)) {
 				enclosures.add(enclosure);
 			}

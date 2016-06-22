@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.widget.Toast;
 
+import com.example.hb.zoojumanji.MainActivity;
 import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.enclosure.Enclosure;
 import com.example.hb.zoojumanji.enclosure.manager.EnclosureManager;
@@ -159,21 +160,19 @@ public class EnclosureService extends IntentService {
 
     public static class ServiceGenerator {
 
-        /*
-        public static final String API_BASE_URL = "http://192.168.1.33:8080";
-        /*/
-        public static final String API_BASE_URL = "http://172.16.110.169:8080";
-        //*/
-
-        private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-
-        private static Retrofit.Builder builder =
-                new Retrofit.Builder()
-                        .baseUrl(API_BASE_URL)
-                        .addConverterFactory(GsonConverterFactory.create())
-                ;
-
         public static <T> T createService(Class<T> serviceClass) {
+
+            String API_BASE_URL = "http://" +
+                    MainActivity.getWebServiceIP() + ":8080";
+
+            OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+
+            Retrofit.Builder builder =
+                    new Retrofit.Builder()
+                            .baseUrl(API_BASE_URL)
+                            .addConverterFactory(GsonConverterFactory.create())
+                    ;
+
             Retrofit retrofit = builder.client(httpClient.build()).build();
             return retrofit.create(serviceClass);
         }

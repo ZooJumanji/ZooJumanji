@@ -1,8 +1,11 @@
-package animal.Entity;
+package animal.entity;
+
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Created by isher on 17/06/2016.
  */
+@XmlRootElement
 public class Animal {
 
     protected int id;
@@ -11,7 +14,6 @@ public class Animal {
     protected AnimalSex sex;
     protected AnimalType type;
     protected AnimalSpecies species;
-    protected String food;
 
     private static int currentId = 0;
 
@@ -23,8 +25,20 @@ public class Animal {
     public int getId() {
         return id;
     }
-    public void setId(int id) {
-        this.id = id;
+    
+    public Animal setId(int id) {
+    	if (id > currentId) {
+    		currentId = id + 1;
+    	}
+    	
+    	if (id == 0) {
+    		this.id = getCurrentId();
+    	}
+    	else {
+    		this.id = id;
+    	}
+    	
+        return this;
     }
 
     public String getName() {
@@ -72,15 +86,6 @@ public class Animal {
         return this;
     }
 
-    public String getFood() {
-        return food;
-    }
-
-    public Animal setFood(String food) {
-        this.food = food;
-        return this;
-    }
-
     public Animal() {
     }
 
@@ -95,9 +100,9 @@ public class Animal {
 
     public void merge(Animal animal) {
         this.setName(animal.name);
+        this.setAge(animal.age);
         this.setSex(animal.sex);
         this.setSpecies(animal.species);
-        this.setFood(animal.food);
         this.setType(animal.type);
     }
 }

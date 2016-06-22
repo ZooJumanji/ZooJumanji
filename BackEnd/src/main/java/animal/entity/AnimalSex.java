@@ -1,4 +1,4 @@
-package animal.Entity;
+package animal.entity;
 
 /**
  * Created by isher on 17/06/2016.
