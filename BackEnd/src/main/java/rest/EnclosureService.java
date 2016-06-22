@@ -16,20 +16,20 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import enclosure.Enclosure;
-import enclosure.manager.IEnclosureManager;
+import rest.interfacemanager.IEnclosureManager;
 
 @Path("/enclosures")
 public class EnclosureService {
 
 	@Inject
-	IEnclosureManager ienclosure;
+	IEnclosureManager imanager;
 	
 	@GET
 	@Path("/")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public List<Enclosure> getEnclosuresList() {
 		
-		return ienclosure.getAll();
+		return imanager.getAll();
 	}
 	
 	@GET
@@ -37,7 +37,7 @@ public class EnclosureService {
 	@Produces({ MediaType.APPLICATION_JSON })
 	public List<Enclosure> getEnclosureByName(@PathParam("name") String subname) {
 		
-		return ienclosure.getByName(subname);
+		return imanager.getByName(subname);
 	}
 	
 	@GET
@@ -45,7 +45,7 @@ public class EnclosureService {
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Enclosure getEnclosureById(@PathParam("id") int id) {
 		
-		return ienclosure.get(id);
+		return imanager.get(id);
 	}
 	
 	@PUT
@@ -57,7 +57,7 @@ public class EnclosureService {
 			return Response.status(Status.CONFLICT).build();
 		}
 		
-		WebServiceResponse response =  ienclosure.modify(enclosure);
+		WebServiceResponse response =  imanager.modify(enclosure);
 		
 		if (response.equals(WebServiceResponse.REQUESTED_RANGE_NOT_SATISFIABLE)) {
 			return Response.status(Status.REQUESTED_RANGE_NOT_SATISFIABLE).build();
@@ -70,7 +70,7 @@ public class EnclosureService {
 	@Path("/{id:[0-9]+}")
 	public Response deleteEnclosureById(@PathParam("id") int id) {
 		
-		WebServiceResponse response =  ienclosure.delete(id);
+		WebServiceResponse response =  imanager.delete(id);
 		
 		if (response.equals(WebServiceResponse.REQUESTED_RANGE_NOT_SATISFIABLE)) {
 			return Response.status(Status.REQUESTED_RANGE_NOT_SATISFIABLE).build();
@@ -83,7 +83,7 @@ public class EnclosureService {
 	@Path("/new")
 	public Response addEnclosure(Enclosure enclosure) {
 		
-		WebServiceResponse response =  ienclosure.add(enclosure);
+		WebServiceResponse response =  imanager.add(enclosure);
 		if (response.equals(WebServiceResponse.UNAUTHORIZED)) {
 			return Response.status(Status.UNAUTHORIZED).build();
 		}

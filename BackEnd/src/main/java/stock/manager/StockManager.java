@@ -6,6 +6,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 
 import rest.WebServiceResponse;
+import rest.interfacemanager.IStockManager;
 import stock.Stock;
 import stock.StockType;
 import stock.StockUnity;

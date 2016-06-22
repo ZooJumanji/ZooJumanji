@@ -1,4 +1,4 @@
-package enclosure.manager;
+package rest.interfacemanager;
 
 import java.util.List;
 

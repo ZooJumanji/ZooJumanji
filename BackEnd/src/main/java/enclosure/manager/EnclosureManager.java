@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 import enclosure.Enclosure;
 import enclosure.EnclosureType;
 import rest.WebServiceResponse;
+import rest.interfacemanager.IEnclosureManager;
 
 @Stateless
 public class EnclosureManager implements IEnclosureManager {

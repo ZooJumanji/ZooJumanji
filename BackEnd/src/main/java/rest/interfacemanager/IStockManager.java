@@ -1,4 +1,4 @@
-package stock.manager;
+package rest.interfacemanager;
 
 import java.util.List;
 

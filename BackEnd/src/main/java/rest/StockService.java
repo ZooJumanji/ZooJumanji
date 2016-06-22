@@ -15,21 +15,21 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import rest.interfacemanager.IStockManager;
 import stock.Stock;
-import stock.manager.IStockManager;
 
 @Path("/stocks")
 public class StockService {
 
 	@Inject
-	IStockManager istock;
+	IStockManager imanager;
 	
 	@GET
 	@Path("/")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public List<Stock> getStocksList() {
 		
-		return istock.getAll();
+		return imanager.getAll();
 	}
 	
 	@GET
@@ -37,7 +37,7 @@ public class StockService {
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Stock getStockById(@PathParam("id") int id) {
 		
-		return istock.get(id);
+		return imanager.get(id);
 	}
 	
 	@PUT
@@ -49,7 +49,7 @@ public class StockService {
 			return Response.status(Status.CONFLICT).build();
 		}
 		
-		WebServiceResponse response =  istock.modify(stock);
+		WebServiceResponse response =  imanager.modify(stock);
 		
 		if (response.equals(WebServiceResponse.REQUESTED_RANGE_NOT_SATISFIABLE)) {
 			return Response.status(Status.REQUESTED_RANGE_NOT_SATISFIABLE).build();
@@ -62,7 +62,7 @@ public class StockService {
 	@Path("/{id:[0-9]+}")
 	public Response deleteStockById(@PathParam("id") int id) {
 		
-		WebServiceResponse response =  istock.delete(id);
+		WebServiceResponse response =  imanager.delete(id);
 		
 		if (response.equals(WebServiceResponse.REQUESTED_RANGE_NOT_SATISFIABLE)) {
 			return Response.status(Status.REQUESTED_RANGE_NOT_SATISFIABLE).build();
@@ -75,7 +75,7 @@ public class StockService {
 	@Path("/new")
 	public Response addStock(Stock stock) {
 		
-		WebServiceResponse response =  istock.add(stock);
+		WebServiceResponse response =  imanager.add(stock);
 		if (response.equals(WebServiceResponse.UNAUTHORIZED)) {
 			return Response.status(Status.UNAUTHORIZED).build();
 		}
