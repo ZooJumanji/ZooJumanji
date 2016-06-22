@@ -1,4 +1,4 @@
-package com.example.hb.zoojumanji.animal.Service;
+package com.example.hb.zoojumanji.animal.service;
 
 import android.os.Binder;
 

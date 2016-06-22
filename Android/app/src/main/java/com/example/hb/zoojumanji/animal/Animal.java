@@ -24,6 +24,11 @@ public class Animal {
         return id;
     }
 
+    public Animal setId(int id) {
+        this.id = id;
+        return this;
+    }
+
     public String getName() {
         return name;
     }

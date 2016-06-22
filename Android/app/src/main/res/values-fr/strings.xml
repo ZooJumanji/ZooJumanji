@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ZooJumanji</string>
-    <string name="action_settings">Paramètres</string>
+    <string name="action_webservice_ip">Changer l\'IP du WS</string>
 
     <string name="home_title">Zoo Jumanji</string>
     <string name="animal_title">Animaux</string>
@@ -88,5 +88,9 @@
     <string name="exception_unknown_stock">Stock inconnu</string>
     <string name="exception_unknown_ticket">Ticket inconnu</string>
     <string name="exception_formular_error">Erreur dans le formulaire</string>
+
+    <string name="prompt_button_ok">OK</string>
+    <string name="prompt_button_cancel">Annuler</string>
+    <string name="prompt_message">Entrez votre IP :</string>
 
 </resources>

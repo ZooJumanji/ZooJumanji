@@ -13,6 +13,7 @@ import com.example.hb.zoojumanji.animal.Animal;
 
 public class AnimalDetailActivity extends AppCompatActivity {
 
+    protected AnimalManager manager;
     protected TextView nameText;
     protected TextView ageText;
     protected TextView sexText;
@@ -25,6 +26,8 @@ public class AnimalDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animal_detail);
+
+        manager = new AnimalManager(this);
 
         // Initialize TextView
         nameText = (TextView) findViewById(R.id.detail_animal_name);
@@ -69,7 +72,7 @@ public class AnimalDetailActivity extends AppCompatActivity {
     private void showAnimalDetails() {
         // Get Animal from id
         Intent intent = getIntent();
-        animal = AnimalManager.getAnimal(intent.getIntExtra("id", 0));
+        animal = manager.getAnimal(intent.getIntExtra("id", 0));
 
         // Display parameters
         nameText.setText(animal.getName());
@@ -80,7 +83,7 @@ public class AnimalDetailActivity extends AppCompatActivity {
     }
 
     private void deletionExecution() {
-        AnimalManager.deleteAnimal(animal);
+        manager.deleteAnimal(animal);
         finish();
     }
 }

@@ -38,13 +38,16 @@
         <activity android:name=".ticket.activity.TicketModifyActivity" />
 
         <service
-            android:name=".ticket.service.TicketService"
+            android:name=".animal.service.AnimalService"
             android:exported="false"></service>
         <service
             android:name=".enclosure.service.EnclosureService"
             android:exported="false"></service>
         <service
             android:name=".stock.service.StockService"
+            android:exported="false"></service>
+        <service
+            android:name=".ticket.service.TicketService"
             android:exported="false"></service>
     </application>
 

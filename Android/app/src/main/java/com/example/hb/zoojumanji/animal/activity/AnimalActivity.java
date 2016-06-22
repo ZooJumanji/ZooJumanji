@@ -21,7 +21,7 @@ import java.util.List;
 
 public class AnimalActivity extends AppCompatActivity {
 
-    protected  AnimalManager manager;
+    protected AnimalManager manager;
     protected boolean deletion = false;
 
     @Override
@@ -62,7 +62,7 @@ public class AnimalActivity extends AppCompatActivity {
 
     private void generateList() {
         // Get list of enclosures
-        List<Animal> list = manager.getAnimalList();
+        List<Animal> list = manager.getAnimals();
 
         generateList(list);
     }
@@ -118,7 +118,7 @@ public class AnimalActivity extends AppCompatActivity {
                 Toast.makeText(AnimalActivity.this, R.string.message_undo_deletion, Toast
                         .LENGTH_LONG)
                         .show();
-                AnimalManager.restoreAnimal();
+                manager.restoreAnimal();
                 generateList();
             }
         };
@@ -138,7 +138,7 @@ public class AnimalActivity extends AppCompatActivity {
             @Override
             public void onViewDetachedFromWindow(View v) {
                 if (deletion) {
-                    AnimalManager.cleanEnclosure();
+                    manager.cleanAnimal();
                 }
             }
         });

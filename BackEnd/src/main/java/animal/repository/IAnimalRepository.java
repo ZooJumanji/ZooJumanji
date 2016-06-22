@@ -1,18 +1,25 @@
 package animal.repository;
 
-import animal.Entity.Animal;
-
 import java.util.List;
+
+import animal.entity.Animal;
+import enclosure.Enclosure;
+import rest.WebServiceResponse;
 
 /**
  * Created by isher on 20/06/2016.
  */
 public interface IAnimalRepository {
 
-    List<Animal> GetList();
-    Animal GetListById(Integer id);
-    Animal CreateAndUpdate(Animal animal);
-
-
-
+    List<Animal> getList();
+    
+	List<Animal> getByName(String subname);
+	
+    Animal get(Integer id);
+    
+    Animal create(Animal animal);
+    
+    Animal update(Animal animal);
+    
+    WebServiceResponse delete(int id);
 }

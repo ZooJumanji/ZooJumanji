@@ -35,7 +35,7 @@ public class EnclosureService {
 	@GET
 	@Path("/{name:[a-zA-Z]+}")
 	@Produces({ MediaType.APPLICATION_JSON })
-	public List<Enclosure> getEnclosureByName(@PathParam("name") String subname) {
+	public List<Enclosure> getEnclosuresByName(@PathParam("name") String subname) {
 		
 		return imanager.getByName(subname);
 	}

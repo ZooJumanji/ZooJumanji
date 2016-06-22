@@ -24,6 +24,7 @@ import java.util.Arrays;
 
 public class AnimalModifyActivity extends AppCompatActivity {
 
+    protected AnimalManager manager;
     protected EditText nameText;
     protected EditText ageText;
     protected Spinner sexSpinner;
@@ -37,9 +38,11 @@ public class AnimalModifyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animal_modify);
 
+        manager = new AnimalManager(this);
+
         // Get Enclosure from id
         Intent intent = getIntent();
-        animal = AnimalManager.getAnimal(intent.getIntExtra("id", 0));
+        animal = manager.getAnimal(intent.getIntExtra("id", 0));
 
         showAnimalDetail();
         generateButtonsListener();
@@ -54,7 +57,7 @@ public class AnimalModifyActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // Update animal
                 try {
-                    AnimalManager.modifyAnimal(animal.getId(),
+                    manager.modifyAnimal(animal.getId(),
                             nameText.getText().toString(),
                             Integer.valueOf(ageText.getText().toString()),
                             (AnimalSex) sexSpinner.getSelectedItem(),

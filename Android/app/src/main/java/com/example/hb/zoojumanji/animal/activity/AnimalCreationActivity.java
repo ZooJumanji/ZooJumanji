@@ -21,6 +21,7 @@ import java.util.Arrays;
 
 public class AnimalCreationActivity extends AppCompatActivity {
 
+    protected AnimalManager manager;
     protected EditText nameText;
     protected EditText ageText;
     protected Spinner sexSpinner;
@@ -31,6 +32,8 @@ public class AnimalCreationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animal_creation);
+
+        manager = new AnimalManager(this);
 
         initializeViews();
         generateSpinners();
@@ -44,7 +47,7 @@ public class AnimalCreationActivity extends AppCompatActivity {
                 public void onClick(View view) {
 
                     try {
-                        AnimalManager.createAnimal(nameText.getText().toString(),
+                        manager.createAnimal(nameText.getText().toString(),
                                 Integer.valueOf(ageText.getText().toString()),
                                 (AnimalSex) sexSpinner.getSelectedItem(),
                                 (AnimalSpecies) speciesSpinner.getSelectedItem(),

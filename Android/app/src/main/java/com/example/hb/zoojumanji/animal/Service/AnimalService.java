@@ -1,23 +1,29 @@
-package com.example.hb.zoojumanji.animal.Service;
+package com.example.hb.zoojumanji.animal.service;
 
 import android.app.IntentService;
 import android.content.Intent;
 import android.os.IBinder;
+import android.widget.Toast;
 
-import com.example.hb.zoojumanji.JumanjiNotification;
+import com.example.hb.zoojumanji.MainActivity;
+import com.example.hb.zoojumanji.R;
 import com.example.hb.zoojumanji.animal.Animal;
 import com.example.hb.zoojumanji.animal.manager.AnimalManager;
-import com.example.hb.zoojumanji.enclosure.service.EnclosureServiceBinder;
 
 import java.util.List;
 
 import okhttp3.OkHttpClient;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 /**
@@ -39,9 +45,89 @@ public class AnimalService extends IntentService {
             String action = intent.getAction();
             int id = intent.getIntExtra("id", 0);
 
-            JumanjiNotification.make(this, "Action : " + action +
-                    " on Animal of id " + String.valueOf(id), 1234);
+            if (!action.equals("delete")) {
+                callAnimalReturningRequest(action, id);
+            }
+            else {
+                callResponseReturningRequest(action, id);
+            }
         }
+    }
+
+    private void callAnimalReturningRequest(String action, int id) {
+
+        ServerAnimal serverAnimal = ServiceGenerator.createService(ServerAnimal.class);
+        AnimalManager manager = new AnimalManager(this);
+
+        Call<Animal> call;
+        switch(action) {
+
+            case "create" :
+                call = serverAnimal.create(manager.getAnimal(id));
+                break;
+            case "modify" :
+                call = serverAnimal.update(manager.getAnimal(id));
+                break;
+            default :
+                return;
+        }
+
+        call.enqueue(new Callback<Animal>() {
+                         @Override
+                         public void onResponse(Call<Animal> call, Response<Animal> response) {
+
+                             if (response.isSuccessful()) {
+                                 Toast.makeText(AnimalService.this, R.string.message_update_success,
+                                         Toast.LENGTH_SHORT).show();
+                             } else {
+                                 Toast.makeText(AnimalService.this, R.string .message_update_failure,
+                                         Toast.LENGTH_SHORT).show();
+                             }
+                         }
+
+                         @Override
+                         public void onFailure(Call<Animal> call, Throwable t) {
+                             Toast.makeText(AnimalService.this, R.string.message_update_failure,
+                                     Toast.LENGTH_SHORT).show();
+                         }
+                     }
+        );
+    }
+
+    private void callResponseReturningRequest(String action, int id) {
+
+        ServerAnimal serverAnimal = ServiceGenerator.createService(ServerAnimal.class);
+
+        Call<ResponseBody> call;
+        switch(action) {
+
+            case "delete" :
+                call = serverAnimal.delete(id);
+                break;
+            default :
+                return;
+        }
+
+        call.enqueue(new Callback<ResponseBody>() {
+                         @Override
+                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+                             if (response.isSuccessful()) {
+                                 Toast.makeText(AnimalService.this, R.string.message_update_success,
+                                         Toast.LENGTH_SHORT).show();
+                             } else {
+                                 Toast.makeText(AnimalService.this, R.string .message_update_failure,
+                                         Toast.LENGTH_SHORT).show();
+                             }
+                         }
+
+                         @Override
+                         public void onFailure(Call<ResponseBody> call, Throwable t) {
+                             Toast.makeText(AnimalService.this, R.string.message_update_failure,
+                                     Toast.LENGTH_SHORT).show();
+                         }
+                     }
+        );
     }
 
     public void getAnimalList(final AnimalManager manager) {
@@ -51,7 +137,7 @@ public class AnimalService extends IntentService {
 
         Call<List<Animal>> call = serverAnimal.list();
 
-        JumanjiNotification.make(this, "Refresh list of enclosures", 1234);
+        Toast.makeText(this, R.string.message_updating, Toast.LENGTH_SHORT).show();
 
         call.enqueue(new Callback<List<Animal>>() {
                          @Override
@@ -60,16 +146,19 @@ public class AnimalService extends IntentService {
                              if (response.isSuccessful()) {
                                  List<Animal> animaux = response.body();
                                  manager.updateList(animaux);
+
+                                 Toast.makeText(AnimalService.this, R.string.message_update_success,
+                                         Toast.LENGTH_SHORT).show();
                              } else {
-                                 JumanjiNotification.make(AnimalService.this, "Listing error :"
-                                         + response.code(), 1234);
+                                 Toast.makeText(AnimalService.this, R.string.message_update_failure,
+                                         Toast.LENGTH_SHORT).show();
                              }
                          }
 
                          @Override
                          public void onFailure(Call<List<Animal>> call, Throwable t) {
-                             JumanjiNotification.make(AnimalService.this, "Listing failure :"
-                                     + t.getMessage(), 1234);
+                             Toast.makeText(AnimalService.this, R.string.message_update_failure,
+                                     Toast.LENGTH_SHORT).show();
                          }
                      }
         );
@@ -83,28 +172,47 @@ public class AnimalService extends IntentService {
     }
 
     public interface ServerAnimal {
-        @GET("/zoomanji/REST/animaux")
+        @GET("/zoomanji/rest/animals")
         Call<List<Animal>> list(
         );
 
-        @GET("/zoomanji/REST/animaux/{id}")
+        @GET("/zoomanji/rest/animals/{id}")
         Call<Animal> get(
                 @Path("id") int id
         );
+
+        @POST("/zoomanji/rest/animals/")
+        Call<Animal> create(
+                @Body Animal animal
+        );
+
+        @PUT("/zoomanji/rest/animals/")
+        Call<Animal> update(
+                @Body Animal animal
+        );
+
+        @DELETE("/zoomanji/rest/animals/{id}")
+        Call<ResponseBody> delete(
+                @Path("id") int id
+        );
+
     }
 
     public static class ServiceGenerator {
 
-        public static final String API_BASE_URL = "http://192.168.1.27";
-
-        private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-
-        private static Retrofit.Builder builder =
-                new Retrofit.Builder()
-                        .baseUrl(API_BASE_URL)
-                        .addConverterFactory(GsonConverterFactory.create());
-
         public static <T> T createService(Class<T> serviceClass) {
+
+            String API_BASE_URL = "http://" +
+                    MainActivity.getWebServiceIP() + ":8080";
+
+            OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+
+            Retrofit.Builder builder =
+                    new Retrofit.Builder()
+                            .baseUrl(API_BASE_URL)
+                            .addConverterFactory(GsonConverterFactory.create())
+                    ;
+
             Retrofit retrofit = builder.client(httpClient.build()).build();
             return retrofit.create(serviceClass);
         }
