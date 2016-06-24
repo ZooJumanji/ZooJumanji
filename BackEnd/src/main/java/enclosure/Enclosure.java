@@ -1,11 +1,18 @@
 package enclosure;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 
+@Entity
 @XmlRootElement
 public class Enclosure {
 
-    protected int id;
+	@Id
+	@GeneratedValue
+    protected long id;
+	
     protected String name;
     protected int max;
     protected EnclosureType type;
@@ -17,7 +24,7 @@ public class Enclosure {
         return currentId;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -64,7 +71,7 @@ public class Enclosure {
     }
     
     public Enclosure() {
-    	
+    	super();
     }
 
     public Enclosure(String name, int max, EnclosureType type) {

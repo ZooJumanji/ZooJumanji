@@ -11,11 +11,11 @@ public interface IEnclosureManager {
 
 	public List<Enclosure> getByName(String subname);
 
-	public Enclosure get(int id); 
+	public Enclosure get(long id); 
 	
 	public WebServiceResponse add(Enclosure enclosure); 
 
 	public WebServiceResponse modify(Enclosure enclosure); 
 
-	public WebServiceResponse delete(int id); 
+	public WebServiceResponse delete(long id); 
 }

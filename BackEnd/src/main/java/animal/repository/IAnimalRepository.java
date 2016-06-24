@@ -3,7 +3,6 @@ package animal.repository;
 import java.util.List;
 
 import animal.entity.Animal;
-import enclosure.Enclosure;
 import rest.WebServiceResponse;
 
 /**

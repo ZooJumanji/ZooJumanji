@@ -13,32 +13,17 @@ import rest.interfacemanager.IEnclosureManager;
 @Stateless
 public class EnclosureManager implements IEnclosureManager {
 
-	// static Enclosure list
-	public static final Enclosure LION_FOSS = new Enclosure("lion foss", 2, EnclosureType.PADDOCK);
-	public static final Enclosure MONKEY_CAGE = new Enclosure("Rafikki cage", 12, EnclosureType.CAGE);
-	public static final Enclosure TIMON_POOL = new Enclosure("Timon pool", 4, EnclosureType.POOL);
-
 	private static List<Enclosure> list = new ArrayList<>();
-	private static boolean initialize = false;
 
 	@Override
 	public List<Enclosure> getAll() {
-		
-		if (!initialize) {
-			list.add(LION_FOSS);
-			list.add(MONKEY_CAGE);
-			list.add(TIMON_POOL);
-			
-			initialize = true;
-		}
-		
 		return list;
 	}
 
 	@Override
-	public Enclosure get(int id) {
+	public Enclosure get(long l) {
 		for (Enclosure enclosure : list) {
-			if (enclosure.getId() == id) {
+			if (enclosure.getId() == l) {
 				return enclosure;
 			}
 		}
@@ -83,7 +68,7 @@ public class EnclosureManager implements IEnclosureManager {
 	}
 
 	@Override
-	public WebServiceResponse delete(int id) {
+	public WebServiceResponse delete(long id) {
 		Enclosure enclosure = get(id);
 		
 		if (enclosure == null) {
