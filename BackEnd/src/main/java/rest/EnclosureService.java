@@ -63,6 +63,10 @@ public class EnclosureService {
 			return Response.status(Status.REQUESTED_RANGE_NOT_SATISFIABLE).build();
 		}
 		
+		if (response.equals(WebServiceResponse.PRECONDITION_FAILED)) {
+			return Response.status(Status.PRECONDITION_FAILED).build();
+		}
+		
 		return Response.status(Status.ACCEPTED).build();
 	}
 	
@@ -86,6 +90,10 @@ public class EnclosureService {
 		WebServiceResponse response =  imanager.add(enclosure);
 		if (response.equals(WebServiceResponse.UNAUTHORIZED)) {
 			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		
+		if (response.equals(WebServiceResponse.PRECONDITION_FAILED)) {
+			return Response.status(Status.PRECONDITION_FAILED).build();
 		}
 		
 		return Response.status(Status.ACCEPTED).build();

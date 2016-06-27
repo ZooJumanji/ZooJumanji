@@ -45,6 +45,10 @@ public class EnclosureManager implements IEnclosureManager {
 	
 	@Override
 	public WebServiceResponse add(Enclosure enclosure) {
+		
+		if (!enclosure.isValid()) {
+			return WebServiceResponse.BAD_REQUEST;
+		}
 		enclosureDao.persist(enclosure);
 		return WebServiceResponse.ACCEPTED;		
 	}
@@ -52,6 +56,9 @@ public class EnclosureManager implements IEnclosureManager {
 	@Override
 	public WebServiceResponse modify(Enclosure enclosure) {
 		
+		if (!enclosure.isValid()) {
+			return WebServiceResponse.BAD_REQUEST;
+		}
 		Enclosure realEnclosure = enclosureDao.findById(enclosure.getId());
 		realEnclosure.copyFrom(enclosure);
 		enclosureDao.persist(realEnclosure);

@@ -70,4 +70,21 @@ public class Enclosure {
     	this.max = enclosure.getMax();
     	this.type = enclosure.getType();
     }
+    
+    public boolean isValid() {
+    	if (id < 1) {
+    		return false;
+    	}
+    	if (max < 0) {
+    		return false;
+    	}
+    	if (name == null) {
+    		return false;
+    	}
+    	if (type == null) {
+    		return false;
+    	}
+    	
+    	return true;
+    }
 }
