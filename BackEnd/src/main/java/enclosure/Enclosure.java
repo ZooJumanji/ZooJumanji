@@ -29,6 +29,7 @@ public class Enclosure {
     }
 
     public Enclosure setId(int id) {
+    	/*
     	if (id > currentId) {
     		currentId = id + 1;
     	}
@@ -39,7 +40,7 @@ public class Enclosure {
     	else {
     		this.id = id;
     	}
-    	
+    	//*/
         return this;
     }
 

@@ -5,6 +5,10 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 public abstract class JpaDao<K, E> implements Dao<K, E> {
 	
@@ -32,6 +36,14 @@ public abstract class JpaDao<K, E> implements Dao<K, E> {
 
 	@Override
 	public List<E> findAll() {
-		return null;
+		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+		CriteriaQuery<E> cq = cb.createQuery(this.entityClass);
+		Root<E> root = cq.from(this.entityClass);
+		
+		cq.select(root);
+		TypedQuery<E> q = entityManager.createQuery(cq);
+		List<E> allEntities = q.getResultList();
+		
+		return allEntities;
 	}
 }
