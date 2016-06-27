@@ -45,55 +45,24 @@ public class EnclosureManager implements IEnclosureManager {
 	
 	@Override
 	public WebServiceResponse add(Enclosure enclosure) {
-		/*
-		if (get(enclosure.getId()) != null) {
-			return WebServiceResponse.UNAUTHORIZED;
-		}
-		
-		list.add(enclosure);	
-		return WebServiceResponse.ACCEPTED;
-		/*/
 		enclosureDao.persist(enclosure);
 		return WebServiceResponse.ACCEPTED;		
-		//*/
 	}
 
 	@Override
 	public WebServiceResponse modify(Enclosure enclosure) {
 		
-		/*
-		Enclosure realEnclosure = get(enclosure.getId());
-		
-		if (realEnclosure == null) {
-			return WebServiceResponse.REQUESTED_RANGE_NOT_SATISFIABLE;
-		}
-		
-		realEnclosure.copyFrom(enclosure);
-		return WebServiceResponse.ACCEPTED;
-		/*/
 		Enclosure realEnclosure = enclosureDao.findById(enclosure.getId());
 		realEnclosure.copyFrom(enclosure);
 		enclosureDao.persist(realEnclosure);
 		return WebServiceResponse.ACCEPTED;
-		//*/
 	}
 
 	@Override
 	public WebServiceResponse delete(long id) {
 		
-		/*
-		Enclosure enclosure = get(id);
-		
-		if (enclosure == null) {
-			return WebServiceResponse.REQUESTED_RANGE_NOT_SATISFIABLE;
-		}
-		
-		list.remove(enclosure);
-		return WebServiceResponse.ACCEPTED;
-		/*/
 		enclosureDao.remove(enclosureDao.findById(id));
 		return WebServiceResponse.ACCEPTED;		
-		//*/
 	}
 
 }

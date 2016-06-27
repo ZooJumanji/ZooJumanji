@@ -17,30 +17,12 @@ public class Enclosure {
     protected int max;
     protected EnclosureType type;
 
-    private static int currentId = 0;
-
-    private static int getCurrentId() {
-        currentId++;
-        return currentId;
-    }
-
     public long getId() {
         return id;
     }
 
     public Enclosure setId(int id) {
-    	/*
-    	if (id > currentId) {
-    		currentId = id + 1;
-    	}
-    	
-    	if (id == 0) {
-    		this.id = getCurrentId();
-    	}
-    	else {
-    		this.id = id;
-    	}
-    	//*/
+   		this.id = id;
         return this;
     }
 
@@ -76,7 +58,7 @@ public class Enclosure {
     }
 
     public Enclosure(String name, int max, EnclosureType type) {
-        this.id = getCurrentId();
+        this.id = 0;
         this.name = name;
         this.max = max;
         this.type = type;
